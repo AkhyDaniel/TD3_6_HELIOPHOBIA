@@ -10,10 +10,16 @@
 
   <ItemGroup>
     <None Remove="BackgroundJour.jpeg" />
+    <None Remove="imageButJouer.png" />
+    <None Remove="imageButParametre.png" />
+    <None Remove="imageButQuitter.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="BackgroundJour.jpeg" />
+    <Resource Include="imageButJouer.png" />
+    <Resource Include="imageButParametre.png" />
+    <Resource Include="imageButQuitter.png" />
   </ItemGroup>
 
 </Project>
