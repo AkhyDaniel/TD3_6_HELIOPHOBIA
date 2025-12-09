@@ -8,4 +8,12 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="BackgroundJour.jpeg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="BackgroundJour.jpeg" />
+  </ItemGroup>
+
 </Project>

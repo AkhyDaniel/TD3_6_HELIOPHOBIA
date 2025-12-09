@@ -15,18 +15,13 @@ using System.Windows.Shapes;
 namespace SaeProjetGitHubJEU
 {
     /// <summary>
-    /// Logique d'interaction pour UCDemarage.xaml
+    /// Logique d'interaction pour UCJeu.xaml
     /// </summary>
-    public partial class UCDemarage : Window
+    public partial class UCJeu : Window
     {
-        public UCDemarage()
+        public UCJeu()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

@@ -8,6 +8,13 @@
         Title="UCDemarage" Height="450" Width="800">
     <Grid Background="#FF020200">
         <Image Margin="0,0,0,136" Source="/LOGO/LOGO JEU.png" Stretch="Fill"/>
+        <Button x:Name="butJouer" Content="" HorizontalAlignment="Center" Margin="0,319,0,0" VerticalAlignment="Top" Width="116" Height="44" RenderTransformOrigin="0.53,-0.26" Click="Button_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="/BackgroundJour.jpeg"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="butQuitter" Content="Button" HorizontalAlignment="Left" Margin="511,319,0,0" VerticalAlignment="Top" Width="116" Height="44"/>
+        <Button x:Name="butParamètre" Content="Button" HorizontalAlignment="Left" Margin="166,319,0,0" VerticalAlignment="Top" Width="116" Height="44" RenderTransformOrigin="0.53,-0.26"/>
 
     </Grid>
 </Window>
