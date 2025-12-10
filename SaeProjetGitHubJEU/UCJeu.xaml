@@ -17,29 +17,29 @@
 
         <Image Source="/imgPerso/imgPerso1.png" Stretch="Fill" Canvas.Top="733" Height="157" Width="104" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="648"/>
 
-        <Image Source="/Images_Castel/CastelNuit.png" Stretch="Fill" Canvas.Left="559" Height="428" Width="282" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="10"/>
+        <Image Source="/Images_Castel/CastelNuit.png" Stretch="Fill" Canvas.Left="519" Height="452" Width="338" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="10"/>
         <Image x:Name="imgLuneCroissantGauche" Source="/imagesLunes/DebutLuneGauche-removebg-preview.png" Stretch="Fill" Height="208" Canvas.Left="1023" Canvas.Top="90" Width="217"/>
         <Canvas x:Name="CanvasTrapeze"
             Width="1500"
-            Height="772"
+            Height="814"
             Background="Black"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center" Canvas.Top="261" RenderTransformOrigin="0.796,0.756">
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top" Canvas.Top="236" RenderTransformOrigin="0.796,0.756" Canvas.Left="-18">
 
             <Canvas.Clip>
                 <CombinedGeometry GeometryCombineMode="Union">
 
                     <CombinedGeometry.Geometry1>
-                        <RectangleGeometry Rect="0, 500, 800, 100" />
+                        <RectangleGeometry Rect="0, 500, 1450, 167" />
                     </CombinedGeometry.Geometry1>
 
                     <CombinedGeometry.Geometry2>
                         <PathGeometry>
-                            <PathFigure StartPoint="100, 500">
-                                <LineSegment Point="700, 500" />
-                                <LineSegment Point="600, 150" />
-                                <LineSegment Point="200, 150" />
-                                <LineSegment Point="100, 500" IsStroked="True" />
+                            <PathFigure StartPoint="0, 500">
+                                <LineSegment Point="1430, 500" />
+                                <LineSegment Point="890, 150" />
+                                <LineSegment Point="530, 150" />
+                                <LineSegment Point="160, 400" IsStroked="True" />
                             </PathFigure>
                         </PathGeometry>
                     </CombinedGeometry.Geometry2>
@@ -50,8 +50,8 @@
             <TextBlock Text="Contenu dans le Trapèze"
                    Foreground="White"
                    FontSize="24"
-                   Canvas.Left="280"
-                   Canvas.Top="250"/>
+                   Canvas.Left="778"
+                   Canvas.Top="443"/>
 
             <Rectangle Width="50" Height="50" Fill="Red" 
                    Canvas.Left="400" Canvas.Top="500"/>
