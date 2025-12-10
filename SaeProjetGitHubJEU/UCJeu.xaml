@@ -14,9 +14,13 @@
         <Image Source="/imagesBackGround/imgSol.png" Stretch="Fill" HorizontalAlignment="Left" Canvas.Top="11" VerticalAlignment="Top" Height="893" Width="1431" RenderTransformOrigin="0.5,0.5">
         </Image>
         <Image Height="893" Source="/imagesBackGround/arbres.png" Stretch="Fill" Width="1431" HorizontalAlignment="Center" Canvas.Top="11" VerticalAlignment="Top"/>
+
         <Image Source="/imgPerso/imgPerso1.png" Stretch="Fill" Canvas.Top="733" Height="157" Width="104" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="648"/>
+
         <Image Source="/Images_Castel/CastelNuit.png" Stretch="Fill" Canvas.Left="559" Height="428" Width="282" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="10"/>
         <Image Source="/imagesLunes/DebutLuneGauche-removebg-preview.png" Stretch="Fill" Height="208" Canvas.Left="1023" Canvas.Top="90" Width="217"/>
+        <Canvas Height="532" Width="1400" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Top="372"/>
+        
 
 
 
