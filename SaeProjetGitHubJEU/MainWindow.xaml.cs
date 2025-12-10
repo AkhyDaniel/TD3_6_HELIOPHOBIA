@@ -19,6 +19,16 @@ namespace SaeProjetGitHubJEU
         public MainWindow()
         {
             InitializeComponent();
+            AfficheUCDemarrage();
         }
-    }
+    
+}
+      private void AfficheDemarrage()
+        {
+            UCDemarrage uc = new UCDemarrage(); // crée et charge l'écran de  démarrage
+            ZoneJeu.Content = uc; // associe l'écran au conteneur 
+            uc.butJouer.Click += AfficherChoixPerso; //
+
+        }
+    } 
 }
