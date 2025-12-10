@@ -21,8 +21,8 @@ namespace SaeProjetGitHubJEU
     {
 
         private DispatcherTimer minuterie;
-        private BitmapImage[] lune = new BitmapImage[
-            5];
+        private int nbTours = 0;
+        private BitmapImage[] lune = new BitmapImage[5];
         public MainWindow()
         {
             InitializeComponent();
@@ -64,7 +64,10 @@ namespace SaeProjetGitHubJEU
         }
         public void Jeu(object sender, RoutedEventArgs e)
         {
-            DeplaceImage()
+            DeplaceImage(DebutLuneDroite, 5);
+            nbTours++;
+            DebutLuneDroite.Source= lune[nbTours];
+
             UCJeu uc = new UCJeu();
             ZoneLobby.Content = uc;
 
