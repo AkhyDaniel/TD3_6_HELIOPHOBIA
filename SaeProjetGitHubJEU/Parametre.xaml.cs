@@ -10,19 +10,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace SaeProjetGitHubJEU
 {
     /// <summary>
-    /// Logique d'interaction pour UCParametre.xaml
+    /// Logique d'interaction pour Parametre.xaml
     /// </summary>
-    public partial class UCParametre : UserControl
+    public partial class Parametre : Window
     {
-        public UCParametre()
+        public Parametre()
         {
             InitializeComponent();
+        }
+
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
         }
     }
 }

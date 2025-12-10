@@ -29,7 +29,7 @@ namespace SaeProjetGitHubJEU
           UCDemarrage uc = new UCDemarrage();
             ZoneLobby.Content = uc;
             uc.butJouer.Click += Jeu;
-            uc.butParametre.Click += Parametre;
+            //uc.butParametre.Click += Parametre;
         }
         
         public void Jeu(object sender, RoutedEventArgs e)
@@ -38,11 +38,11 @@ namespace SaeProjetGitHubJEU
             ZoneLobby.Content = uc;
             
         }
-        public void Parametre(object sender, RoutedEventArgs e)
+       /* public void Parametre(object sender, RoutedEventArgs e)
         {
             UCParametre uc = new UCParametre();
             ZoneLobby.Content=uc;
-        }
+        }*/
 
       
     } 
