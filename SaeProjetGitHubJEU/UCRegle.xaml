@@ -7,11 +7,16 @@
              mc:Ignorable="d" 
              d:DesignHeight="900" d:DesignWidth="1400">
     <Grid>
-        <Button x:Name="butJouerRegle" Content="" HorizontalAlignment="Left" Margin="1076,740,0,0" VerticalAlignment="Top" Height="60" Width="182" Click="Button_Click" BorderBrush="{x:Null}">
+        <Button x:Name="butJouerRegle" Content="" HorizontalAlignment="Left" Margin="1144,796,0,0" VerticalAlignment="Top" Height="60" Width="182" Click="Button_Click" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="/imageButJouerF.png"/>
             </Button.Background>
         </Button>
+        <Label Content="" HorizontalAlignment="Center" VerticalAlignment="Top" Height="640" Width="1116" Margin="0,156,0,0">
+            <Label.Background>
+                <ImageBrush ImageSource="/cadre.png"/>
+            </Label.Background>
+        </Label>
 
     </Grid>
 </UserControl>
