@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SaeProjetGitHubJEU"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="1000">
+        Title="MainWindow" Height="900" Width="1400" WindowState="Maximized">
     <Window.Background>
         <ImageBrush ImageSource="/LOGOF.png"/>
     </Window.Background>

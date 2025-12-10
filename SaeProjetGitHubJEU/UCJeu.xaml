@@ -5,10 +5,20 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SaeProjetGitHubJEU"
              mc:Ignorable="d" 
-             d:DesignHeight="500" d:DesignWidth="1000">
-    <Grid>
-        <Image Margin="0,10,0,0" Source="/imagesBackGround/imgSol.png" Stretch="Fill"/>
-        <Image Margin="423,364,515,37" Source="/imgPerso/imgPerso1.png" Stretch="Fill" RenderTransformOrigin="0.475,0.346"/>
-        <Image Margin="376,-30,406,245" Source="/Images_Castel/CastelNuit.png" Stretch="Fill"/>
-    </Grid>
+             d:DesignHeight="900" d:DesignWidth="1400">
+    <Canvas>
+        <Image Source="/imagesBackGround/imgSol.png" Stretch="Fill" HorizontalAlignment="Center" Canvas.Top="11" VerticalAlignment="Center" Height="893" Width="1399" RenderTransformOrigin="0.5,0.5">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.178"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image Source="/imgPerso/imgPerso1.png" Stretch="Fill" Canvas.Left="434" Canvas.Top="669" Height="157" Width="105"/>
+        <Image Source="/Images_Castel/CastelNuit.png" Stretch="Fill" Canvas.Left="550" Height="428" Width="246" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+    </Canvas>
 </UserControl>
