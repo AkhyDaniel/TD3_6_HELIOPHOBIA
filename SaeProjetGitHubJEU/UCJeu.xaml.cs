@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace SaeProjetGitHubJEU
@@ -17,7 +18,7 @@ namespace SaeProjetGitHubJEU
     /// <summary>
     /// Logique d'interaction pour UCJeu.xaml
     /// </summary>
-    public partial class UCJeu : Window
+    public partial class UCJeu : UserControl
     {
         public UCJeu()
         {

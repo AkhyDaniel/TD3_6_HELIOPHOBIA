@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace SaeProjetGitHubJEU
 {
     /// <summary>
-    /// Logique d'interaction pour UCParamètre.xaml
+    /// Logique d'interaction pour UCParametre.xaml
     /// </summary>
-    public partial class UCParamètre : Window
+    public partial class UCParametre : UserControl
     {
-        public UCParamètre()
+        public UCParametre()
         {
             InitializeComponent();
         }

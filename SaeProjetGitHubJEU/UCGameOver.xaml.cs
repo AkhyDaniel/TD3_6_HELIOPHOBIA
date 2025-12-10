@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace SaeProjetGitHubJEU
 {
     /// <summary>
-    /// Logique d'interaction pour UCWin.xaml
+    /// Logique d'interaction pour UCGameOver.xaml
     /// </summary>
-    public partial class UCWin : UserControl
+    public partial class UCGameOver : UserControl
     {
-        public UCWin()
+        public UCGameOver()
         {
             InitializeComponent();
         }

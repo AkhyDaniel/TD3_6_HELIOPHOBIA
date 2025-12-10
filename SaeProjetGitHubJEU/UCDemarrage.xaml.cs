@@ -10,23 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace SaeProjetGitHubJEU
 {
     /// <summary>
-    /// Logique d'interaction pour UCDemarage.xaml
+    /// Logique d'interaction pour UCDemarrage.xaml
     /// </summary>
-    public partial class UCDemarage : Window
+    public partial class UCDemarrage : UserControl
     {
-        public UCDemarage()
+        public UCDemarrage()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
