@@ -20,6 +20,7 @@
         <Image Source="/Images_Castel/CastelNuit.png" Stretch="Fill" Canvas.Left="559" Height="428" Width="282" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="10"/>
         <Image Source="/imagesLunes/DebutLuneGauche-removebg-preview.png" Stretch="Fill" Height="208" Canvas.Left="1023" Canvas.Top="90" Width="217"/>
         <Canvas Height="532" Width="1400" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Top="372"/>
+        
 
 
 
