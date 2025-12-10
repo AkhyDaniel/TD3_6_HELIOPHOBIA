@@ -15,14 +15,12 @@
         </Image>
         <Image Height="893" Source="/imagesBackGround/arbres.png" Stretch="Fill" Width="1431" HorizontalAlignment="Center" Canvas.Top="11" VerticalAlignment="Top"/>
 
-        <Image Source="/imgPerso/imgPerso1.png" Stretch="Fill" Canvas.Top="733" Height="157" Width="104" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="648"/>
-
         <Image Source="/Images_Castel/CastelNuit.png" Stretch="Fill" Canvas.Left="519" Height="452" Width="338" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="10"/>
         <Image x:Name="imgLuneCroissantGauche" Source="/imagesLunes/DebutLuneGauche-removebg-preview.png" Stretch="Fill" Height="208" Canvas.Left="1023" Canvas.Top="90" Width="217"/>
         <Canvas x:Name="CanvasTrapeze"
             Width="1500"
             Height="814"
-            Background="Black"
+            
             HorizontalAlignment="Left"
             VerticalAlignment="Top" Canvas.Top="236" RenderTransformOrigin="0.796,0.756" Canvas.Left="-18">
 
@@ -46,15 +44,9 @@
 
                 </CombinedGeometry>
             </Canvas.Clip>
+            <Image Source="/imgPerso/imgPerso1.png" Stretch="Fill" Canvas.Top="260" Height="94" Width="60" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="598"/>
 
-            <TextBlock Text="Contenu dans le Trapèze"
-                   Foreground="White"
-                   FontSize="24"
-                   Canvas.Left="778"
-                   Canvas.Top="443"/>
 
-            <Rectangle Width="50" Height="50" Fill="Red" 
-                   Canvas.Left="400" Canvas.Top="500"/>
 
         </Canvas>
 

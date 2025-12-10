@@ -66,7 +66,7 @@ namespace SaeProjetGitHubJEU
         {
             DeplaceImage(DebutLuneDroite, 5);
             nbTours++;
-            DebutLuneDroite.Source= lune[nbTours];
+            DebutLuneDroite.Source = lune[nbTours];
 
             UCJeu uc = new UCJeu();
             ZoneLobby.Content = uc;
