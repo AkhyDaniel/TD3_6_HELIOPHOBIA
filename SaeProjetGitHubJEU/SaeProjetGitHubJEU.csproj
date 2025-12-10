@@ -15,6 +15,7 @@
     <None Remove="imageButQuitter.png" />
     <None Remove="imagesBackGround\BackgroundJour.jpeg" />
     <None Remove="imagesBackGround\BackgroundNuit.png" />
+    <None Remove="imagesBackGround\imgSol.png" />
     <None Remove="imagesBut\imageButJouerF.png" />
     <None Remove="imagesBut\imageButParaF.png" />
     <None Remove="imagesBut\imageButQuitterF.png" />
@@ -40,6 +41,7 @@
   <ItemGroup>
     <Resource Include="imagesBackGround\BackgroundJour.jpeg" />
     <Resource Include="imagesBackGround\BackgroundNuit.png" />
+    <Resource Include="imagesBackGround\imgSol.png" />
     <Resource Include="imagesBut\imageButJouerF.png" />
     <Resource Include="imagesBut\imageButParaF.png" />
     <Resource Include="imagesBut\imageButQuitterF.png" />

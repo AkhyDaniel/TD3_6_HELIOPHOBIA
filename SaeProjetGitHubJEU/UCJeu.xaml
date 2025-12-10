@@ -5,8 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SaeProjetGitHubJEU"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="500" d:DesignWidth="1000">
     <Grid>
-            
+        <Image Margin="0,10,0,0" Source="/imagesBackGround/imgSol.png" Stretch="Fill"/>
+        <Image Margin="423,364,515,37" Source="/imgPerso/imgPerso1.png" Stretch="Fill" RenderTransformOrigin="0.475,0.346"/>
+        <Image Margin="376,-30,406,245" Source="/Images_Castel/CastelNuit.png" Stretch="Fill"/>
     </Grid>
 </UserControl>
