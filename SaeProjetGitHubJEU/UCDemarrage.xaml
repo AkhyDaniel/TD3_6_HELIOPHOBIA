@@ -15,7 +15,6 @@
                 <ImageBrush ImageSource="/imageButJouerF.png"/>
             </Button.Background>
         </Button>
-        <Button Content="" x:Name="butParametre" HorizontalAlignment="Left" Margin="124,390,0,0" VerticalAlignment="Top" Height="55" Width="164" RenderTransformOrigin="1.002,0.04">
         <Button x:Name="butQuitter" Content="" HorizontalAlignment="Left" Margin="1050,713,0,0" VerticalAlignment="Top" Height="56" Width="164" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="/imageButQuitterF.png"/>
@@ -27,11 +26,6 @@
             </Button.BorderBrush>
             <Button.Background>
                 <ImageBrush ImageSource="/imageButParaF.png"/>
-            </Button.Background>
-        </Button>
-        <Button x:Name="butQuitter_Copy" Content="" HorizontalAlignment="Left" Margin="696,389,0,0" VerticalAlignment="Top" Height="56" Width="164" BorderBrush="{x:Null}">
-            <Button.Background>
-                <ImageBrush ImageSource="/imageButQuitterF.png"/>
             </Button.Background>
         </Button>
 
