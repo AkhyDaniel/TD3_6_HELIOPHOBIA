@@ -19,8 +19,35 @@
 
         <Image Source="/Images_Castel/CastelNuit.png" Stretch="Fill" Canvas.Left="559" Height="428" Width="282" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="10"/>
         <Image Source="/imagesLunes/DebutLuneGauche-removebg-preview.png" Stretch="Fill" Height="208" Canvas.Left="1023" Canvas.Top="90" Width="217"/>
-        <Canvas Height="532" Width="1400" HorizontalAlignment="Center" VerticalAlignment="Center" Canvas.Top="372"/>
-        
+        <Canvas x:Name="CanvasTrapeze"
+            Width="1500"
+            Height="772"
+            Background="Black"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top" Canvas.Top="270" RenderTransformOrigin="0.796,0.756">
+
+            <Canvas.Clip>
+                <PathGeometry>
+                    <PathFigure StartPoint="0, 630">
+                        <LineSegment Point="1200, 600" />
+                        <LineSegment Point="500, 100" />
+                        <LineSegment Point="250, 100" />
+                        <LineSegment Point="-100, 600" IsStroked="True" />
+                    </PathFigure>
+                </PathGeometry>
+            </Canvas.Clip>
+
+            <TextBlock Text="Contenu dans le Trapèze"
+                   Foreground="White"
+                   FontSize="24"
+                   Canvas.Left="280"
+                   Canvas.Top="250"/>
+
+            <Rectangle Width="50" Height="50" Fill="Red" 
+                   Canvas.Left="400" Canvas.Top="500"/>
+
+        </Canvas>
+
 
 
 
