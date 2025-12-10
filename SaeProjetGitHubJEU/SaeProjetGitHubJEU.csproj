@@ -20,8 +20,10 @@
     <None Remove="imagesBackGround\arbres.png" />
     <None Remove="imagesBackGround\BackgroundJour.jpeg" />
     <None Remove="imagesBackGround\BackgroundNuit.png" />
+    <None Remove="imagesBackGround\cadre.png" />
     <None Remove="imagesBackGround\FOND NUIT.png" />
     <None Remove="imagesBackGround\imgSol.png" />
+    <None Remove="imagesBackGround\regles.png" />
     <None Remove="imagesBut\imageButJouerF.png" />
     <None Remove="imagesBut\imageButParaF.png" />
     <None Remove="imagesBut\imageButQuitterF.png" />
@@ -57,8 +59,10 @@
     <Resource Include="imageButParaF.png" />
     <Resource Include="imageButQuitterF.png" />
     <Resource Include="imagesBackGround\arbres.png" />
+    <Resource Include="imagesBackGround\cadre.png" />
     <Resource Include="imagesBackGround\FOND NUIT.png" />
     <Resource Include="imagesBackGround\imgSol.png" />
+    <Resource Include="imagesBackGround\regles.png" />
     <Resource Include="imagesBut\imageButJouerF.png" />
     <Resource Include="imagesBut\imageButParaF.png" />
     <Resource Include="imagesBut\imageButQuitterF.png" />

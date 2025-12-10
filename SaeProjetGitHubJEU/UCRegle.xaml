@@ -7,17 +7,13 @@
              mc:Ignorable="d" 
              d:DesignHeight="900" d:DesignWidth="1400">
     <Grid>
+   
         <Button x:Name="butJouerRegle" Content="" HorizontalAlignment="Left" Margin="1146,801,0,0" VerticalAlignment="Top" Height="60" Width="182" Click="Button_Click" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="/imageButJouerF.png"/>
             </Button.Background>
         </Button>
-        <Label x:Name="labCadre" HorizontalAlignment="Center" VerticalAlignment="Center" Height="640" Width="1116">
-            <Label.Background>
-                <ImageBrush ImageSource="/cadre.png"/>
-            </Label.Background>
-        </Label>
-        <Label x:Name="labRegleJeu" Content="Vous devez vous abriter rapidement dans le château.&#10;&#10;Attention, le soleil est votre ennemi !&#10;&#10;Lorsqu'il apparaît, il vous faudra vous protéger ou vous cacher sous peine de mourir.&#10;&#10;À l’arrivée de la nuit, vous devrez courir à toute vitesse pour atteindre le château." HorizontalAlignment="Left" VerticalAlignment="Center" Height="200" Width="920" FontSize="20" Foreground="White" FontFamily="Century" Margin="277,0,0,0"/>
+        <Label x:Name="labRegleJeu" Content="Vous devez vous abriter rapidement dans le château.&#10;&#10;Attention, le soleil est votre ennemi !&#10;&#10;Lorsqu'il apparaît, il vous faudra vous protéger ou vous cacher sous peine de mourir.&#10;&#10;À l’arrivée de la nuit, vous devrez courir à toute vitesse pour atteindre le château." HorizontalAlignment="Center" VerticalAlignment="Top" Height="200" Width="864" FontSize="20" Foreground="White" FontFamily="Century" Margin="0,374,0,0" Background="{x:Null}" FontWeight="Bold"/>
 
     </Grid>
 </UserControl>
