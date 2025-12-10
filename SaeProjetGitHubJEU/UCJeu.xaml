@@ -44,7 +44,7 @@
 
                 </CombinedGeometry>
             </Canvas.Clip>
-            <Image Source="/imgPerso/imgPerso1.png" Stretch="Fill" Canvas.Top="260" Height="94" Width="60" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="598"/>
+            <Image Source="/imgPerso/imgPerso1.png" Stretch="Fill" Canvas.Top="313" Height="94" Width="60" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="430"/>
 
 
 

@@ -30,22 +30,22 @@ namespace SaeProjetGitHubJEU
             InitializeTimer();
         }
 
-        private void InitializeTimer()
-        {
-            minuterie = new DispatcherTimer();
-            // configure l'intervalle du Timer :62 images par s
-            minuterie.Interval = TimeSpan.FromMilliseconds(16);
-            // associe l’appel de la méthode Jeu à la fin de la minuterie
-            minuterie.Tick += Jeu;
-            // lancement du timer
-            minuterie.Start();
+        //private void InitializeTimer()
+        //{
+        //    minuterie = new DispatcherTimer();
+        //    // configure l'intervalle du Timer :62 images par s
+        //    minuterie.Interval = TimeSpan.FromMilliseconds(16);
+        //    // associe l’appel de la méthode Jeu à la fin de la minuterie
+        //    minuterie.Tick += Jeu;
+        //    // lancement du timer
+        //    minuterie.Start();
 
-        }
-        private void InitializeImages()
-        {
-            for (int i = 0; i < lune.Length; i++)
-                lune[i] = new BitmapImage(new Uri($"pack://application:,,,/imagesLunes/DebutLuneDroite{i + 1}.gif"));
-        }
+        //}
+        //private void InitializeImages()
+        //{
+        //    for (int i = 0; i < lune.Length; i++)
+        //        lune[i] = new BitmapImage(new Uri($"pack://application:,,,/imagesLunes/DebutLuneDroite{i + 1}.gif"));
+        //}
 
 
         public void AfficheDemarrage()

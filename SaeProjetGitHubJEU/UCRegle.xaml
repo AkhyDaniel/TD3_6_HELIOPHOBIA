@@ -11,14 +11,16 @@
             <ImageBrush ImageSource="/fond sans helio.png"/>
         </Grid.Background>
 
-        <Button x:Name="butJouerRegle" Content="" HorizontalAlignment="Left" Margin="1186,809,0,0" VerticalAlignment="Top" Height="60" Width="182" Click="Button_Click" BorderBrush="{x:Null}">
+
+        <Label x:Name="labRegleJeu" Content="Vous devez vous abriter rapidement dans le château.&#10;&#10;Attention, le soleil est votre ennemi !&#10;&#10;Lorsqu'il apparaît, il vous faudra vous protéger ou vous cacher sous peine de mourir.&#10;&#10;À l’arrivée de la nuit, vous devrez courir à toute vitesse pour atteindre le château." VerticalAlignment="Center" Height="240" Width="1140" FontSize="24" Foreground="White" FontFamily="Arial Black" Background="{x:Null}" FontWeight="Bold" HorizontalAlignment="Left" Margin="170,0,0,0"/>
+        <Image Margin="-49,-102,-57,-75" Source="/imagesBackGround/cadre.png" Stretch="Fill"/>
+        <Image Margin="428,58,428,550" Source="/imagesBackGround/regles.png" Stretch="Fill"/>
+
+        <Button x:Name="butJouerRegle" Content="" HorizontalAlignment="Left" Margin="515,690,0,0" VerticalAlignment="Top" Height="98" Width="384" Click="Button_Click" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="/imageButJouerF.png"/>
             </Button.Background>
         </Button>
-        <Label x:Name="labRegleJeu" Content="Vous devez vous abriter rapidement dans le château.&#10;&#10;Attention, le soleil est votre ennemi !&#10;&#10;Lorsqu'il apparaît, il vous faudra vous protéger ou vous cacher sous peine de mourir.&#10;&#10;À l’arrivée de la nuit, vous devrez courir à toute vitesse pour atteindre le château." VerticalAlignment="Center" Height="228" Width="1140" FontSize="24" Foreground="White" FontFamily="Arial Black" Background="{x:Null}" FontWeight="Bold" HorizontalAlignment="Center"/>
-        <Image Margin="-22,124,0,124" Source="/imagesBackGround/cadre.png" Stretch="Fill"/>
-        <Image Margin="417,-71,439,679" Source="/imagesBackGround/regles.png" Stretch="Fill"/>
 
     </Grid>
 </UserControl>
