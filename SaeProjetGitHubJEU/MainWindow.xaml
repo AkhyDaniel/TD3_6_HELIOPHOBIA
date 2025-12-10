@@ -6,5 +6,5 @@
         xmlns:local="clr-namespace:SaeProjetGitHubJEU"
         mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="1000">
-    <Grid x:Name="UCLobby"/>
+    <ContentControl x:Name="ZoneJeu"
 </Window>
