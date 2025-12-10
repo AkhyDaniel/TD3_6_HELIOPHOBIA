@@ -24,11 +24,26 @@ namespace SaeProjetGitHubJEU
         }
     
 
-      private void AfficheDemarrage()
+      public void AfficheDemarrage()
         {
-            UCDemarage uc = new UCDemarage();
-            ZoneJeu.Content = uc;
+          UCDemarrage uc = new UCDemarrage();
+            ZoneLobby.Content = uc;
+            uc.butJouer.Click += Jeu;
+            uc.butParametre.Click += Parametre;
+        }
+        
+        public void Jeu(object sender, RoutedEventArgs e)
+        {
+            UCJeu uc = new UCJeu();
+            ZoneLobby.Content = uc;
             
         }
+        public void Parametre(object sender, RoutedEventArgs e)
+        {
+            UCParametre uc = new UCParametre();
+            ZoneLobby.Content=uc;
+        }
+
+      
     } 
 }
