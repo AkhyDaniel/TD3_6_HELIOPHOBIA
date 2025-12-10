@@ -28,22 +28,29 @@ namespace SaeProjetGitHubJEU
         {
           UCDemarrage uc = new UCDemarrage();
             ZoneLobby.Content = uc;
-            uc.butJouer.Click += Jeu;
+            uc.butJouer.Click += ReglesJeu;
             //uc.butParametre.Click += Parametre;
         }
-        
+
+        public void ReglesJeu(object sender, RoutedEventArgs e)
+        {
+            UCRegle uc = new UCRegle();
+            ZoneLobby.Content = uc;
+            uc.butJouerRegle.Click += Jeu;
+        }
         public void Jeu(object sender, RoutedEventArgs e)
         {
             UCJeu uc = new UCJeu();
             ZoneLobby.Content = uc;
-            
-        }
-       /* public void Parametre(object sender, RoutedEventArgs e)
-        {
-            UCParametre uc = new UCParametre();
-            ZoneLobby.Content=uc;
-        }*/
 
-      
+        }
+
+        /* public void Parametre(object sender, RoutedEventArgs e)
+         {
+             UCParametre uc = new UCParametre();
+             ZoneLobby.Content=uc;
+         }*/
+
+
     } 
 }

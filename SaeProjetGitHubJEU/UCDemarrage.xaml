@@ -7,17 +7,12 @@
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="1000">
     <Grid>
-        <Button Content="" x:Name="butJouer" HorizontalAlignment="Center" Margin="0,250,0,0" VerticalAlignment="Top" Height="86" Width="274">
+        <Button Content="" x:Name="butJouer" HorizontalAlignment="Center" Margin="0,312,0,0" VerticalAlignment="Top" Height="86" Width="274">
             <Button.BorderBrush>
                 <ImageBrush/>
             </Button.BorderBrush>
             <Button.Background>
                 <ImageBrush ImageSource="/imageButJouerF.png"/>
-            </Button.Background>
-        </Button>
-        <Button x:Name="butQuitter" Content="" HorizontalAlignment="Left" Margin="747,385,0,0" VerticalAlignment="Top" Height="56" Width="164" BorderBrush="{x:Null}">
-            <Button.Background>
-                <ImageBrush ImageSource="/imageButQuitterF.png"/>
             </Button.Background>
         </Button>
         <Button Content="" x:Name="butParametre" HorizontalAlignment="Left" Margin="124,390,0,0" VerticalAlignment="Top" Height="55" Width="164" RenderTransformOrigin="1.002,0.04">
@@ -26,6 +21,11 @@
             </Button.BorderBrush>
             <Button.Background>
                 <ImageBrush ImageSource="/imageButParaF.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="butQuitter_Copy" Content="" HorizontalAlignment="Left" Margin="696,389,0,0" VerticalAlignment="Top" Height="56" Width="164" BorderBrush="{x:Null}">
+            <Button.Background>
+                <ImageBrush ImageSource="/imageButQuitterF.png"/>
             </Button.Background>
         </Button>
 
