@@ -13,13 +13,53 @@
     <None Remove="imageButJouer.png" />
     <None Remove="imageButParametre.png" />
     <None Remove="imageButQuitter.png" />
+    <None Remove="imagesBackGround\BackgroundJour.jpeg" />
+    <None Remove="imagesBackGround\BackgroundNuit.png" />
+    <None Remove="imagesBut\imageButJouerF.png" />
+    <None Remove="imagesBut\imageButParaF.png" />
+    <None Remove="imagesBut\imageButQuitterF.png" />
+    <None Remove="imagesLunes\DebutLuneDroite.png" />
+    <None Remove="imagesLunes\DebutLuneGauche.png" />
+    <None Remove="imagesLunes\DemiLuneDroite.png" />
+    <None Remove="imagesLunes\DemiLuneGauche.png" />
+    <None Remove="imagesLunes\PleineLune.png" />
+    <None Remove="Images_Castel\CastelJour.png" />
+    <None Remove="Images_Castel\CastelNuit.png" />
+    <None Remove="imgPerso\imgPerso1.png" />
+    <None Remove="imgPerso\imgPerso2.png" />
+    <None Remove="imgPerso\imgPerso3.png" />
+    <None Remove="imgPerso\imgPerso4.png" />
+    <None Remove="imgPerso\imgPerso5.png" />
+    <None Remove="imgPerso\imgPerso6.png" />
+    <None Remove="imgPerso\imgPerso7.png" />
+    <None Remove="imgPerso\imgPerso8.png" />
+    <None Remove="imgPerso\imgPerso9.png" />
+    <None Remove="LOGO\LOGOF.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="BackgroundJour.jpeg" />
-    <Resource Include="imageButJouer.png" />
-    <Resource Include="imageButParametre.png" />
-    <Resource Include="imageButQuitter.png" />
+    <Resource Include="imagesBackGround\BackgroundJour.jpeg" />
+    <Resource Include="imagesBackGround\BackgroundNuit.png" />
+    <Resource Include="imagesBut\imageButJouerF.png" />
+    <Resource Include="imagesBut\imageButParaF.png" />
+    <Resource Include="imagesBut\imageButQuitterF.png" />
+    <Resource Include="imagesLunes\DebutLuneDroite.png" />
+    <Resource Include="imagesLunes\DebutLuneGauche.png" />
+    <Resource Include="imagesLunes\DemiLuneDroite.png" />
+    <Resource Include="imagesLunes\DemiLuneGauche.png" />
+    <Resource Include="imagesLunes\PleineLune.png" />
+    <Resource Include="Images_Castel\CastelJour.png" />
+    <Resource Include="Images_Castel\CastelNuit.png" />
+    <Resource Include="imgPerso\imgPerso1.png" />
+    <Resource Include="imgPerso\imgPerso2.png" />
+    <Resource Include="imgPerso\imgPerso3.png" />
+    <Resource Include="imgPerso\imgPerso4.png" />
+    <Resource Include="imgPerso\imgPerso5.png" />
+    <Resource Include="imgPerso\imgPerso6.png" />
+    <Resource Include="imgPerso\imgPerso7.png" />
+    <Resource Include="imgPerso\imgPerso8.png" />
+    <Resource Include="imgPerso\imgPerso9.png" />
+    <Resource Include="LOGO\LOGOF.png" />
   </ItemGroup>
 
 </Project>
