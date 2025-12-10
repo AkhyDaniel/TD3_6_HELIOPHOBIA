@@ -7,23 +7,22 @@
         mc:Ignorable="d"
         Title="UCDemarage" Height="450" Width="800">
     <Grid Background="#FF020200">
-        <Image Source="/LOGO/LOGO JEU.png" Stretch="Fill"/>
+        <Image Source="/LOGO/LOGOF.png" Stretch="Fill"/>
         <Button x:Name="butJouer" Content="" HorizontalAlignment="Center" Margin="0,339,0,0" VerticalAlignment="Top" Width="178" Height="61" RenderTransformOrigin="0.53,-0.26" Click="Button_Click" BorderBrush="{x:Null}">
             <Button.Background>
-                <ImageBrush ImageSource="/imageButJouer.png" Stretch="Fill" TileMode="None"/>
+                <ImageBrush ImageSource="/imagesBut/imageButJouerF.png" Stretch="Fill" TileMode="None"/>
             </Button.Background>
 
         </Button>
         <Button x:Name="butQuitter" Content="" HorizontalAlignment="Left" Margin="565,356,0,0" VerticalAlignment="Top" Width="116" Height="44" BorderBrush="{x:Null}">
             <Button.Background>
-                <ImageBrush ImageSource="/imageButQuitter.png"/>
+                <ImageBrush ImageSource="/imagesBut/imageButQuitterF.png"/>
             </Button.Background>
         </Button>
         <Button x:Name="butParamètre" Content="" HorizontalAlignment="Left" Margin="128,356,0,0" VerticalAlignment="Top" Width="116" Height="44" RenderTransformOrigin="0.53,-0.26" BorderBrush="{x:Null}">
             <Button.Background>
-                <ImageBrush ImageSource="/imageButParametre.png"/>
+                <ImageBrush ImageSource="/imagesBut/imageButParaF.png"/>
             </Button.Background>
         </Button>
-
     </Grid>
 </Window>
