@@ -33,7 +33,7 @@ namespace SaeProjetGitHubJEU
         private void InitializeImages()
         {
             for (int i = 0; i < lune.Length; i++)
-                lune[i] = new BitmapImage(new Uri($"/imagesLunes/Lune{i + 1}.png", UriKind.Relative));
+                lune[i] = new BitmapImage(new Uri($"/ImagesLune/Lune{i + 1}.png", UriKind.Relative));
         }
 
         public void DeplaceImage(Image image, int pas)
@@ -47,14 +47,14 @@ namespace SaeProjetGitHubJEU
 
         public void Jeu(object? sender, EventArgs e)
         {
-            DeplaceImage(imgLuneCroissantGauche, 2);
+            
         }
 
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+       /* private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             Application.Current.MainWindow.KeyDown += CanvasTrapeze_KeyDown;
             //    Application.Current.MainWindow.KeyUp += canvasJeu_KeyUp;
-        }
+        }*/
 
 
 
