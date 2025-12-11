@@ -4,8 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SaeProjetGitHubJEU"
-             mc:Ignorable="d" 
-             d:DesignHeight="900" d:DesignWidth="1400">
+             mc:Ignorable="d" d:DesignWidth="1400" Height="904">
+
     <Canvas Margin="0,0,-27,0">
         <Canvas.Background>
             <ImageBrush ImageSource="/imagesBackGround/FOND NUIT.png"/>
@@ -16,15 +16,18 @@
         <Image Height="893" Source="/imagesBackGround/arbres.png" Stretch="Fill" Width="1431" HorizontalAlignment="Center" Canvas.Top="11" VerticalAlignment="Top"/>
 
         <Image Source="/Images_Castel/CastelNuit.png" Stretch="Fill" Canvas.Left="519" Height="452" Width="338" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="10"/>
-        <Image x:Name="imgLuneCroissantGauche" Source="/imagesLunes/DebutLuneGauche.png" Stretch="Fill" Height="208" Canvas.Left="1023" Canvas.Top="90" Width="217"/>
+        <Image x:Name="imgLune1" Source="/imagesLune/Lune1.png" Stretch="Fill" Height="208" Canvas.Left="1001" Canvas.Top="88" Width="217"/>
         <Canvas x:Name="CanvasTrapeze" Loaded="UserControl_Loaded"
             Width="1450"
-            Height="664"
+            Height="668"
             Background="Black"
             HorizontalAlignment="Center"
-            VerticalAlignment="Top" Canvas.Top="236" RenderTransformOrigin="0.796,0.756" KeyDown="CanvasTrapeze_KeyDown" Canvas.Left="-12">
+            VerticalAlignment="Center" Canvas.Top="236" RenderTransformOrigin="0.796,0.756" KeyDown="CanvasTrapeze_KeyDown" Canvas.Left="-12">
 
             <Canvas.Clip>
+
+
+
                 <CombinedGeometry GeometryCombineMode="Union">
 
                     <CombinedGeometry.Geometry1>
@@ -32,7 +35,7 @@
                     </CombinedGeometry.Geometry1>
 
                     <CombinedGeometry.Geometry2>
-                        <PathGeometry x:Name="GeometrieTrapezeLimite">
+                        <PathGeometry  x:Name="GeometrieTrapezeLimite">
                             <PathFigure StartPoint="0, 500">
                                 <LineSegment Point="1430, 500" />
                                 <LineSegment Point="890, 150" />

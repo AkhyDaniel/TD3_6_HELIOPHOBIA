@@ -9,6 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="imagesLunes\**" />
+    <EmbeddedResource Remove="imagesLunes\**" />
+    <None Remove="imagesLunes\**" />
+    <Page Remove="imagesLunes\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="BackgroundJour.jpeg" />
     <None Remove="cadre.png" />
     <None Remove="fond sans helio.png" />
@@ -29,11 +36,6 @@
     <None Remove="imagesBut\imageButJouerF.png" />
     <None Remove="imagesBut\imageButParaF.png" />
     <None Remove="imagesBut\imageButQuitterF.png" />
-    <None Remove="imagesLunes\Lune1.png" />
-    <None Remove="imagesLunes\Lune2.png" />
-    <None Remove="imagesLunes\Lune3.png" />
-    <None Remove="imagesLunes\Lune4.png" />
-    <None Remove="imagesLunes\Lune5.png" />
     <None Remove="ImagesLune\Lune1.png" />
     <None Remove="ImagesLune\Lune2.png" />
     <None Remove="ImagesLune\Lune3.png" />
@@ -70,11 +72,6 @@
     <Resource Include="imagesBut\imageButJouerF.png" />
     <Resource Include="imagesBut\imageButParaF.png" />
     <Resource Include="imagesBut\imageButQuitterF.png" />
-    <Resource Include="imagesLunes\Lune1.png" />
-    <Resource Include="imagesLunes\Lune2.png" />
-    <Resource Include="imagesLunes\Lune3.png" />
-    <Resource Include="imagesLunes\Lune4.png" />
-    <Resource Include="imagesLunes\Lune5.png" />
     <Resource Include="ImagesLune\Lune1.png" />
     <Resource Include="ImagesLune\Lune2.png" />
     <Resource Include="ImagesLune\Lune3.png" />

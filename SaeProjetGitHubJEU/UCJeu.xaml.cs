@@ -56,36 +56,93 @@ namespace SaeProjetGitHubJEU
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             Application.Current.MainWindow.KeyDown += CanvasTrapeze_KeyDown;
-            //    Application.Current.MainWindow.KeyUp += canvasJeu_KeyUp;
-        }*/
+            //    Application.Current.MainWindow.KeyUp += _KeyUp;
+        }
 
         private void CanvasTrapeze_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Z)
+            //if (e.Key == Key.Z)
+            //{
+            //    if ((Canvas.GetBottom(imgPerso1) + MainWindow.PasVampire) <= (CanvasTrapeze.ActualHeight - imgPerso1.ActualHeight))
+            //        Canvas.SetBottom(imgPerso1, Canvas.GetBottom(imgPerso1) + MainWindow.PasVampire);
+            //}
+
+            //if (e.Key == Key.S)
+            //{
+            //    if ((Canvas.GetBottom(imgPerso1) + MainWindow.PasVampire) >= 0)
+            //        Canvas.SetBottom(imgPerso1, Canvas.GetBottom(imgPerso1) - MainWindow.PasVampire);
+            //}
+
+            //if (e.Key == Key.Q)
+            //{
+            //    if ((Canvas.GetLeft(imgPerso1) + MainWindow.PasVampire) >= 0)
+            //        Canvas.SetLeft(imgPerso1, Canvas.GetLeft(imgPerso1) - MainWindow.PasVampire);
+            //}
+
+            //if (e.Key == Key.D)
+            //{
+            //    if ((Canvas.GetLeft(imgPerso1) + MainWindow.PasVampire) <= (CanvasTrapeze.ActualWidth - imgPerso1.ActualWidth))
+            //        Canvas.SetLeft(imgPerso1, Canvas.GetLeft(imgPerso1) + MainWindow.PasVampire);
+            //}
+
+            // 1. Déclaration et calcul de la nouvelle position
+            double pas = MainWindow.PasVampire;
+
+            // Nouvelle position initiale (garder l'ancienne position par défaut)
+            double newLeft = Canvas.GetLeft(imgPerso1);
+            double newBottom = Canvas.GetBottom(imgPerso1);
+            bool mouvementTente = true;
+
+            // Détermination de la Nouvelle Position Tentée
+            if (e.Key == Key.Z) // Avancer (Monter) : Bottom AUGMENTE
             {
-                if ((Canvas.GetBottom(imgPerso1) + MainWindow.PasVampire) <= (CanvasTrapeze.ActualHeight - imgPerso1.ActualHeight))
-                    Canvas.SetBottom(imgPerso1, Canvas.GetBottom(imgPerso1) + MainWindow.PasVampire);
+                newBottom += pas;
+            }
+            else if (e.Key == Key.S) // Reculer (Descendre) : Bottom DIMINUE
+            {
+                newBottom -= pas;
+            }
+            else if (e.Key == Key.Q) // Gauche : Left DIMINUE
+            {
+                newLeft -= pas;
+            }
+            else if (e.Key == Key.D) // Droite : Left AUGMENTE
+            {
+                newLeft += pas;
+            }
+            else
+            {
+                mouvementTente = false;
             }
 
-            if (e.Key == Key.S)
+            if (mouvementTente)
             {
-                if ((Canvas.GetBottom(imgPerso1) + MainWindow.PasVampire) >= 0)
-                    Canvas.SetBottom(imgPerso1, Canvas.GetBottom(imgPerso1) - MainWindow.PasVampire);
+                // 2. Conversion Bottom vers Top (nécessaire pour la vérification PathGeometry)
+                PathGeometry geometrieLimite = this.FindResource("TrapezeGeometry") as PathGeometry;
+
+                if (geometrieLimite != null)
+                {
+                    // Conversion de Bottom en Top
+                    double newTop = CanvasTrapeze.ActualHeight - newBottom - imgPerso1.ActualHeight;
+
+                    // Point de test : Le centre du personnage à la nouvelle position
+                    double centreX = newLeft + (imgPerso1.ActualWidth / 2);
+                    double centreY = newTop + (imgPerso1.ActualHeight / 2);
+
+                    Point pointATester = new Point(centreX, centreY);
+
+                    // 3. LA VÉRIFICATION CRITIQUE POUR LE BLOCAGE :
+                    if (geometrieLimite.FillContains(pointATester))
+                    {
+                        // Si le centre est DANS le trapèze, appliquer le mouvement
+                        Canvas.SetLeft(imgPerso1, newLeft);
+                        Canvas.SetBottom(imgPerso1, newBottom);
+                    }
+                    // SINON, le mouvement est ignoré. Le personnage reste bloqué à l'ancienne position.
+                }
             }
 
-            if (e.Key == Key.Q)
-            {
-                if ((Canvas.GetLeft(imgPerso1) + MainWindow.PasVampire) >= 0)
-                    Canvas.SetLeft(imgPerso1, Canvas.GetLeft(imgPerso1) - MainWindow.PasVampire);
-            }
 
-            if (e.Key == Key.D)
-            {
-                if ((Canvas.GetLeft(imgPerso1) + MainWindow.PasVampire) <= (CanvasTrapeze.ActualWidth - imgPerso1.ActualWidth))
-                    Canvas.SetLeft(imgPerso1, Canvas.GetLeft(imgPerso1) + MainWindow.PasVampire);
-            }
-
-            
         }
     }
 }
