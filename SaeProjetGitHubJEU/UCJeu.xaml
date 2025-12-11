@@ -49,7 +49,6 @@
 
 
         </Canvas>
-        <Image Height="165" Canvas.Left="758" Source="/ImagesLune/Lune1.png" Stretch="Fill" Canvas.Top="35" Width="192" RenderTransformOrigin="0.847,0.709"/>
 
 
 
