@@ -33,6 +33,11 @@
     <None Remove="imagesLunes\DebutLuneGauche.png" />
     <None Remove="imagesLunes\DemiLuneDroite.png" />
     <None Remove="imagesLunes\DemiLuneGauche.png" />
+    <None Remove="imagesLunes\Lune1.png" />
+    <None Remove="imagesLunes\Lune2.png" />
+    <None Remove="imagesLunes\Lune3.png" />
+    <None Remove="imagesLunes\Lune4.png" />
+    <None Remove="imagesLunes\Lune5.png" />
     <None Remove="imagesLunes\PleineLune.png" />
     <None Remove="Images_Castel\CastelJour.png" />
     <None Remove="Images_Castel\CastelNuit.png" />
@@ -69,6 +74,11 @@
     <Resource Include="imagesLunes\DebutLuneGauche.png" />
     <Resource Include="imagesLunes\DemiLuneDroite.png" />
     <Resource Include="imagesLunes\DemiLuneGauche.png" />
+    <Resource Include="imagesLunes\Lune1.png" />
+    <Resource Include="imagesLunes\Lune2.png" />
+    <Resource Include="imagesLunes\Lune3.png" />
+    <Resource Include="imagesLunes\Lune4.png" />
+    <Resource Include="imagesLunes\Lune5.png" />
     <Resource Include="imagesLunes\PleineLune.png" />
     <Resource Include="Images_Castel\CastelJour.png" />
     <Resource Include="Images_Castel\CastelNuit.png" />
