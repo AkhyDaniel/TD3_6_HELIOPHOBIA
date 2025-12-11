@@ -75,7 +75,7 @@ namespace SaeProjetGitHubJEU
 
             if (e.Key == Key.Q)
             {
-                if ((Canvas.GetLeft(imgPerso1) + MainWindow.PasVampire) <= 0)
+                if ((Canvas.GetLeft(imgPerso1) + MainWindow.PasVampire) >= 0)
                     Canvas.SetLeft(imgPerso1, Canvas.GetLeft(imgPerso1) - MainWindow.PasVampire);
             }
 
@@ -85,7 +85,7 @@ namespace SaeProjetGitHubJEU
                     Canvas.SetLeft(imgPerso1, Canvas.GetLeft(imgPerso1) + MainWindow.PasVampire);
             }
 
-
+            
         }
     }
 }

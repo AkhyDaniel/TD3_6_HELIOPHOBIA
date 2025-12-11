@@ -18,17 +18,17 @@
         <Image Source="/Images_Castel/CastelNuit.png" Stretch="Fill" Canvas.Left="519" Height="452" Width="338" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="10"/>
         <Image x:Name="imgLuneCroissantGauche" Source="/imagesLunes/DebutLuneGauche.png" Stretch="Fill" Height="208" Canvas.Left="1023" Canvas.Top="90" Width="217"/>
         <Canvas x:Name="CanvasTrapeze" Loaded="UserControl_Loaded"
-            Width="1431"
-            Height="668"
-      
-            HorizontalAlignment="Left"
-            VerticalAlignment="Center" Canvas.Top="236" RenderTransformOrigin="0.796,0.756" KeyDown="CanvasTrapeze_KeyDown">
+            Width="1451"
+            Height="664"
+            Background="Black"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top" Canvas.Top="236" RenderTransformOrigin="0.796,0.756" KeyDown="CanvasTrapeze_KeyDown" Canvas.Left="-12">
 
             <Canvas.Clip>
                 <CombinedGeometry GeometryCombineMode="Union">
 
                     <CombinedGeometry.Geometry1>
-                        <RectangleGeometry Rect="0, 500, 1450, 167" />
+                        <RectangleGeometry Rect="0, 500, 1450, 400" />
                     </CombinedGeometry.Geometry1>
 
                     <CombinedGeometry.Geometry2>
