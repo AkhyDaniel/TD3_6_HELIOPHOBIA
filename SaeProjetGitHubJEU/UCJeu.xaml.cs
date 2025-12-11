@@ -28,6 +28,7 @@ namespace SaeProjetGitHubJEU
             InitializeComponent();
             InitializeImages();
         }
+
         
             
         private void InitializeImages()
@@ -50,13 +51,41 @@ namespace SaeProjetGitHubJEU
             DeplaceImage(imgLuneCroissantGauche, 2);
         }
 
+
+
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             Application.Current.MainWindow.KeyDown += CanvasTrapeze_KeyDown;
             //    Application.Current.MainWindow.KeyUp += canvasJeu_KeyUp;
         }
 
+        private void CanvasTrapeze_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Z)
+            {
+                if ((Canvas.GetBottom(imgPerso1) + MainWindow.PasVampire) <= (CanvasTrapeze.ActualHeight - imgPerso1.ActualHeight))
+                    Canvas.SetBottom(imgPerso1, Canvas.GetBottom(imgPerso1) + MainWindow.PasVampire);
+            }
+
+            if (e.Key == Key.S)
+            {
+                if ((Canvas.GetBottom(imgPerso1) + MainWindow.PasVampire) >= 0)
+                    Canvas.SetBottom(imgPerso1, Canvas.GetBottom(imgPerso1) - MainWindow.PasVampire);
+            }
+
+            if (e.Key == Key.Q)
+            {
+                if ((Canvas.GetLeft(imgPerso1) + MainWindow.PasVampire) <= 0)
+                    Canvas.SetLeft(imgPerso1, Canvas.GetLeft(imgPerso1) - MainWindow.PasVampire);
+            }
+
+            if (e.Key == Key.D)
+            {
+                if ((Canvas.GetLeft(imgPerso1) + MainWindow.PasVampire) <= (CanvasTrapeze.ActualWidth - imgPerso1.ActualWidth))
+                    Canvas.SetLeft(imgPerso1, Canvas.GetLeft(imgPerso1) + MainWindow.PasVampire);
+            }
 
 
+        }
     }
 }

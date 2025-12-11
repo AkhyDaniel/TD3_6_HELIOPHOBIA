@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:SaeProjetGitHubJEU"
              mc:Ignorable="d" 
              d:DesignHeight="900" d:DesignWidth="1400">
-    <Canvas>
+    <Canvas Margin="0,0,-27,0">
         <Canvas.Background>
             <ImageBrush ImageSource="/imagesBackGround/FOND NUIT.png"/>
         </Canvas.Background>
@@ -17,12 +17,12 @@
 
         <Image Source="/Images_Castel/CastelNuit.png" Stretch="Fill" Canvas.Left="519" Height="452" Width="338" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="10"/>
         <Image x:Name="imgLuneCroissantGauche" Source="/imagesLunes/DebutLuneGauche.png" Stretch="Fill" Height="208" Canvas.Left="1023" Canvas.Top="90" Width="217"/>
-        <Canvas x:Name="CanvasTrapeze"
-            Width="1500"
-            Height="814"
-            
+        <Canvas x:Name="CanvasTrapeze" Loaded="UserControl_Loaded"
+            Width="1431"
+            Height="668"
+      
             HorizontalAlignment="Left"
-            VerticalAlignment="Top" Canvas.Top="236" RenderTransformOrigin="0.796,0.756" Canvas.Left="-18">
+            VerticalAlignment="Center" Canvas.Top="236" RenderTransformOrigin="0.796,0.756" KeyDown="CanvasTrapeze_KeyDown">
 
             <Canvas.Clip>
                 <CombinedGeometry GeometryCombineMode="Union">
@@ -32,7 +32,7 @@
                     </CombinedGeometry.Geometry1>
 
                     <CombinedGeometry.Geometry2>
-                        <PathGeometry>
+                        <PathGeometry x:Name="GeometrieTrapezeLimite">
                             <PathFigure StartPoint="0, 500">
                                 <LineSegment Point="1430, 500" />
                                 <LineSegment Point="890, 150" />
@@ -44,7 +44,7 @@
 
                 </CombinedGeometry>
             </Canvas.Clip>
-            <Image Source="/imgPerso/imgPerso1.png" Stretch="Fill" Canvas.Top="257" Height="94" Width="60" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="586" RenderTransformOrigin="0.767,0.606"/>
+            <Image x:Name="imgPerso1" Source="/imgPerso/imgPerso1.png" Stretch="Fill" Canvas.Bottom="0" Height="94" Width="60" HorizontalAlignment="Left" VerticalAlignment="Bottom" Canvas.Left="720" RenderTransformOrigin="0.767,0.606"/>
 
 
 
