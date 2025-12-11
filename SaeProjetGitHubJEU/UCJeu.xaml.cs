@@ -20,9 +20,37 @@ namespace SaeProjetGitHubJEU
     /// </summary>
     public partial class UCJeu : UserControl
     {
+
+        private int nbTours = 0;
+        private BitmapImage[] lune = new BitmapImage[5];
         public UCJeu()
         {
             InitializeComponent();
+            InitializeImages();
         }
+        
+            
+        private void InitializeImages()
+        {
+            for (int i = 0; i < lune.Length; i++)
+                lune[i] = new BitmapImage(new Uri($"pack://application:,,,/imagesLunes/DebutLuneDroite{i + 1}.png"));
+        }
+
+        public void DeplaceImage(Image image, int pas)
+        {
+            Canvas.SetLeft(image, Canvas.GetLeft(image) - pas);
+
+            if (Canvas.GetLeft(image) + image.Width <= 0)
+                Canvas.SetLeft(image, image.ActualWidth);
+
+        }
+
+        public void Jeu(object? sender, EventArgs e)
+        {
+            DeplaceImage(imgLuneCroissantGauche, 2);
+        }
+
+
+
     }
 }
