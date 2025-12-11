@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:SaeProjetGitHubJEU"
              mc:Ignorable="d" d:DesignWidth="1400" Height="904">
 
-    <Canvas Margin="0,0,-27,0">
+    <Canvas x:Name="CanvasTrapeze" Margin="0,0,-29,0">
         <Canvas.Background>
             <ImageBrush ImageSource="/imagesBackGround/FOND NUIT.png"/>
         </Canvas.Background>
@@ -17,41 +17,30 @@
 
         <Image Source="/Images_Castel/CastelNuit.png" Stretch="Fill" Canvas.Left="519" Height="452" Width="338" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="10"/>
         <Image x:Name="imgLune1" Source="/imagesLune/Lune1.png" Stretch="Fill" Height="208" Canvas.Left="1001" Canvas.Top="88" Width="217"/>
-        <Canvas x:Name="CanvasTrapeze" Loaded="UserControl_Loaded"
-            Width="1450"
-            Height="668"
-            Background="Black"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center" Canvas.Top="236" RenderTransformOrigin="0.796,0.756" KeyDown="CanvasTrapeze_KeyDown" Canvas.Left="-12">
-
-            <Canvas.Clip>
-
-
-
-                <CombinedGeometry GeometryCombineMode="Union">
-
-                    <CombinedGeometry.Geometry1>
-                        <RectangleGeometry Rect="0, 500, 1450, 400" />
-                    </CombinedGeometry.Geometry1>
-
-                    <CombinedGeometry.Geometry2>
-                        <PathGeometry  x:Name="GeometrieTrapezeLimite">
-                            <PathFigure StartPoint="0, 500">
-                                <LineSegment Point="1430, 500" />
-                                <LineSegment Point="890, 150" />
-                                <LineSegment Point="530, 150" />
-                                <LineSegment Point="160, 400" IsStroked="True" />
-                            </PathFigure>
-                        </PathGeometry>
-                    </CombinedGeometry.Geometry2>
-
-                </CombinedGeometry>
-            </Canvas.Clip>
-            <Image x:Name="imgPerso1" Source="/imgPerso/imgPerso1.png" Stretch="Fill" Canvas.Bottom="0" Height="94" Width="60" HorizontalAlignment="Left" VerticalAlignment="Bottom" Canvas.Left="720" RenderTransformOrigin="0.767,0.606"/>
-
-
-
+        <Canvas x:Name="CanvaObstacleDroit" Height="28" Width="703" Canvas.Left="806" Canvas.Top="553" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <Canvas.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="34.226"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Canvas.RenderTransform>
         </Canvas>
+        <Canvas x:Name="CanvaObstableGauche" Height="38" Width="714" Canvas.Left="-97" Canvas.Top="516" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <Canvas.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-31.761"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Canvas.RenderTransform>
+        </Canvas>
+        <Image x:Name="imgPerso1" Height="85" Canvas.Left="610" Source="/imgPerso/imgPerso1.png" Stretch="Fill" Canvas.Bottom="0" Width="56" VerticalAlignment="Bottom" HorizontalAlignment="Left" RenderTransformOrigin="0.518,0.494" Canvas.Top="809"/>
+
+
+
 
 
 
