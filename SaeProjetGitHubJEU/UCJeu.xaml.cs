@@ -50,6 +50,12 @@ namespace SaeProjetGitHubJEU
             DeplaceImage(imgLuneCroissantGauche, 2);
         }
 
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow.KeyDown += CanvasTrapeze_KeyDown;
+            //    Application.Current.MainWindow.KeyUp += canvasJeu_KeyUp;
+        }
+
 
 
     }
