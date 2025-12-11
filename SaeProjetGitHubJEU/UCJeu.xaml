@@ -16,7 +16,7 @@
         <Image Height="893" Source="/imagesBackGround/arbres.png" Stretch="Fill" Width="1431" HorizontalAlignment="Center" Canvas.Top="11" VerticalAlignment="Top"/>
 
         <Image Source="/Images_Castel/CastelNuit.png" Stretch="Fill" Canvas.Left="519" Height="452" Width="338" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="10"/>
-        <Image x:Name="imgLuneCroissantGauche" Source="/imagesLunes/DebutLuneGauche-removebg-preview.png" Stretch="Fill" Height="208" Canvas.Left="1023" Canvas.Top="90" Width="217"/>
+        <Image x:Name="imgLuneCroissantGauche" Source="/imagesLunes/DebutLuneGauche.png" Stretch="Fill" Height="208" Canvas.Left="1023" Canvas.Top="90" Width="217"/>
         <Canvas x:Name="CanvasTrapeze"
             Width="1500"
             Height="814"
@@ -44,7 +44,7 @@
 
                 </CombinedGeometry>
             </Canvas.Clip>
-            <Image Source="/imgPerso/imgPerso1.png" Stretch="Fill" Canvas.Top="313" Height="94" Width="60" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="430"/>
+            <Image Source="/imgPerso/imgPerso1.png" Stretch="Fill" Canvas.Top="257" Height="94" Width="60" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="586" RenderTransformOrigin="0.767,0.606"/>
 
 
 

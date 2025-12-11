@@ -33,7 +33,7 @@ namespace SaeProjetGitHubJEU
         private void InitializeImages()
         {
             for (int i = 0; i < lune.Length; i++)
-                lune[i] = new BitmapImage(new Uri($"pack://application:,,,/imagesLunes/DebutLuneDroite{i + 1}.png"));
+                lune[i] = new BitmapImage(new Uri($"/imagesLunes/DebutLuneDroite{i + 1}.png", UriKind.Relative));
         }
 
         public void DeplaceImage(Image image, int pas)
