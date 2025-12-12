@@ -52,6 +52,7 @@
     <None Remove="imgPerso\imgPerso7.png" />
     <None Remove="imgPerso\imgPerso8.png" />
     <None Remove="imgPerso\imgPerso9.png" />
+    <None Remove="imgSol.png" />
     <None Remove="LOGOF.png" />
     <None Remove="LOGO\LOGOF.png" />
     <None Remove="regle.png" />
@@ -67,7 +68,6 @@
     <Resource Include="imagesBackGround\cadre.png" />
     <Resource Include="imagesBackGround\FOND NUIT.png" />
     <Resource Include="imagesBackGround\fond sans helio.png" />
-    <Resource Include="imagesBackGround\imgSol.png" />
     <Resource Include="imagesBackGround\regles.png" />
     <Resource Include="imagesBut\imageButJouerF.png" />
     <Resource Include="imagesBut\imageButParaF.png" />
@@ -88,6 +88,7 @@
     <Resource Include="imgPerso\imgPerso7.png" />
     <Resource Include="imgPerso\imgPerso8.png" />
     <Resource Include="imgPerso\imgPerso9.png" />
+    <Resource Include="imagesBackGround\imgSol.png" />
     <Resource Include="LOGOF.png" />
     <Resource Include="LOGO\LOGOF.png" />
     <Resource Include="regle.png" />

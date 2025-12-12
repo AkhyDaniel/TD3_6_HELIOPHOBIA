@@ -29,8 +29,8 @@ namespace SaeProjetGitHubJEU
             InitializeImages();
         }
 
-        
-            
+
+
         private void InitializeImages()
         {
             for (int i = 0; i < lune.Length; i++)
@@ -48,18 +48,18 @@ namespace SaeProjetGitHubJEU
 
         public void Jeu(object? sender, EventArgs e)
         {
-            
+
         }
 
 
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            Application.Current.MainWindow.KeyDown += CanvasTrapeze_KeyDown;
+            Application.Current.MainWindow.KeyDown += ZoneJeu_KeyDown;
             //    Application.Current.MainWindow.KeyUp += _KeyUp;
         }
 
-        private void CanvasTrapeze_KeyDown(object sender, KeyEventArgs e)
+        private void ZoneJeu_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Z)
             {
@@ -85,8 +85,10 @@ namespace SaeProjetGitHubJEU
                     Canvas.SetLeft(imgPerso1, Canvas.GetLeft(imgPerso1) + MainWindow.PasVampire);
             }
 
+        }
 
-
+        private void CanvaObstacleDroit_KeyDown(object sender, KeyEventArgs e)
+        {
 
         }
     }

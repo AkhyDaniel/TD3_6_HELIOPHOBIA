@@ -6,38 +6,20 @@
              xmlns:local="clr-namespace:SaeProjetGitHubJEU"
              mc:Ignorable="d" d:DesignWidth="1400" Height="904">
 
-    <Canvas x:Name="ZoneJeu" Margin="0,0,-29,0" Loaded="UserControl_Loaded">
+    <Canvas x:Name="ZoneJeu" Margin="0,0,-29,0" Loaded="UserControl_Loaded" KeyDown="ZoneJeu_KeyDown">
         <Canvas.Background>
             <ImageBrush ImageSource="/imagesBackGround/FOND NUIT.png"/>
         </Canvas.Background>
 
-        <Image Source="/imagesBackGround/imgSol.png" Stretch="Fill" HorizontalAlignment="Left" Canvas.Top="11" VerticalAlignment="Top" Height="893" Width="1431" RenderTransformOrigin="0.5,0.5">
-        </Image>
-        <Image Height="893" Source="/imagesBackGround/arbres.png" Stretch="Fill" Width="1431" HorizontalAlignment="Center" Canvas.Top="11" VerticalAlignment="Top"/>
+        <Image Height="894" Source="/imagesBackGround/imgSol.png" Stretch="Fill" Canvas.Top="10" Width="1429" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+        <Image Height="904" Source="/imagesBackGround/arbres.png" Stretch="Fill" Width="1431" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="-2"/>
 
         <Image Source="/Images_Castel/CastelNuit.png" Stretch="Fill" Canvas.Left="519" Height="452" Width="338" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="10"/>
         <Image x:Name="imgLune1" Source="/imagesLune/Lune1.png" Stretch="Fill" Height="208" Canvas.Left="1001" Canvas.Top="88" Width="217"/>
-        <Canvas x:Name="CanvaObstacleDroit" Height="28" Width="703" Canvas.Left="806" Canvas.Top="553" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center" VerticalAlignment="Top">
-            <Canvas.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="34.226"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Canvas.RenderTransform>
-        </Canvas>
-        <Canvas x:Name="CanvaObstableGauche" Height="38" Width="714" Canvas.Left="-97" Canvas.Top="516" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" VerticalAlignment="Center">
-            <Canvas.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-31.761"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Canvas.RenderTransform>
-        </Canvas>
-        <Image x:Name="imgPerso1" Height="85" Canvas.Left="610" Source="/imgPerso/imgPerso1.png" Stretch="Fill" Canvas.Bottom="0" Width="56" VerticalAlignment="Bottom" HorizontalAlignment="Left" RenderTransformOrigin="0.518,0.494" />
+
+        <Image x:Name="imgPerso1" Height="85" Canvas.Left="714" Source="/imgPerso/imgPerso1.png" Stretch="Fill" Canvas.Bottom="0" Width="56" VerticalAlignment="Bottom" HorizontalAlignment="Left" RenderTransformOrigin="0.518,0.494"  />
+
 
 
 
