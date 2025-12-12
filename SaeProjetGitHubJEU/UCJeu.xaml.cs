@@ -25,6 +25,7 @@ namespace SaeProjetGitHubJEU
         private BitmapImage[] lune = new BitmapImage[5];
         public UCJeu()
         {
+
             InitializeComponent();
             InitializeImages();
         }
