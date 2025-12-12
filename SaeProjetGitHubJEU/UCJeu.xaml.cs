@@ -63,11 +63,8 @@ namespace SaeProjetGitHubJEU
         public void Jeu(object? sender, EventArgs e)
         {
             nb++;
-            if (nb == lune.Length)
-            {
-                nb = 0;
-            }
             imgLune1.Source = lune[nb];
+
         }
 
 
