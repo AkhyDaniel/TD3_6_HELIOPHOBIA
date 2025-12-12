@@ -26,6 +26,7 @@ namespace SaeProjetGitHubJEU
         private BitmapImage[] lune = new BitmapImage[5];
         private DispatcherTimer minuterie;
         private int nb = 0;
+        private BitmapImage[] persoAvant = new BitmapImage[8];
         public UCJeu()
         {
 
@@ -49,6 +50,7 @@ namespace SaeProjetGitHubJEU
         {
             for (int i = 0; i < lune.Length; i++)
                 lune[i] = new BitmapImage(new Uri($"/ImagesLune/Lune{i + 1}.png", UriKind.Relative));
+            
         }
 
         public void DeplaceImage(Image image, int pas)
@@ -87,7 +89,12 @@ namespace SaeProjetGitHubJEU
                 if (e.Key == Key.Z)
                 {
                     if ((Canvas.GetBottom(imgPerso1) + MainWindow.PasVampire) <= (ZoneJeu.ActualHeight - imgPerso1.ActualHeight))
+                    {
                         Canvas.SetBottom(imgPerso1, Canvas.GetBottom(imgPerso1) + MainWindow.PasVampire);
+                        for (int i = 0; i < persoAvant.Length; i++)
+                            persoAvant[i] = new BitmapImage(new Uri($"/imgPerso/imgPerso{i + 1}.png", UriKind.Relative));
+                    }
+                       
                 }
 
                 if (e.Key == Key.S)
