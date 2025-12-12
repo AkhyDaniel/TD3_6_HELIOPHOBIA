@@ -4,18 +4,18 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SaeProjetGitHubJEU"
-             mc:Ignorable="d" d:DesignWidth="1400" Height="904">
+             mc:Ignorable="d" d:DesignWidth="1400" Height="900">
 
     <Canvas x:Name="ZoneJeu" Margin="0,0,-29,0" Loaded="UserControl_Loaded" KeyDown="ZoneJeu_KeyDown">
         <Canvas.Background>
             <ImageBrush ImageSource="/imagesBackGround/FOND NUIT.png"/>
         </Canvas.Background>
 
-        <Image Height="894" Source="/imagesBackGround/imgSol.png" Stretch="Fill" Canvas.Top="10" Width="1429" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Image Height="914" Source="/imagesBackGround/imgSol.png" Stretch="Fill" Canvas.Top="-10" Width="1429" HorizontalAlignment="Center" VerticalAlignment="Top"/>
 
         <Image Height="904" Source="/imagesBackGround/arbres.png" Stretch="Fill" Width="1431" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="-2"/>
 
-        <Image Source="/Images_Castel/CastelNuit.png" Stretch="Fill" Canvas.Left="519" Height="452" Width="338" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="10"/>
+        <Image Source="/Images_Castel/CastelNuit.png" Stretch="Fill" Canvas.Left="527" Height="452" Width="338" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Image x:Name="imgLune1" Source="/imagesLune/Lune1.png" Stretch="Fill" Height="208" Canvas.Left="1001" Canvas.Top="88" Width="217"/>
 
         <Image x:Name="imgPerso1" Height="85" Canvas.Left="714" Source="/imgPerso/imgPerso1.png" Stretch="Fill" Canvas.Bottom="0" Width="56" VerticalAlignment="Bottom" HorizontalAlignment="Left" RenderTransformOrigin="0.518,0.494"  />

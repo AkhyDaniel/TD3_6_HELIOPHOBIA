@@ -61,29 +61,41 @@ namespace SaeProjetGitHubJEU
 
         private void ZoneJeu_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Z)
+            double PositionX = Canvas.GetLeft(imgPerso1);
+            double PositionY = Canvas.GetBottom(imgPerso1);
+            Console.WriteLine("X :" + PositionX + " Y : " + PositionY);
+            if (PositionY < 0.64 * PositionX + 176 && PositionY < 512 && PositionY < -0.67 * PositionX + 1060)
             {
-                if ((Canvas.GetBottom(imgPerso1) + MainWindow.PasVampire) <= (ZoneJeu.ActualHeight - imgPerso1.ActualHeight))
-                    Canvas.SetBottom(imgPerso1, Canvas.GetBottom(imgPerso1) + MainWindow.PasVampire);
+                Console.WriteLine("Interieur");
+                if (e.Key == Key.Z)
+                {
+                    if ((Canvas.GetBottom(imgPerso1) + MainWindow.PasVampire) <= (ZoneJeu.ActualHeight - imgPerso1.ActualHeight))
+                        Canvas.SetBottom(imgPerso1, Canvas.GetBottom(imgPerso1) + MainWindow.PasVampire);
+                }
+
+                if (e.Key == Key.S)
+                {
+                    if ((Canvas.GetBottom(imgPerso1) + MainWindow.PasVampire) >= 0)
+                        Canvas.SetBottom(imgPerso1, Canvas.GetBottom(imgPerso1) - MainWindow.PasVampire);
+                }
+
+                if (e.Key == Key.Q)
+                {
+                    if ((Canvas.GetLeft(imgPerso1) + MainWindow.PasVampire) >= 0)
+                        Canvas.SetLeft(imgPerso1, Canvas.GetLeft(imgPerso1) - MainWindow.PasVampire);
+                }
+
+                if (e.Key == Key.D)
+                {
+                    if ((Canvas.GetLeft(imgPerso1) + MainWindow.PasVampire) <= (ZoneJeu.ActualWidth - imgPerso1.ActualWidth))
+                        Canvas.SetLeft(imgPerso1, Canvas.GetLeft(imgPerso1) + MainWindow.PasVampire);
+                }
             }
 
-            if (e.Key == Key.S)
-            {
-                if ((Canvas.GetBottom(imgPerso1) + MainWindow.PasVampire) >= 0)
-                    Canvas.SetBottom(imgPerso1, Canvas.GetBottom(imgPerso1) - MainWindow.PasVampire);
-            }
 
-            if (e.Key == Key.Q)
-            {
-                if ((Canvas.GetLeft(imgPerso1) + MainWindow.PasVampire) >= 0)
-                    Canvas.SetLeft(imgPerso1, Canvas.GetLeft(imgPerso1) - MainWindow.PasVampire);
-            }
 
-            if (e.Key == Key.D)
-            {
-                if ((Canvas.GetLeft(imgPerso1) + MainWindow.PasVampire) <= (ZoneJeu.ActualWidth - imgPerso1.ActualWidth))
-                    Canvas.SetLeft(imgPerso1, Canvas.GetLeft(imgPerso1) + MainWindow.PasVampire);
-            }
+            else { Console.WriteLine("Exterieur"); Canvas.SetBottom(imgPerso1, Canvas.GetBottom(imgPerso1) - MainWindow.PasVampire); }
+
 
         }
 
