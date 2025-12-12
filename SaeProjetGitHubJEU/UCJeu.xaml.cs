@@ -27,7 +27,8 @@ namespace SaeProjetGitHubJEU
         private DispatcherTimer minuterie;
         private int nb = 0;
         private BitmapImage[] persoAvant = new BitmapImage[8];
-        
+        private BitmapImage[] persoDroit = new BitmapImage[8];
+
         public UCJeu()
         {
 
@@ -66,8 +67,8 @@ namespace SaeProjetGitHubJEU
 
         public void Jeu(object? sender, EventArgs e)
         {
-            nb++;
-            imgLune1.Source = lune[nb];
+            //nb++;
+            //imgLune1.Source = lune[nb];
 
         }
 
@@ -113,7 +114,22 @@ namespace SaeProjetGitHubJEU
                 if (e.Key == Key.S)
                 {
                     if ((Canvas.GetBottom(imgPerso1) + MainWindow.PasVampire) >= 0)
+                    {
                         Canvas.SetBottom(imgPerso1, Canvas.GetBottom(imgPerso1) - MainWindow.PasVampire);
+                        for (int i = 0; i < persoDroit.Length; i++)
+                            persoDroit[i] = new BitmapImage(new Uri($"/imgPersoDroit/imgPersoD{i + 1}.png", UriKind.Relative));
+                        nbToursPersoAvant++;
+                        if (nbToursPersoAvant == 4)
+                        {
+                            if (nb == persoDroit.Length)
+                            {
+                                nb = 0;
+                            }
+                            imgPerso1.Source = persoDroit[nb];
+                            nbToursPersoAvant = 0;
+                        }
+                    }
+                      
                 }
 
                 if (e.Key == Key.Q)
