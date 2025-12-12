@@ -66,11 +66,22 @@ namespace SaeProjetGitHubJEU
 
         public void Jeu(object? sender, EventArgs e)
         {
-            nb++;
-            imgLune1.Source = lune[nb];
+            Annimation_Lune();
 
         }
 
+        private void Annimation_Lune()
+        {
+            for(int i = 0;i < lune.Length; i++)
+            {
+                if (i == lune.Length)
+                {
+                    i = 0;
+                }
+                imgLune1.Source = lune[i];
+            }
+            //await Task.Delay(500);
+        }
 
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
