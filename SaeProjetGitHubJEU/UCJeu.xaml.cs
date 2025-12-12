@@ -27,7 +27,7 @@ namespace SaeProjetGitHubJEU
         private DispatcherTimer minuterie;
         private int nb = 0;
         private BitmapImage[] persoAvant = new BitmapImage[8];
-        private BitmapImage[] persoDroit = new BitmapImage[8];
+        private BitmapImage[] persoDroit = new BitmapImage[6];
 
         public UCJeu()
         {
@@ -67,22 +67,23 @@ namespace SaeProjetGitHubJEU
 
         public void Jeu(object? sender, EventArgs e)
         {
-            Annimation_Lune();
+            //Annimation_Lune();
+          
 
         }
 
-        private void Annimation_Lune()
-        {
-            for(int i = 0;i < lune.Length; i++)
-            {
-                if (i == lune.Length)
-                {
-                    i = 0;
-                }
-                imgLune1.Source = lune[i];
-            }
-            //await Task.Delay(500);
-        }
+        //private void Annimation_Lune()
+        //{
+        //    for(int i = 0;i < lune.Length; i++)
+        //    {
+        //        if (i == lune.Length)
+        //        {
+        //            i = 0;
+        //        }
+        //        imgLune1.Source = lune[i];
+        //    }
+        //    //await Task.Delay(500);
+        //}
 
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -110,6 +111,7 @@ namespace SaeProjetGitHubJEU
                         nbToursPersoAvant++;
                         if(nbToursPersoAvant == 3) 
                         {
+                            nb++;
                             if (nb == persoAvant.Length)
                             {
                                 nb = 0;
@@ -127,18 +129,19 @@ namespace SaeProjetGitHubJEU
                     if ((Canvas.GetBottom(imgPerso1) + MainWindow.PasVampire) >= 0)
                     {
                         Canvas.SetBottom(imgPerso1, Canvas.GetBottom(imgPerso1) - MainWindow.PasVampire);
-                        for (int i = 0; i < persoDroit.Length; i++)
-                            persoDroit[i] = new BitmapImage(new Uri($"/imgPersoDroit/imgPersoD{i + 1}.png", UriKind.Relative));
-                        nbToursPersoAvant++;
-                        if (nbToursPersoAvant == 4)
-                        {
-                            if (nb == persoDroit.Length)
-                            {
-                                nb = 0;
-                            }
-                            imgPerso1.Source = persoDroit[nb];
-                            nbToursPersoAvant = 0;
-                        }
+                        //for (int i = 0; i < persoDroit.Length; i++)
+                        //    persoDroit[i] = new BitmapImage(new Uri($"/imgPersoDroit/imgPersoD{i + 1}.png", UriKind.Relative));
+                        //nbToursPersoAvant++;
+                        //if (nbToursPersoAvant == 4)
+                        //{
+                        //    nb++;
+                        //    if (nb == persoDroit.Length)
+                        //    {
+                        //        nb = 0;
+                        //    }
+                        //    imgPerso1.Source = persoDroit[nb];
+                        //    nbToursPersoAvant = 0;
+                        //}
                     }
                       
                 }
@@ -152,7 +155,23 @@ namespace SaeProjetGitHubJEU
                 if (e.Key == Key.D)
                 {
                     if ((Canvas.GetLeft(imgPerso1) + MainWindow.PasVampire) <= (ZoneJeu.ActualWidth - imgPerso1.ActualWidth))
+                    {
                         Canvas.SetLeft(imgPerso1, Canvas.GetLeft(imgPerso1) + MainWindow.PasVampire);
+                        for (int i = 0; i < persoDroit.Length; i++)
+                            persoDroit[i] = new BitmapImage(new Uri($"/imgPersoDroit/imgPersoD{i + 1}.png", UriKind.Relative));
+                        nbToursPersoAvant++;
+                        if (nbToursPersoAvant == 4)
+                        {
+                            nb++;
+                            if (nb == persoDroit.Length)
+                            {
+                                nb = 0;
+                            }
+                            imgPerso1.Source = persoDroit[nb];
+                            nbToursPersoAvant = 0;
+                        }
+                    }
+                        
                 }
             }
 
