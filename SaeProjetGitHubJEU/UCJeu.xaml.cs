@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace SaeProjetGitHubJEU
 {
@@ -23,6 +24,8 @@ namespace SaeProjetGitHubJEU
 
         private int nbTours = 0;
         private BitmapImage[] lune = new BitmapImage[5];
+        private DispatcherTimer minuterie;
+        private int nb = 0;
         private BitmapImage[] persoAvant = new BitmapImage[8];
         public UCJeu()
         {
@@ -32,7 +35,16 @@ namespace SaeProjetGitHubJEU
             InitializeImages();
         }
 
-
+        private void InitializeTimer()
+        {
+            minuterie = new DispatcherTimer();
+            // configure l'intervalle du Timer :62 images par s
+            minuterie.Interval = TimeSpan.FromMilliseconds(16);
+            // associe l’appel de la méthode Jeu à la fin de la minuterie
+            minuterie.Tick += Jeu;
+            // lancement du timer
+            minuterie.Start();
+        }
 
         private void InitializeImages()
         {
@@ -52,7 +64,12 @@ namespace SaeProjetGitHubJEU
 
         public void Jeu(object? sender, EventArgs e)
         {
-
+            nb++;
+            if (nb == lune.Length)
+            {
+                nb = 0;
+            }
+            imgLune1.Source = lune[nb];
         }
 
 
