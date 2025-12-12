@@ -30,6 +30,7 @@ namespace SaeProjetGitHubJEU
         private BitmapImage[] persoAvant = new BitmapImage[7];
         private BitmapImage[] persoDroit = new BitmapImage[5];
         private BitmapImage[] persoGauche = new BitmapImage[5];
+        private BitmapImage[] persoArriere = new BitmapImage[5];
 
         public UCJeu()
         {
@@ -114,8 +115,13 @@ namespace SaeProjetGitHubJEU
 
         private void ZoneJeu_KeyDown(object sender, KeyEventArgs e)
         {
+
             double PositionX = Canvas.GetLeft(imgPerso1);
             double PositionY = Canvas.GetBottom(imgPerso1);
+            double taille = 1;
+            if (PositionY > 200) { taille = 0.9; }
+            if (PositionY > 300) { taille = 0.8; }
+            if (PositionY > 400) { taille = 0.7; }
             Console.WriteLine("X :" + PositionX + " Y : " + PositionY);
             //Vérif si le joueur est a l'interieur des deux fonctions affines avec l'equation de la courbe gauche : y=0.64x+176 et la courbe droite y=-0.67x+1060
             if (PositionY < 0.64 * PositionX + 176 && PositionY < 512 && PositionY < -0.67 * PositionX + 1060)
@@ -138,8 +144,10 @@ namespace SaeProjetGitHubJEU
                             }
                             imgPerso1.Source = persoAvant[nb];
                             nbToursPersoAvant = 0;
+                            
                         }
-                      
+                        
+
                     }
                        
                 }
@@ -149,19 +157,19 @@ namespace SaeProjetGitHubJEU
                     if ((Canvas.GetBottom(imgPerso1) + MainWindow.PasVampire) >= 0)
                     {
                         Canvas.SetBottom(imgPerso1, Canvas.GetBottom(imgPerso1) - MainWindow.PasVampire);
-                        //for (int i = 0; i < persoDroit.Length; i++)
-                        //    persoDroit[i] = new BitmapImage(new Uri($"/imgPersoDroit/imgPersoD{i + 1}.png", UriKind.Relative));
-                        //nbToursPersoAvant++;
-                        //if (nbToursPersoAvant == 4)
-                        //{
-                        //    nb++;
-                        //    if (nb == persoDroit.Length)
-                        //    {
-                        //        nb = 0;
-                        //    }
-                        //    imgPerso1.Source = persoDroit[nb];
-                        //    nbToursPersoAvant = 0;
-                        //}
+                        for (int i = 0; i < persoArriere.Length; i++)
+                            persoArriere[i] = new BitmapImage(new Uri($"/imgPersoArriere/imgPersoA{i + 1}.png", UriKind.Relative));
+                        nbToursPersoAvant++;
+                        if (nbToursPersoAvant == 4)
+                        {
+                            nb2++;
+                            if (nb2 == persoArriere.Length)
+                            {
+                                nb2 = 0;
+                            }
+                            imgPerso1.Source = persoArriere[nb2];
+                            nbToursPersoAvant = 0;
+                        }
                     }
                       
                 }

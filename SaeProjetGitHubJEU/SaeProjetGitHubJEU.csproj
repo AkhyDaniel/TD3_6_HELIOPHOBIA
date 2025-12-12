@@ -43,6 +43,12 @@
     <None Remove="ImagesLune\Lune5.png" />
     <None Remove="Images_Castel\CastelJour.png" />
     <None Remove="Images_Castel\CastelNuit.png" />
+    <None Remove="imgPersoArriere\imgPersoA1.png" />
+    <None Remove="imgPersoArriere\imgPersoA2.png" />
+    <None Remove="imgPersoArriere\imgPersoA3.png" />
+    <None Remove="imgPersoArriere\imgPersoA4.png" />
+    <None Remove="imgPersoArriere\imgPersoA5.png" />
+    <None Remove="imgPersoArriere\imgPersoA6.png" />
     <None Remove="imgPersoDroit\imgPersoD1.png" />
     <None Remove="imgPersoDroit\imgPersoD2.png" />
     <None Remove="imgPersoDroit\imgPersoD3.png" />
@@ -91,6 +97,12 @@
     <Resource Include="ImagesLune\Lune5.png" />
     <Resource Include="Images_Castel\CastelJour.png" />
     <Resource Include="Images_Castel\CastelNuit.png" />
+    <Resource Include="imgPersoArriere\imgPersoA1.png" />
+    <Resource Include="imgPersoArriere\imgPersoA2.png" />
+    <Resource Include="imgPersoArriere\imgPersoA3.png" />
+    <Resource Include="imgPersoArriere\imgPersoA4.png" />
+    <Resource Include="imgPersoArriere\imgPersoA5.png" />
+    <Resource Include="imgPersoArriere\imgPersoA6.png" />
     <Resource Include="imgPersoDroit\imgPersoD1.png" />
     <Resource Include="imgPersoDroit\imgPersoD2.png" />
     <Resource Include="imgPersoDroit\imgPersoD3.png" />
