@@ -47,7 +47,7 @@ namespace SaeProjetGitHubJEU
             // associe l’appel de la méthode Jeu à la fin de la minuterie
             minuterie.Tick += Jeu;
             // lancement du timer
-  
+            
             minuterie.Start();
         }
 
@@ -69,9 +69,27 @@ namespace SaeProjetGitHubJEU
 
         public void Jeu(object? sender, EventArgs e)
         {
+            Annimation_Lune();
+            
+
+        }
             //Annimation_Lune();
           
 
+        private void Annimation_Lune()
+        {
+            for(int i = 0;i < lune.Length; i++)
+            {
+                if (i == lune.Length)
+                {
+                    i = 0;
+                }
+                // essaye de mettre un temps de pose entre chaque animation
+                 //await Task.Delay(5000);
+                imgLune1.Source = lune[i];
+            }
+            
+        }
         }
 
         //private void Annimation_Lune()
