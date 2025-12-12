@@ -49,6 +49,12 @@
     <None Remove="imgPersoDroit\imgPersoD4.png" />
     <None Remove="imgPersoDroit\imgPersoD5.png" />
     <None Remove="imgPersoDroit\imgPersoD6.png" />
+    <None Remove="imgPersoGauche\imgPersoG1.png" />
+    <None Remove="imgPersoGauche\imgPersoG2.png" />
+    <None Remove="imgPersoGauche\imgPersoG3.png" />
+    <None Remove="imgPersoGauche\imgPersoG4.png" />
+    <None Remove="imgPersoGauche\imgPersoG5.png" />
+    <None Remove="imgPersoGauche\imgPersoG6.png" />
     <None Remove="imgPerso\imgPerso1.png" />
     <None Remove="imgPerso\imgPerso2.png" />
     <None Remove="imgPerso\imgPerso3.png" />
@@ -91,6 +97,12 @@
     <Resource Include="imgPersoDroit\imgPersoD4.png" />
     <Resource Include="imgPersoDroit\imgPersoD5.png" />
     <Resource Include="imgPersoDroit\imgPersoD6.png" />
+    <Resource Include="imgPersoGauche\imgPersoG1.png" />
+    <Resource Include="imgPersoGauche\imgPersoG2.png" />
+    <Resource Include="imgPersoGauche\imgPersoG3.png" />
+    <Resource Include="imgPersoGauche\imgPersoG4.png" />
+    <Resource Include="imgPersoGauche\imgPersoG5.png" />
+    <Resource Include="imgPersoGauche\imgPersoG6.png" />
     <Resource Include="imgPerso\imgPerso1.png" />
     <Resource Include="imgPerso\imgPerso2.png" />
     <Resource Include="imgPerso\imgPerso3.png" />

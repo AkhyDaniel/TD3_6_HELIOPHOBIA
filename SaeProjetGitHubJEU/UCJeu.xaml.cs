@@ -26,8 +26,10 @@ namespace SaeProjetGitHubJEU
         private BitmapImage[] lune = new BitmapImage[5];
         private DispatcherTimer minuterie;
         private int nb = 0;
-        private BitmapImage[] persoAvant = new BitmapImage[8];
-        private BitmapImage[] persoDroit = new BitmapImage[6];
+        private int nb2 = 0;
+        private BitmapImage[] persoAvant = new BitmapImage[7];
+        private BitmapImage[] persoDroit = new BitmapImage[5];
+        private BitmapImage[] persoGauche = new BitmapImage[5];
 
         public UCJeu()
         {
@@ -109,7 +111,7 @@ namespace SaeProjetGitHubJEU
                         for (int i = 0; i < persoAvant.Length; i++)
                             persoAvant[i] = new BitmapImage(new Uri($"/imgPerso/imgPerso{i + 1}.png", UriKind.Relative));
                         nbToursPersoAvant++;
-                        if(nbToursPersoAvant == 3) 
+                        if(nbToursPersoAvant == 4) 
                         {
                             nb++;
                             if (nb == persoAvant.Length)
@@ -149,7 +151,22 @@ namespace SaeProjetGitHubJEU
                 if (e.Key == Key.Q)
                 {
                     if ((Canvas.GetLeft(imgPerso1) + MainWindow.PasVampire) >= 0)
+                    {
                         Canvas.SetLeft(imgPerso1, Canvas.GetLeft(imgPerso1) - MainWindow.PasVampire);
+                        for (int i = 0; i < persoGauche.Length; i++)
+                            persoGauche[i] = new BitmapImage(new Uri($"/imgPersoGauche/imgPersoG{i + 1}.png", UriKind.Relative));
+                        nbToursPersoAvant++;
+                        if (nbToursPersoAvant == 4)
+                        {
+                            nb2++;
+                            if (nb2 == persoGauche.Length)
+                            {
+                                nb2 = 0;
+                            }
+                            imgPerso1.Source = persoGauche[nb2];
+                            nbToursPersoAvant = 0;
+                        }
+                    }
                 }
 
                 if (e.Key == Key.D)
@@ -162,12 +179,12 @@ namespace SaeProjetGitHubJEU
                         nbToursPersoAvant++;
                         if (nbToursPersoAvant == 4)
                         {
-                            nb++;
-                            if (nb == persoDroit.Length)
+                            nb2++;
+                            if (nb2 == persoDroit.Length)
                             {
-                                nb = 0;
+                                nb2 = 0;
                             }
-                            imgPerso1.Source = persoDroit[nb];
+                            imgPerso1.Source = persoDroit[nb2];
                             nbToursPersoAvant = 0;
                         }
                     }
