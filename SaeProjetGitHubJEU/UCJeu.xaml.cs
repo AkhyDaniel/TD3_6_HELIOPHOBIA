@@ -22,11 +22,12 @@ namespace SaeProjetGitHubJEU
     public partial class UCJeu : UserControl
     {
 
-        private int nbTours = 0;
+        private int nbToursPersoAvant = 0;
         private BitmapImage[] lune = new BitmapImage[5];
         private DispatcherTimer minuterie;
         private int nb = 0;
         private BitmapImage[] persoAvant = new BitmapImage[8];
+        
         public UCJeu()
         {
 
@@ -43,6 +44,7 @@ namespace SaeProjetGitHubJEU
             // associe l’appel de la méthode Jeu à la fin de la minuterie
             minuterie.Tick += Jeu;
             // lancement du timer
+  
             minuterie.Start();
         }
 
@@ -70,6 +72,7 @@ namespace SaeProjetGitHubJEU
                 nb = 0;
             }
             imgLune1.Source = lune[nb];
+
         }
 
 
@@ -96,6 +99,17 @@ namespace SaeProjetGitHubJEU
                         Canvas.SetBottom(imgPerso1, Canvas.GetBottom(imgPerso1) + MainWindow.PasVampire);
                         for (int i = 0; i < persoAvant.Length; i++)
                             persoAvant[i] = new BitmapImage(new Uri($"/imgPerso/imgPerso{i + 1}.png", UriKind.Relative));
+                        nbToursPersoAvant++;
+                        if(nbToursPersoAvant == 3) 
+                        {
+                            if (nb == persoAvant.Length)
+                            {
+                                nb = 0;
+                            }
+                            imgPerso1.Source = persoAvant[nb];
+                            nbToursPersoAvant = 0;
+                        }
+                      
                     }
                        
                 }
