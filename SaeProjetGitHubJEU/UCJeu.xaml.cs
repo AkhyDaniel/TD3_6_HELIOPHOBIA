@@ -27,6 +27,7 @@ namespace SaeProjetGitHubJEU
         {
 
             InitializeComponent();
+            InitializeTimer();
             InitializeImages();
         }
 
@@ -65,6 +66,7 @@ namespace SaeProjetGitHubJEU
             double PositionX = Canvas.GetLeft(imgPerso1);
             double PositionY = Canvas.GetBottom(imgPerso1);
             Console.WriteLine("X :" + PositionX + " Y : " + PositionY);
+            //Vérif si le joueur est a l'interieur des deux fonctions affines avec l'equation de la courbe gauche : y=0.64x+176 et la courbe droite y=-0.67x+1060
             if (PositionY < 0.64 * PositionX + 176 && PositionY < 512 && PositionY < -0.67 * PositionX + 1060)
             {
                 Console.WriteLine("Interieur");
