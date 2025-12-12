@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:SaeProjetGitHubJEU"
              mc:Ignorable="d" d:DesignWidth="1400" Height="904">
 
-    <Canvas x:Name="CanvasTrapeze" Margin="0,0,-29,0">
+    <Canvas x:Name="ZoneJeu" Margin="0,0,-29,0" Loaded="UserControl_Loaded">
         <Canvas.Background>
             <ImageBrush ImageSource="/imagesBackGround/FOND NUIT.png"/>
         </Canvas.Background>
@@ -37,7 +37,7 @@
                 </TransformGroup>
             </Canvas.RenderTransform>
         </Canvas>
-        <Image x:Name="imgPerso1" Height="85" Canvas.Left="610" Source="/imgPerso/imgPerso1.png" Stretch="Fill" Canvas.Bottom="0" Width="56" VerticalAlignment="Bottom" HorizontalAlignment="Left" RenderTransformOrigin="0.518,0.494" Canvas.Top="809"/>
+        <Image x:Name="imgPerso1" Height="85" Canvas.Left="610" Source="/imgPerso/imgPerso1.png" Stretch="Fill" Canvas.Bottom="0" Width="56" VerticalAlignment="Bottom" HorizontalAlignment="Left" RenderTransformOrigin="0.518,0.494" />
 
 
 

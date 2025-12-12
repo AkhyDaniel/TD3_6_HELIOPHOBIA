@@ -63,7 +63,7 @@ namespace SaeProjetGitHubJEU
         {
             if (e.Key == Key.Z)
             {
-                if ((Canvas.GetBottom(imgPerso1) + MainWindow.PasVampire) <= (CanvasTrapeze.ActualHeight - imgPerso1.ActualHeight))
+                if ((Canvas.GetBottom(imgPerso1) + MainWindow.PasVampire) <= (ZoneJeu.ActualHeight - imgPerso1.ActualHeight))
                     Canvas.SetBottom(imgPerso1, Canvas.GetBottom(imgPerso1) + MainWindow.PasVampire);
             }
 
@@ -81,7 +81,7 @@ namespace SaeProjetGitHubJEU
 
             if (e.Key == Key.D)
             {
-                if ((Canvas.GetLeft(imgPerso1) + MainWindow.PasVampire) <= (CanvasTrapeze.ActualWidth - imgPerso1.ActualWidth))
+                if ((Canvas.GetLeft(imgPerso1) + MainWindow.PasVampire) <= (ZoneJeu.ActualWidth - imgPerso1.ActualWidth))
                     Canvas.SetLeft(imgPerso1, Canvas.GetLeft(imgPerso1) + MainWindow.PasVampire);
             }
 
