@@ -89,6 +89,7 @@ namespace SaeProjetGitHubJEU
        
         private  void Annimation_Lune()
         {
+            //Prochaine étape ajouter une valeure de delais aléatoire 
 
             if (!estSoleil)
             {
