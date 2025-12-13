@@ -71,6 +71,7 @@
     <None Remove="imgPerso\imgPerso8.png" />
     <None Remove="imgPerso\imgPerso9.png" />
     <None Remove="imgSol.png" />
+    <None Remove="imgSoleil\Soleil.png" />
     <None Remove="LOGOF.png" />
     <None Remove="LOGO\LOGOF.png" />
     <None Remove="regle.png" />
@@ -125,6 +126,7 @@
     <Resource Include="imgPerso\imgPerso8.png" />
     <Resource Include="imgPerso\imgPerso9.png" />
     <Resource Include="imagesBackGround\imgSol.png" />
+    <Resource Include="imgSoleil\Soleil.png" />
     <Resource Include="LOGOF.png" />
     <Resource Include="LOGO\LOGOF.png" />
     <Resource Include="regle.png" />
