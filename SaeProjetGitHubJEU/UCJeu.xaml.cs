@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,10 +27,15 @@ namespace SaeProjetGitHubJEU
         private BitmapImage[] lune = new BitmapImage[5];
         private DispatcherTimer minuterie;
         private int nb = 0;
+        private int nbTourLune = 0;
         private BitmapImage[] persoAvant = new BitmapImage[7];
         private BitmapImage[] persoDroit = new BitmapImage[5];
         private BitmapImage[] persoGauche = new BitmapImage[5];
         private BitmapImage[] persoArriere = new BitmapImage[5];
+        private const int DELAI_LUNE = 120; // 300 ticks ≈ 5 secondes (5*62 img/secondes)
+        private int compteurTickLune = 0;
+        private bool estSoleil = false;
+        private BitmapImage soleil;
 
         public UCJeu()
         {
@@ -55,7 +61,9 @@ namespace SaeProjetGitHubJEU
         {
             for (int i = 0; i < lune.Length; i++)
                 lune[i] = new BitmapImage(new Uri($"/ImagesLune/Lune{i + 1}.png", UriKind.Relative));
-            
+
+            soleil = new BitmapImage(new Uri($"/imgSoleil/Soleil.png", UriKind.Relative));
+
         }
 
         public void DeplaceImage(Image image, int pas)
@@ -73,28 +81,44 @@ namespace SaeProjetGitHubJEU
             
 
         }
-            //Annimation_Lune();
-          
-
-        private void Annimation_Lune()
-        {
-            for(int i = 0;i < lune.Length; i++)
-            {
-                if (i == lune.Length)
-                {
-                    i = 0;
-                }
-                // essaye de mettre un temps de pose entre chaque animation
-                 //await Task.Delay(5000);
-                imgLune1.Source = lune[i];
-            }
             
-        }
+          
+       
+        private  void Annimation_Lune()
+        {
+
+            if (!estSoleil)
+            {
+                if (nbTourLune < 3)//lune.Length
+                {
+                    compteurTickLune++;
+                    if (compteurTickLune >= DELAI_LUNE)
+                    {
+                        imgLune1.Source = lune[nbTourLune];
+                        // Le % permet de revenir a 0 lorsqu'on sera a la 5 ème image. car (4+1)%5=0 don on recommence la boucle 
+                        nbTourLune = (nbTourLune + 1) % lune.Length;
+                        Console.WriteLine("Le nombre de tours:" + nbTourLune);
+                        compteurTickLune = 0;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("image soleil");
+                    imgLune1.Source = soleil;
+                    estSoleil = true;
+                }
+            }
+
+            else
+            {
+                nbTourLune = 0;
+                estSoleil = false;
+            }
+               
+                
+            }
         
-
         
-
-
        //Methode pour unifier toutes les annimations du personnage
         private void AnimationPerso(BitmapImage[] ImgPerso)
         {
@@ -102,7 +126,7 @@ namespace SaeProjetGitHubJEU
             if (nbToursPerso == 4)
             {
                 nb++;
-                if (nb == ImgPerso.Length)
+                if (nb >= ImgPerso.Length)
                 {
                     nb = 0;
                 }
