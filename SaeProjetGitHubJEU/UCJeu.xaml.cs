@@ -53,9 +53,11 @@ namespace SaeProjetGitHubJEU
 
 
         private bool estSoleil = false;
-        private const double posX_Lune_Depart = 760;
-        private const double posY_Lune_Depart = 20;
-        private const double posY_Castel = 10;
+        private const double POSX_DEPART_LUNE = 760;
+        private const double POSY_DEPART_LUNE = 20;
+        private const double POSY_CASTEL = 0;
+        private const double WIDTH_CASTEL = 338;
+        private const double HEIGHT_CASTEL = 452;
         private double posXLune = 760;
         private double vitesseLune = 1.6;  // 1.2 px / tick × 62 = 74 px / seconde
         private int vitesseBackground = 2;
@@ -89,7 +91,7 @@ namespace SaeProjetGitHubJEU
             //Image de jour
             soleil = new BitmapImage(new Uri("/imgSoleil/Soleil.png", UriKind.Relative));
             castelJour = new BitmapImage(new Uri("/Images_Castel/CastelJour.png", UriKind.Relative));
-            backgroundJour = new BitmapImage(new Uri("/imagesBackGround/FOND_JOUR.png", UriKind.Relative));
+            backgroundJour = new BitmapImage(new Uri("/imagesBackGround/FOND_JOUR.jpg", UriKind.Relative));
             arbreJour = new BitmapImage(new Uri("/imagesBackGround/arbresJour.png", UriKind.Relative));
 
             //Image de nuit
@@ -110,8 +112,8 @@ namespace SaeProjetGitHubJEU
         public void Jeu(object? sender, EventArgs e)
         {
             Annimation_Lune();
-            //DeplaceImage(background1, vitesseBackground);
-            //DeplaceImage(background2, vitesseBackground);
+            DeplaceImage(imgbackground1, vitesseBackground);
+            DeplaceImage(imgbackground2, vitesseBackground);
         }
             
           
@@ -183,10 +185,11 @@ namespace SaeProjetGitHubJEU
             imgLune1.Height = 208;
             arbresNuit.Source = arbreNuit;
             imgbackground1.Source = backgroundNuit;
+            imgbackground2.Source = backgroundNuit;
             castelNuit.Source = castelNuitImg;
-            castelNuit.Width = 338;
-            castelNuit.Height = 385;
-            Canvas.SetTop(castelNuit, posY_Castel);
+            castelNuit.Width = WIDTH_CASTEL;
+            castelNuit.Height = HEIGHT_CASTEL;
+            Canvas.SetTop(castelNuit, POSY_CASTEL);
         }
         private void AfficheJour()
         {
@@ -197,15 +200,16 @@ namespace SaeProjetGitHubJEU
             imgLune1.Height = 250;
             arbresNuit.Source = arbreJour;
             imgbackground1.Source = backgroundJour;
+            imgbackground2.Source = backgroundJour;
             castelNuit.Source = castelJour;
-            castelNuit.Width = 338;
+            castelNuit.Width = WIDTH_CASTEL;
             castelNuit.Height = 385;
-            Canvas.SetTop(castelNuit, posY_Castel);
+            Canvas.SetTop(castelNuit, POSY_CASTEL);
 
             //Réinitialisation de la position du soleil a l'origine de postion de la lune, cela évite que la lune ce décale a chaque cycle 
-            posXLune = posX_Lune_Depart;
-            Canvas.SetLeft(imgLune1, posX_Lune_Depart);
-            Canvas.SetTop(imgLune1, posY_Lune_Depart);
+            posXLune = POSX_DEPART_LUNE;
+            Canvas.SetLeft(imgLune1, POSX_DEPART_LUNE);
+            Canvas.SetTop(imgLune1, POSY_DEPART_LUNE);
         }
         
         //Deplacement de la lune de façon linéaire grace aux calculs d'équations des droites BC et BA.
