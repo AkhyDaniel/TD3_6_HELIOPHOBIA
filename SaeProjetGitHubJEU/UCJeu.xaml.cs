@@ -49,10 +49,12 @@ namespace SaeProjetGitHubJEU
 
 
         private bool estSoleil = false;
-        private const double  posX_Lune_Depart = 760;
+        private const double posX_Lune_Depart = 760;
         private const double posY_Lune_Depart = 20;
+        private const double posY_Castel = 10;
         private double posXLune = 760;
         private double vitesseLune = 1.6;  // 1.2 px / tick × 62 = 74 px / seconde
+        private int vitesseBackground = 2;
 
 
         public UCJeu()
@@ -98,7 +100,9 @@ namespace SaeProjetGitHubJEU
         public void Jeu(object? sender, EventArgs e)
         {
             Annimation_Lune();
-            
+            DeplaceImage(background1, vitesseBackground);
+            DeplaceImage(background2, vitesseBackground);
+
 
         }
             
@@ -142,12 +146,22 @@ namespace SaeProjetGitHubJEU
                        
                         Console.Write(": Soleil !");
                         imgLune1.Source = soleil;
-                        //Réinitialisation de la position du soleil
-                        Canvas.SetLeft(imgLune1, 763);
-                        Canvas.SetTop(imgLune1, 20);
+                        imgLune1.Width = 400;
+                        imgLune1.Height = 300;
+
+                        //Réinitialisation de la position du soleil a l'origine de postion de la lune, cela évite que la lune ce décale a chaque cycle 
+                        posXLune = posX_Lune_Depart;
+                        Canvas.SetLeft(imgLune1, posX_Lune_Depart);
+                        Canvas.SetTop(imgLune1, posY_Lune_Depart);
                         estSoleil = true;
                         compteurTickSoleil = 0;
+
+                        //affichage du castel Jour 
                         castelNuit.Source = castelJour;
+                        castelNuit.Width = 338;
+                        castelNuit.Height = 385;
+                        Canvas.SetTop(castelNuit, posY_Castel);
+
                     }
                     compteurTickLune = 0;
                 }
@@ -159,12 +173,10 @@ namespace SaeProjetGitHubJEU
                 compteurTickSoleil++;
                 if (compteurTickSoleil >= DELAI_SOLEIL)
                 {
+                    imgLune1.Width = 216;
+                    imgLune1.Height = 208;
                     nbTourLune = 0;
                     estSoleil = false;
-                    //Retour a la position d'orgine, évite que la lune ce décale a chaque cycle 
-                    posXLune = posX_Lune_Depart;
-                    Canvas.SetLeft(imgLune1, posX_Lune_Depart);
-                    Canvas.SetTop(imgLune1, posY_Lune_Depart);
                     compteurTickSoleil = 0;
                 }
             }
@@ -196,6 +208,11 @@ namespace SaeProjetGitHubJEU
             Canvas.SetLeft(imgLune1, posXLune);
             Canvas.SetTop(imgLune1, y);
             Console.WriteLine($"position lune x : {posXLune} y :{y}");
+
+        }
+
+        private void RedimensionnementImages()
+        {
 
         }
         
