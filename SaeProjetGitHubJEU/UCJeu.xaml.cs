@@ -34,9 +34,10 @@ namespace SaeProjetGitHubJEU
         private BitmapImage[] persoDroit = new BitmapImage[5];
         private BitmapImage[] persoGauche = new BitmapImage[5];
         private BitmapImage[] persoArriere = new BitmapImage[5];
-        private new BitmapImage soleil;
+        private BitmapImage soleil;
         private BitmapImage backgroundJour;
         private BitmapImage castelJour;
+        
 
         //Initialisation delai de changement des images
         private const int DELAI_LUNE = 30; // initialement pour tester :300 ticks +-= 5 secondes (5*62 img/secondes)
@@ -48,6 +49,8 @@ namespace SaeProjetGitHubJEU
 
 
         private bool estSoleil = false;
+        private const double  posX_Lune_Depart = 760;
+        private const double posY_Lune_Depart = 20;
         private double posXLune = 760;
         private double vitesseLune = 1.6;  // 1.2 px / tick × 62 = 74 px / seconde
 
@@ -78,6 +81,8 @@ namespace SaeProjetGitHubJEU
                 lune[i] = new BitmapImage(new Uri($"/ImagesLune/Lune{i + 1}.png", UriKind.Relative));
 
             soleil = new BitmapImage(new Uri("/imgSoleil/Soleil.png", UriKind.Relative));
+            
+            castelJour = new BitmapImage(new Uri("/Images_Castel/CastelJour.png", UriKind.Relative));
 
         }
 
@@ -112,6 +117,7 @@ namespace SaeProjetGitHubJEU
 
                 if (compteurTickLune >= DELAI_LUNE)
                 {
+
                     if (nbTourLune < lune.Length)
                     {
                         imgLune1.Source = lune[nbTourLune];
@@ -133,7 +139,7 @@ namespace SaeProjetGitHubJEU
                     // Affiche le soleil
                     else
                     {
-                        
+                       
                         Console.Write(": Soleil !");
                         imgLune1.Source = soleil;
                         //Réinitialisation de la position du soleil
@@ -141,6 +147,7 @@ namespace SaeProjetGitHubJEU
                         Canvas.SetTop(imgLune1, 20);
                         estSoleil = true;
                         compteurTickSoleil = 0;
+                        castelNuit.Source = castelJour;
                     }
                     compteurTickLune = 0;
                 }
@@ -154,6 +161,10 @@ namespace SaeProjetGitHubJEU
                 {
                     nbTourLune = 0;
                     estSoleil = false;
+                    //Retour a la position d'orgine, évite que la lune ce décale a chaque cycle 
+                    posXLune = posX_Lune_Depart;
+                    Canvas.SetLeft(imgLune1, posX_Lune_Depart);
+                    Canvas.SetTop(imgLune1, posY_Lune_Depart);
                     compteurTickSoleil = 0;
                 }
             }
@@ -163,16 +174,14 @@ namespace SaeProjetGitHubJEU
         //Deplacement de la lune de façon linéaire grace aux calculs d'équations des droites BC et BA.
         private void deplacementLuneLineaire()
         {
-
-           
             posXLune -= vitesseLune;
-
+            
             double y;
             //Deplacement de B vers A
             if (posXLune >=600)
             {
                 //Equation de droite BA
-                y = 0.6875 * posXLune - 502.5; 
+                y = 0.6875 * posXLune - 502.5; //(0.6875 = 11/16)
             }
             //Deplacemenet de B vers C
             else
