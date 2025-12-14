@@ -20,7 +20,7 @@ namespace SaeProjetGitHubJEU
     /// </summary>
     public partial class UCGameOver : UserControl
     {
-        public bool rejouer = false;
+        public bool rejouer = true;
         public UCGameOver()
         {
             InitializeComponent();
@@ -28,12 +28,23 @@ namespace SaeProjetGitHubJEU
 
         private void butRejouer_Click(object sender, RoutedEventArgs e)
         {
-            rejouer = true;
+            //Récupération de la fenêtre principale
+            MainWindow main = (MainWindow)Application.Current.MainWindow;
+
+            // On crée un nouveau jeu
+            UCJeu jeu = new UCJeu();
+
+            // Si le joueur perd alors on fait l'appel méthode affiche l'ecran game over qui est dans la main window
+            jeu.GameOverEvent += main.AfficherGameOver;
+
+            // On remplace l'écran actuel par le jeu
+            main.ZoneLobby.Content = jeu;
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ((MainWindow)Application.Current.MainWindow).AfficheDemarrage();  // Retourne au menu principal
+            ((MainWindow)Application.Current.MainWindow).AfficheDemarrage(); //Revient l'ecran de démarage
         }
     }
 }

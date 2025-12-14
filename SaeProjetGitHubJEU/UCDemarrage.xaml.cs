@@ -24,5 +24,15 @@ namespace SaeProjetGitHubJEU
         {
             InitializeComponent();
         }
+
+        private void butParametre_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void butQuitter_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown(); // quitte le jeu
+        }
     }
 }

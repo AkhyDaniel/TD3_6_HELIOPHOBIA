@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -24,7 +25,8 @@ namespace SaeProjetGitHubJEU
     public partial class UCJeu : UserControl
     {
 
-        public event Action GameOverEvent; //
+        public event Action GameOverEvent; 
+        public event Action GameWin;
 
         private int nbToursPerso = 0;
         private DispatcherTimer minuterie;
@@ -107,6 +109,7 @@ namespace SaeProjetGitHubJEU
             Annimation_Lune();
             DeplaceImage(imgbackground1, vitesseBackground);
             DeplaceImage(imgbackground2, vitesseBackground);
+            Win();
         }
         public void DeplaceImage(Image image, int pas)
         {
@@ -269,13 +272,16 @@ namespace SaeProjetGitHubJEU
                 GameOver();
                 return;
             }
+
             
+
+
             double PositionX = Canvas.GetLeft(imgPerso1);
             double PositionY = Canvas.GetBottom(imgPerso1);
-            double taille = 1;
-            if (PositionY > 200) { taille = 0.9; }
-            if (PositionY > 300) { taille = 0.8; }
-            if (PositionY > 400) { taille = 0.7; }
+            //double taille = 1;
+            //if (PositionY > 200) { taille = 0.9; }
+            //if (PositionY > 300) { taille = 0.8; }        //A QUOI SA SERT ??
+            //if (PositionY > 400) { taille = 0.7; }
             Console.WriteLine("X :" + PositionX + " Y : " + PositionY);
             //Vérif si le joueur est a l'interieur des deux fonctions affines avec l'equation de la courbe gauche : y=0.64x+176 et la courbe droite y=-0.67x+1060
             if (PositionY < 0.64 * PositionX + 176 && PositionY < 512 && PositionY < -0.67 * PositionX + 1060)
@@ -361,20 +367,28 @@ namespace SaeProjetGitHubJEU
             // Remet les images de fond et lune
             AfficheNuit();
 
-            // Redémarre le timer
-            minuterie.Start();
+
+            //
+            // Manque juste le bouton rejouer a faire 
+            //
+        }
+
+        private void Win()
+        {
+            if (Canvas.GetBottom(imgPerso1) == 506)
+            {
+                Console.WriteLine("Vous avez gagnez !");
+                minuterie.Stop();
+                GameWin?.Invoke();
+            }
         }
         private void GameOver()
         {
             Console.WriteLine("Vous avez perdu !");
             minuterie.Stop();
             GameOverEvent?.Invoke(); //Déclenche l'évenement et prévient la fenêtre main window que le jeu est terminé  
-            UCGameOver gameOver = new UCGameOver();
-            if (gameOver.rejouer == true)
-            {
-                resetGame();
-            }
-
+            //UCGameOver gameOver = new UCGameOver(); // REVOIR ICI 
+            resetGame();
         }
       
 

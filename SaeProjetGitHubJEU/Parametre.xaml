@@ -12,7 +12,7 @@
                 <ImageBrush ImageSource="/imageButParaF.png"/>
             </Label.Background>
         </Label>
-        <Slider HorizontalAlignment="Center" Margin="0,228,0,0" VerticalAlignment="Top" Width="216" Height="61" ValueChanged="Slider_ValueChanged"/>
+        <Slider HorizontalAlignment="Center" VerticalAlignment="Center" Width="216" Height="61" ValueChanged="Slider_ValueChanged"/>
         <Button x:Name="butOk" Content="OK" HorizontalAlignment="Left" Margin="226,344,0,0" VerticalAlignment="Top" Height="38" Width="63"/>
         <Button x:Name="butAnnuler" Content="Annuler
                 " HorizontalAlignment="Left" Margin="592,0,0,42" VerticalAlignment="Bottom" Width="86" Height="48"/>

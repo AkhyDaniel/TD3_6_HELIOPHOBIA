@@ -49,6 +49,7 @@ namespace SaeProjetGitHubJEU
         {
             UCJeu jeu = new UCJeu();
             jeu.GameOverEvent += AfficherGameOver; // Si il y a l'evenement de game over alors cela passe sur UCGameOver
+            jeu.GameWin += AfficheEcranWin;        
             ZoneLobby.Content = jeu;
 
         }
@@ -57,5 +58,9 @@ namespace SaeProjetGitHubJEU
             ZoneLobby.Content = new UCGameOver();
         }
 
+        public void AfficheEcranWin()
+        {
+            ZoneLobby.Content = new UCWin();
+        }
     } 
 }

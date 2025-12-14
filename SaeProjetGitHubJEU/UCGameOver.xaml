@@ -9,7 +9,7 @@
     <Grid>
         <Label x:Name="labGameOver" Content="Game over " HorizontalAlignment="Center" Margin="0,661,0,0" VerticalAlignment="Top" Height="76" Width="188" Background="#FFF0F0F0"/>
         <Button x:Name="butRejouer" Content="Rejouer" HorizontalAlignment="Left" Margin="347,766,0,0" VerticalAlignment="Top" Height="58" Width="98" Click="butRejouer_Click"/>
-        <Button x:Name="butQuitter" Content="Quitter" HorizontalAlignment="Left" Margin="945,766,0,0" VerticalAlignment="Top" Height="62" Width="98" Click="Button_Click"/>
+        <Button x:Name="butQuitter" Content="Menu" HorizontalAlignment="Left" Margin="945,766,0,0" VerticalAlignment="Top" Height="62" Width="98" Click="Button_Click"/>
 
     </Grid>
 </UserControl>
