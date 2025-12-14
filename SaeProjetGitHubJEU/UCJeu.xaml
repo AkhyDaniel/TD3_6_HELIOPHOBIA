@@ -16,10 +16,10 @@
         <Image Height="904" Source="/imagesBackGround/arbres.png" Stretch="Fill" Width="1431" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="-2"/>
 
         <Image Source="/Images_Castel/CastelNuit.png" Stretch="Fill" Canvas.Left="527" Height="452" Width="338" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Image x:Name="imgLune1" Source="/imagesLune/Lune1.png" Stretch="Fill" Height="208" Canvas.Left="1001" Canvas.Top="88" Width="217"/>
+        <Image x:Name="imgLune1" Source="/imagesLune/Lune1.png" Stretch="Fill" Height="208" Canvas.Left="763" Width="216" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="18"/>
 
-        <Image x:Name="imgPerso1" Height="85" Canvas.Left="714" Source="/imgPerso/imgPerso1.png" Stretch="Fill" Canvas.Bottom="0" Width="56" VerticalAlignment="Bottom" HorizontalAlignment="Left" RenderTransformOrigin="0.518,0.494"  />
-       
+        <Image x:Name="imgPerso1" Height="85" Canvas.Left="714" Source="/imgPerso/imgPerso1.png" Stretch="Fill" Canvas.Bottom="0" Width="56" VerticalAlignment="Bottom" HorizontalAlignment="Left"  />
+
 
 
 

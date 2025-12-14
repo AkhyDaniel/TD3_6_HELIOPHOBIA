@@ -24,21 +24,33 @@ namespace SaeProjetGitHubJEU
     {
 
         private int nbToursPerso = 0;
-        private BitmapImage[] lune = new BitmapImage[5];
         private DispatcherTimer minuterie;
         private int nb = 0;
         private int nbTourLune = 0;
+
+        //Initialisation des images 
+        private BitmapImage[] lune = new BitmapImage[5];
         private BitmapImage[] persoAvant = new BitmapImage[7];
         private BitmapImage[] persoDroit = new BitmapImage[5];
         private BitmapImage[] persoGauche = new BitmapImage[5];
         private BitmapImage[] persoArriere = new BitmapImage[5];
+        private new BitmapImage soleil;
+        private BitmapImage backgroundJour;
+        private BitmapImage castelJour;
+
+        //Initialisation delai de changement des images
         private const int DELAI_LUNE = 30; // initialement pour tester :300 ticks +-= 5 secondes (5*62 img/secondes)
         private const int DELAI_SOLEIL = 120;
+
+        //Initialisation des compteurs pour le delais des images
         private int compteurTickLune = 0;
         private int compteurTickSoleil = 0;
-        private int compteurSoleilPhrase = 0;
+
+
         private bool estSoleil = false;
-        private new BitmapImage soleil;
+        private double posXLune = 760;
+        private double vitesseLune = 1.6;  // 1.2 px / tick × 62 = 74 px / seconde
+
 
         public UCJeu()
         {
@@ -96,6 +108,7 @@ namespace SaeProjetGitHubJEU
                 //Compteur tick permet de laisser un delais avant le changement de l'image de la lune
                 // la boucle s'execute toute les 16ms ce qui fait 62 img/seconde donc avec un delais = 60 tick cela fait +-= 1 seconde
                 compteurTickLune++;
+                deplacementLuneLineaire();
 
                 if (compteurTickLune >= DELAI_LUNE)
                 {
@@ -106,9 +119,10 @@ namespace SaeProjetGitHubJEU
                         //Permet d'afficher 1,2,3 aux images 1,3,5 de la lune
                         switch (nbTourLune)
                         {
-                            case 0: Console.Write("1, ");
+                            case 0: 
+                                Console.Write("1, ");
                                 break;
-                            case 2: Console.Write("2, "); 
+                            case 2: Console.Write("2, ");
                                 break;
                             case 4: Console.Write("3 ");
                                 break;
@@ -119,10 +133,14 @@ namespace SaeProjetGitHubJEU
                     // Affiche le soleil
                     else
                     {
-                            Console.Write(": Soleil !");
-                            imgLune1.Source = soleil;
-                            estSoleil = true;
-                            compteurTickSoleil = 0;
+                        
+                        Console.Write(": Soleil !");
+                        imgLune1.Source = soleil;
+                        //Réinitialisation de la position du soleil
+                        Canvas.SetLeft(imgLune1, 763);
+                        Canvas.SetTop(imgLune1, 20);
+                        estSoleil = true;
+                        compteurTickSoleil = 0;
                     }
                     compteurTickLune = 0;
                 }
@@ -142,6 +160,35 @@ namespace SaeProjetGitHubJEU
 
         }
         
+        //Deplacement de la lune de façon linéaire grace aux calculs d'équations des droites BC et BA.
+        private void deplacementLuneLineaire()
+        {
+
+           
+            posXLune -= vitesseLune;
+
+            double y;
+            //Deplacement de B vers A
+            if (posXLune >=600)
+            {
+                //Equation de droite BA
+                y = 0.6875 * posXLune - 502.5; 
+            }
+            //Deplacemenet de B vers C
+            else
+            {
+                //Equation de droite BC
+                y = -0.55 * posXLune + 240;
+            }
+
+            y=Math.Round(y, 3);
+            posXLune= Math.Round(posXLune, 3);
+            // Deplacement de la lune sur les fonctions affines
+            Canvas.SetLeft(imgLune1, posXLune);
+            Canvas.SetTop(imgLune1, y);
+            Console.WriteLine($"position lune x : {posXLune} y :{y}");
+
+        }
         
        //Methode pour unifier toutes les annimations du personnage
         private void AnimationPerso(BitmapImage[] ImgPerso)
