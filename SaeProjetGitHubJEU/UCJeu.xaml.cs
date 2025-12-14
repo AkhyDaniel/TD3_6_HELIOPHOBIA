@@ -37,7 +37,11 @@ namespace SaeProjetGitHubJEU
         private BitmapImage soleil;
         private BitmapImage backgroundJour;
         private BitmapImage castelJour;
-        
+        private BitmapImage arbreJour;
+        private BitmapImage backgroundNuit;
+        private BitmapImage arbreNuit;
+        private BitmapImage castelNuitImg;
+
 
         //Initialisation delai de changement des images
         private const int DELAI_LUNE = 30; // initialement pour tester :300 ticks +-= 5 secondes (5*62 img/secondes)
@@ -82,10 +86,16 @@ namespace SaeProjetGitHubJEU
             for (int i = 0; i < lune.Length; i++)
                 lune[i] = new BitmapImage(new Uri($"/ImagesLune/Lune{i + 1}.png", UriKind.Relative));
 
+            //Image de jour
             soleil = new BitmapImage(new Uri("/imgSoleil/Soleil.png", UriKind.Relative));
-            
             castelJour = new BitmapImage(new Uri("/Images_Castel/CastelJour.png", UriKind.Relative));
+            backgroundJour = new BitmapImage(new Uri("/imagesBackGround/FOND_JOUR.png", UriKind.Relative));
+            arbreJour = new BitmapImage(new Uri("/imagesBackGround/arbresJour.png", UriKind.Relative));
 
+            //Image de nuit
+            backgroundNuit = new BitmapImage(new Uri("/imagesBackGround/FOND NUIT.png", UriKind.Relative));
+            arbreNuit = new BitmapImage(new Uri("/imagesBackGround/arbres.png", UriKind.Relative));
+            castelNuitImg = new BitmapImage(new Uri("/Images_Castel/CastelNuit.png", UriKind.Relative));
         }
 
         public void DeplaceImage(Image image, int pas)
@@ -100,10 +110,8 @@ namespace SaeProjetGitHubJEU
         public void Jeu(object? sender, EventArgs e)
         {
             Annimation_Lune();
-            DeplaceImage(background1, vitesseBackground);
-            DeplaceImage(background2, vitesseBackground);
-
-
+            //DeplaceImage(background1, vitesseBackground);
+            //DeplaceImage(background2, vitesseBackground);
         }
             
           
@@ -143,25 +151,10 @@ namespace SaeProjetGitHubJEU
                     // Affiche le soleil
                     else
                     {
-                       
-                        Console.Write(": Soleil !");
-                        imgLune1.Source = soleil;
-                        imgLune1.Width = 400;
-                        imgLune1.Height = 300;
-
-                        //Réinitialisation de la position du soleil a l'origine de postion de la lune, cela évite que la lune ce décale a chaque cycle 
-                        posXLune = posX_Lune_Depart;
-                        Canvas.SetLeft(imgLune1, posX_Lune_Depart);
-                        Canvas.SetTop(imgLune1, posY_Lune_Depart);
+                        AfficheJour();
                         estSoleil = true;
                         compteurTickSoleil = 0;
-
-                        //affichage du castel Jour 
-                        castelNuit.Source = castelJour;
-                        castelNuit.Width = 338;
-                        castelNuit.Height = 385;
-                        Canvas.SetTop(castelNuit, posY_Castel);
-
+                        
                     }
                     compteurTickLune = 0;
                 }
@@ -173,14 +166,46 @@ namespace SaeProjetGitHubJEU
                 compteurTickSoleil++;
                 if (compteurTickSoleil >= DELAI_SOLEIL)
                 {
-                    imgLune1.Width = 216;
-                    imgLune1.Height = 208;
+                    AfficheNuit();
                     nbTourLune = 0;
                     estSoleil = false;
                     compteurTickSoleil = 0;
                 }
             }
 
+        }
+
+        private void AfficheNuit()
+        {
+            //Affichage soleil + arbre + background + castel en mode nuit
+            imgLune1.Source = lune[0];
+            imgLune1.Width = 216;
+            imgLune1.Height = 208;
+            arbresNuit.Source = arbreNuit;
+            imgbackground1.Source = backgroundNuit;
+            castelNuit.Source = castelNuitImg;
+            castelNuit.Width = 338;
+            castelNuit.Height = 385;
+            Canvas.SetTop(castelNuit, posY_Castel);
+        }
+        private void AfficheJour()
+        {
+            Console.Write(": Soleil !");
+            //Affichage soleil + arbre + background + castel en mode jour
+            imgLune1.Source = soleil;
+            imgLune1.Width = 400;
+            imgLune1.Height = 250;
+            arbresNuit.Source = arbreJour;
+            imgbackground1.Source = backgroundJour;
+            castelNuit.Source = castelJour;
+            castelNuit.Width = 338;
+            castelNuit.Height = 385;
+            Canvas.SetTop(castelNuit, posY_Castel);
+
+            //Réinitialisation de la position du soleil a l'origine de postion de la lune, cela évite que la lune ce décale a chaque cycle 
+            posXLune = posX_Lune_Depart;
+            Canvas.SetLeft(imgLune1, posX_Lune_Depart);
+            Canvas.SetTop(imgLune1, posY_Lune_Depart);
         }
         
         //Deplacement de la lune de façon linéaire grace aux calculs d'équations des droites BC et BA.
@@ -216,7 +241,7 @@ namespace SaeProjetGitHubJEU
 
         }
         
-       //Methode pour unifier toutes les annimations du personnage
+        //Methode pour unifier toutes les annimations du personnage
         private void AnimationPerso(BitmapImage[] ImgPerso)
         {
             nbToursPerso++;
@@ -267,7 +292,7 @@ namespace SaeProjetGitHubJEU
 
                 if (e.Key == Key.S)
                 {
-                    if ((Canvas.GetBottom(imgPerso1) + MainWindow.PasVampire) >= 0)
+                    if ((Canvas.GetBottom(imgPerso1) + MainWindow.PasVampire) >= 35)
                     {
                         Canvas.SetBottom(imgPerso1, Canvas.GetBottom(imgPerso1) - MainWindow.PasVampire);
                         for (int i = 0; i < persoArriere.Length; i++)
