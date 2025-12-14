@@ -28,17 +28,7 @@ namespace SaeProjetGitHubJEU
 
         private void butRejouer_Click(object sender, RoutedEventArgs e)
         {
-            //Récupération de la fenêtre principale
-            MainWindow main = (MainWindow)Application.Current.MainWindow;
-
-            // On crée un nouveau jeu
-            UCJeu jeu = new UCJeu();
-
-            // Si le joueur perd alors on fait l'appel méthode affiche l'ecran game over qui est dans la main window
-            jeu.GameOverEvent += main.AfficherGameOver;
-
-            // On remplace l'écran actuel par le jeu
-            main.ZoneLobby.Content = jeu;
+            ((MainWindow)Application.Current.MainWindow).Jeu(null, null);
 
         }
 

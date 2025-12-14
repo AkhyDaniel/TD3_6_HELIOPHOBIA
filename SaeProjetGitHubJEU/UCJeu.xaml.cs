@@ -366,11 +366,6 @@ namespace SaeProjetGitHubJEU
 
             // Remet les images de fond et lune
             AfficheNuit();
-
-
-            //
-            // Manque juste le bouton rejouer a faire 
-            //
         }
 
         private void Win()
@@ -387,7 +382,6 @@ namespace SaeProjetGitHubJEU
             Console.WriteLine("Vous avez perdu !");
             minuterie.Stop();
             GameOverEvent?.Invoke(); //Déclenche l'évenement et prévient la fenêtre main window que le jeu est terminé  
-            //UCGameOver gameOver = new UCGameOver(); // REVOIR ICI 
             resetGame();
         }
       
