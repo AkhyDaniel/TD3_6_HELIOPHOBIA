@@ -20,9 +20,20 @@ namespace SaeProjetGitHubJEU
     /// </summary>
     public partial class UCGameOver : UserControl
     {
+        public bool rejouer = false;
         public UCGameOver()
         {
             InitializeComponent();
+        }
+
+        private void butRejouer_Click(object sender, RoutedEventArgs e)
+        {
+            rejouer = true;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ((MainWindow)Application.Current.MainWindow).AfficheDemarrage();  // Retourne au menu principal
         }
     }
 }

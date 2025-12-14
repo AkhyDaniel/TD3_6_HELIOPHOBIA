@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,8 @@ namespace SaeProjetGitHubJEU
     /// </summary>
     public partial class UCJeu : UserControl
     {
+
+        public event Action GameOverEvent; //
 
         private int nbToursPerso = 0;
         private DispatcherTimer minuterie;
@@ -65,7 +68,6 @@ namespace SaeProjetGitHubJEU
 
         public UCJeu()
         {
-
             InitializeComponent();
             InitializeTimer();
             InitializeImages();
@@ -100,6 +102,12 @@ namespace SaeProjetGitHubJEU
             castelNuitImg = new BitmapImage(new Uri("/Images_Castel/CastelNuit.png", UriKind.Relative));
         }
 
+        public void Jeu(object? sender, EventArgs e)
+        {
+            Annimation_Lune();
+            DeplaceImage(imgbackground1, vitesseBackground);
+            DeplaceImage(imgbackground2, vitesseBackground);
+        }
         public void DeplaceImage(Image image, int pas)
         {
             Canvas.SetLeft(image, Canvas.GetLeft(image) - pas);
@@ -108,15 +116,6 @@ namespace SaeProjetGitHubJEU
                 Canvas.SetLeft(image, image.ActualWidth);
 
         }
-
-        public void Jeu(object? sender, EventArgs e)
-        {
-            Annimation_Lune();
-            DeplaceImage(imgbackground1, vitesseBackground);
-            DeplaceImage(imgbackground2, vitesseBackground);
-        }
-            
-          
        
         private  void Annimation_Lune()
         {
@@ -239,11 +238,6 @@ namespace SaeProjetGitHubJEU
             Console.WriteLine($"position lune x : {posXLune} y :{y}");
 
         }
-
-        private void RedimensionnementImages()
-        {
-
-        }
         
         //Methode pour unifier toutes les annimations du personnage
         private void AnimationPerso(BitmapImage[] ImgPerso)
@@ -270,7 +264,12 @@ namespace SaeProjetGitHubJEU
 
         private void ZoneJeu_KeyDown(object sender, KeyEventArgs e)
         {
-
+            if(estSoleil)
+            {
+                GameOver();
+                return;
+            }
+            
             double PositionX = Canvas.GetLeft(imgPerso1);
             double PositionY = Canvas.GetBottom(imgPerso1);
             double taille = 1;
@@ -340,6 +339,43 @@ namespace SaeProjetGitHubJEU
 
         }
 
+        private void resetGame()
+        {
+            // Réinitialise la position de la lune
+            posXLune = POSX_DEPART_LUNE;
+            Canvas.SetLeft(imgLune1, POSX_DEPART_LUNE);
+            Canvas.SetTop(imgLune1, POSY_DEPART_LUNE);
+
+            // Réinitialise l'état jour/nuit
+            estSoleil = false;
+            nbTourLune = 0;
+            compteurTickLune = 0;
+            compteurTickSoleil = 0;
+
+            // Réinitialise le personnage
+            Canvas.SetLeft(imgPerso1, 0);
+            Canvas.SetBottom(imgPerso1, 0);
+            nb = 0;
+            nbToursPerso = 0;
+
+            // Remet les images de fond et lune
+            AfficheNuit();
+
+            // Redémarre le timer
+            minuterie.Start();
+        }
+        private void GameOver()
+        {
+            Console.WriteLine("Vous avez perdu !");
+            minuterie.Stop();
+            GameOverEvent?.Invoke(); //Déclenche l'évenement et prévient la fenêtre main window que le jeu est terminé  
+            UCGameOver gameOver = new UCGameOver();
+            if (gameOver.rejouer == true)
+            {
+                resetGame();
+            }
+
+        }
       
 
         private void CanvaObstacleDroit_KeyDown(object sender, KeyEventArgs e)

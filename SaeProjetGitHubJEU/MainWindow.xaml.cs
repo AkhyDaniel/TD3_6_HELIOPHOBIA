@@ -29,34 +29,8 @@ namespace SaeProjetGitHubJEU
         {
             InitializeComponent();
             AfficheDemarrage();
-            InitializeTimer();
+          
         }
-
-        //private void InitializeTimer()
-        //{
-        //    minuterie = new DispatcherTimer();
-        //    // configure l'intervalle du Timer :62 images par s
-        //    minuterie.Interval = TimeSpan.FromMilliseconds(16);
-        //    // associe l’appel de la méthode Jeu à la fin de la minuterie
-        //    minuterie.Tick += Jeu;
-        //    // lancement du timer
-        //    minuterie.Start();
-        private void InitializeTimer()
-        {
-            minuterie = new DispatcherTimer();
-            // configure l'intervalle du Timer :62 images par s
-            minuterie.Interval = TimeSpan.FromMilliseconds(16);
-            // associe l’appel de la méthode Jeu à la fin de la minuterie
-
-            //minuterie.Tick += Jeu;
-
-            // lancement du timer
-            minuterie.Start();
-
-        }
-      
-
-
         public void AfficheDemarrage()
         {
           UCDemarrage uc = new UCDemarrage();
@@ -73,19 +47,15 @@ namespace SaeProjetGitHubJEU
         }
         public void Jeu(object sender, RoutedEventArgs e)
         {
-            UCJeu uc = new UCJeu();
-            ZoneLobby.Content = uc;
+            UCJeu jeu = new UCJeu();
+            jeu.GameOverEvent += AfficherGameOver; // Si il y a l'evenement de game over alors cela passe sur UCGameOver
+            ZoneLobby.Content = jeu;
 
         }
-
-        
-
-        /* public void Parametre(object sender, RoutedEventArgs e)
-         {
-             UCParametre uc = new UCParametre();
-             ZoneLobby.Content=uc;
-         }*/
-
+        public void AfficherGameOver()
+        {
+            ZoneLobby.Content = new UCGameOver();
+        }
 
     } 
 }

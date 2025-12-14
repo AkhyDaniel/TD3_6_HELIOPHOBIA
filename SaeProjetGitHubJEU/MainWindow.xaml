@@ -9,9 +9,12 @@
     <Window.Background>
         <ImageBrush ImageSource="/LOGOF.png"/>
     </Window.Background>
-    <ContentControl x:Name="ZoneLobby" >
-    </ContentControl>
+    <Grid>
+        <ContentControl x:Name="ZoneLobby"/>
+    </Grid>
+    
+   
 
-
+   
 
 </Window>
