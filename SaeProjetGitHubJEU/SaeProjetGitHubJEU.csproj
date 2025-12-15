@@ -36,8 +36,10 @@
     <None Remove="imagesBackGround\imgSol.png" />
     <None Remove="imagesBackGround\regles.png" />
     <None Remove="imagesBut\imageButJouerF.png" />
+    <None Remove="imagesBut\imageButMenu.png" />
     <None Remove="imagesBut\imageButParaF.png" />
     <None Remove="imagesBut\imageButQuitterF.png" />
+    <None Remove="imagesBut\imageButRejouer.png" />
     <None Remove="ImagesLune\Lune1.png" />
     <None Remove="ImagesLune\Lune2.png" />
     <None Remove="ImagesLune\Lune3.png" />
@@ -45,6 +47,8 @@
     <None Remove="ImagesLune\Lune5.png" />
     <None Remove="Images_Castel\CastelJour.png" />
     <None Remove="Images_Castel\CastelNuit.png" />
+    <None Remove="imgObstacles\imgCacher.png" />
+    <None Remove="imgObstacles\imgObstacle.png" />
     <None Remove="imgPersoArriere\imgPersoA1.png" />
     <None Remove="imgPersoArriere\imgPersoA2.png" />
     <None Remove="imgPersoArriere\imgPersoA3.png" />
@@ -93,8 +97,10 @@
     <Resource Include="imagesBackGround\FOND_JOUR.jpg" />
     <Resource Include="imagesBackGround\regles.png" />
     <Resource Include="imagesBut\imageButJouerF.png" />
+    <Resource Include="imagesBut\imageButMenu.png" />
     <Resource Include="imagesBut\imageButParaF.png" />
     <Resource Include="imagesBut\imageButQuitterF.png" />
+    <Resource Include="imagesBut\imageButRejouer.png" />
     <Resource Include="ImagesLune\Lune1.png" />
     <Resource Include="ImagesLune\Lune2.png" />
     <Resource Include="ImagesLune\Lune3.png" />
@@ -102,6 +108,8 @@
     <Resource Include="ImagesLune\Lune5.png" />
     <Resource Include="Images_Castel\CastelJour.png" />
     <Resource Include="Images_Castel\CastelNuit.png" />
+    <Resource Include="imgObstacles\imgCacher.png" />
+    <Resource Include="imgObstacles\imgObstacle.png" />
     <Resource Include="imgPersoArriere\imgPersoA1.png" />
     <Resource Include="imgPersoArriere\imgPersoA2.png" />
     <Resource Include="imgPersoArriere\imgPersoA3.png" />
