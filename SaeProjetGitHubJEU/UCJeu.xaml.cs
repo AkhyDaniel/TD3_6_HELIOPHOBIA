@@ -92,7 +92,6 @@ namespace SaeProjetGitHubJEU
             InitializeTimer();
             InitializeImages();
             InitSon();
-           
         }
 
         private void InitializeTimer()
