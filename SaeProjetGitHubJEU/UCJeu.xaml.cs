@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
+using System.Media;
 using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,6 +52,8 @@ namespace SaeProjetGitHubJEU
         private BitmapImage castelNuitImg;
         private BitmapImage obstacle;
         private BitmapImage cacher;
+        private static SoundPlayer plusdecape;
+
 
 
         //Initialisation delai de changement des images
@@ -82,6 +85,7 @@ namespace SaeProjetGitHubJEU
             InitializeComponent();
             InitializeTimer();
             InitializeImages();
+            InitSon();
            
         }
 
@@ -118,6 +122,13 @@ namespace SaeProjetGitHubJEU
             cacher = new BitmapImage(new Uri("/imgObstables/imgCacher.png", UriKind.Relative));
 
         }
+
+        private void InitSon()
+        {
+            plusdecape = new SoundPlayer(Application.GetResourceStream(
+            new Uri("/Sons/Capeson.wav",UriKind.Relative)).Stream);
+        }
+
 
         public void Jeu(object? sender, EventArgs e)
         {
@@ -428,8 +439,10 @@ namespace SaeProjetGitHubJEU
                         imgPerso1.Source = persoCape[i];
                         if (i == 5) { NbPouvoir++; }
                     }
+                    
                   
                 }
+                if (e.Key == Key.Space && NbPouvoir == 3) { plusdecape.Play(); }
             }
 
 

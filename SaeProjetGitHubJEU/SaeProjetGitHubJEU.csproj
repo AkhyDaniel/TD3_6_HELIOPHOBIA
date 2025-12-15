@@ -89,6 +89,8 @@
     <None Remove="LOGOF.png" />
     <None Remove="LOGO\LOGOF.png" />
     <None Remove="regle.png" />
+    <None Remove="Sons\CapeSon.mp3" />
+    <None Remove="Sons\Capeson.wav" />
   </ItemGroup>
 
   <ItemGroup>
@@ -158,6 +160,7 @@
     <Resource Include="LOGOF.png" />
     <Resource Include="LOGO\LOGOF.png" />
     <Resource Include="regle.png" />
+    <Resource Include="Sons\Capeson.wav" />
   </ItemGroup>
 
 </Project>
