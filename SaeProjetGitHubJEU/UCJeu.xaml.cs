@@ -153,9 +153,8 @@ namespace SaeProjetGitHubJEU
             DeplaceImage(imgbackground1, vitesseBackground);
             DeplaceImage(imgbackground2, vitesseBackground);
             VerifCape();
-            
             Win();
-           
+            
         }
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
@@ -283,25 +282,57 @@ namespace SaeProjetGitHubJEU
                                               // Valeure vonlontairement arrondit pour être sur que l'image ne déborde pas sur les bords
             ZoneObstacles(381, 955, 420, 40,1);
         }
-
-        private void ZoneObstacles(int posXMin, int posXMax,int posY, int reductionTailleImg, int nbrDeTours)
+        //Prend une valeure aléatoire compris entre la valeure min et max de x.
+        //Et ajoute et soustrait la largeure de l'image pour s'assurer que l'image ne dépasse pas du cadre
+        private void ZoneObstacles(int posXMin, int posXMax, int posY, int reductionTailleImg, int nbrDeTours)
         {
+            List<double> positionsExistantes = new List<double>(); // stocke uniquement la position X des obstacles
+
+            double largeur = 180 - reductionTailleImg;
+
             for (int i = 0; i < nbrDeTours; i++)
             {
+                double xAleatoire;
+                int essais = 0;
+                bool chevauche = true;
+
+                do
+                {
+                    xAleatoire = alea.Next(posXMin, posXMax - (int)largeur);
+
+                    // Vérifie chevauchement avec une boucle classique
+                    chevauche = false;
+                    foreach (double x in positionsExistantes)
+                    {
+                        if (Math.Abs(x - xAleatoire) < largeur)   // On regarde si la distance absolue des 2 valeurs entre toutes les positions de x et la nouvelle position qui est généré sont < a la largeure de l'image
+                                                                  //SI c'est le cas cela veut dire que les images ce chevauche 
+                                                                  // exemple : x = 100 ; xAlea = 120  donc Math.Abs(100 - 120) = 20 < 50 donc chevauchement, on recommence 
+                        {
+                            chevauche = true;
+                            break; // sort de la boucle foreach dès qu'un chevauchement est détecté
+                        }
+                    }
+
+                    essais++;
+                    if (essais > 50)
+                        break; // pour éviter boucle infinie
+
+                } while (chevauche); 
+                                                                                                          
+
+                positionsExistantes.Add(xAleatoire);
+
                 Rectangle rect = new Rectangle();
-                rect.Width = 180- reductionTailleImg;
-                rect.Height = 120- reductionTailleImg;
+                rect.Width = largeur;
+                rect.Height = 120 - reductionTailleImg;
                 rect.Fill = new ImageBrush(obstacle);
 
-                double xAleatoire = alea.Next(posXMin + (int)rect.Width, posXMax - (int)rect.Width);//Prend une valeure aléatoire compris entre la valeure min et max de x.
-                                                                                                    //Et ajoute et soustrait la largeure de l'image pour s'assurer que l'image ne dépasse pas du cadre
                 Canvas.SetLeft(rect, xAleatoire);
                 Canvas.SetBottom(rect, posY);
-                Console.WriteLine($"X :{xAleatoire} Y:{posY}");
-
                 ZoneJeu.Children.Add(rect);
             }
         }
+
 
 
         //Deplacement de la lune de façon linéaire grace aux calculs d'équations des droites BC et BA.
@@ -358,16 +389,6 @@ namespace SaeProjetGitHubJEU
             y = 0.64 * positionX + 176;
             return y;
         }
-
-        //private int ZoneDeJeux()
-        //{
-        //    int arrondit,arrondit2;
-
-        //    arrondit = (int)EquationDroiteGauche(700);
-        //    arrondit2 = (int)EquationDroiteDroite(700);
-
-        //    return arrondit2,arrondit1;
-        //}
 
         private double EquationDroiteDroite(double positionX)
         {
