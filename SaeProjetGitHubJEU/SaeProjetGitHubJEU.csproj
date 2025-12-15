@@ -33,7 +33,9 @@
     <None Remove="imagesBackGround\FOND NUIT.png" />
     <None Remove="imagesBackGround\fond sans helio.png" />
     <None Remove="imagesBackGround\FOND_JOUR.jpg" />
+    <None Remove="imagesBackGround\imgLOSE.jpg" />
     <None Remove="imagesBackGround\imgSol.png" />
+    <None Remove="imagesBackGround\imgWin.jpg" />
     <None Remove="imagesBackGround\regles.png" />
     <None Remove="imagesBut\imageButJouerF.png" />
     <None Remove="imagesBut\imageButMenu.png" />
@@ -101,6 +103,8 @@
     <Resource Include="imagesBackGround\FOND NUIT.png" />
     <Resource Include="imagesBackGround\fond sans helio.png" />
     <Resource Include="imagesBackGround\FOND_JOUR.jpg" />
+    <Resource Include="imagesBackGround\imgLOSE.jpg" />
+    <Resource Include="imagesBackGround\imgWin.jpg" />
     <Resource Include="imagesBackGround\regles.png" />
     <Resource Include="imagesBut\imageButJouerF.png" />
     <Resource Include="imagesBut\imageButMenu.png" />

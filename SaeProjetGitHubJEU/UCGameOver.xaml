@@ -7,9 +7,18 @@
              mc:Ignorable="d" 
              d:DesignHeight="900" d:DesignWidth="1400">
     <Grid>
-        <Label x:Name="labGameOver" Content="Game over " HorizontalAlignment="Center" Margin="0,661,0,0" VerticalAlignment="Top" Height="76" Width="188" Background="#FFF0F0F0"/>
-        <Button x:Name="butRejouer" Content="Rejouer" HorizontalAlignment="Left" Margin="347,766,0,0" VerticalAlignment="Top" Height="58" Width="98" Click="butRejouer_Click"/>
-        <Button x:Name="butQuitter" Content="Menu" HorizontalAlignment="Left" Margin="945,766,0,0" VerticalAlignment="Top" Height="62" Width="98" Click="Button_Click"/>
+        <Image Source="/imagesBackGround/imgLOSE.jpg" Stretch="Fill"/>
+
+        <Button x:Name="butRejouer" Content="Rejouer" HorizontalAlignment="Left" Margin="209,764,0,0" VerticalAlignment="Top" Height="62" Width="250" Click="butRejouer_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="/imagesBut/imageButRejouer.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="butQuitter" Content="Menu" HorizontalAlignment="Left" Margin="959,764,0,0" VerticalAlignment="Top" Height="62" Width="250" Click="Button_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="/imagesBut/imageButMenu.png"/>
+            </Button.Background>
+        </Button>
 
     </Grid>
 </UserControl>

@@ -7,9 +7,18 @@
              mc:Ignorable="d" 
              d:DesignHeight="900" d:DesignWidth="1400">
     <Grid>
-        <Label x:Name="labWin" Content="BIEN JOUER vous êtes rentre au château &#xD;&#xA;sans mourir" HorizontalAlignment="Center" Margin="0,624,0,0" VerticalAlignment="Top" Height="94" Width="224" Background="White"/>
-        <Button x:Name="butRejouer" Content="Rejouer" HorizontalAlignment="Left" Margin="308,726,0,0" VerticalAlignment="Top" Height="53" Width="98" Click="butRejouer_Click"/>
-        <Button x:Name="butMenu" Content="Menu" HorizontalAlignment="Left" Margin="961,726,0,0" VerticalAlignment="Top" Height="53" Width="92" Click="Button_Click"/>
+        <Image Margin="0,0,10,0" Source="/imagesBackGround/imgWin.jpg" Stretch="Fill"/>
+        <Button x:Name="butRejouer" Content="" HorizontalAlignment="Left" Margin="220,717,0,0" VerticalAlignment="Top" Height="62" Width="250" Click="butRejouer_Click">
+            <Button.Background>
+                <ImageBrush ImageSource="/imagesBut/imageButRejouer.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="butMenu" Content="Menu" HorizontalAlignment="Left" Margin="941,717,0,0" VerticalAlignment="Top" Height="62" Width="250" Click="Button_Click" RenderTransformOrigin="0.372,0.548">
+            <Button.Background>
+                <ImageBrush ImageSource="/imagesBut/imageButMenu.png"/>
+            </Button.Background>
+        </Button>
+        
 
     </Grid>
 </UserControl>
