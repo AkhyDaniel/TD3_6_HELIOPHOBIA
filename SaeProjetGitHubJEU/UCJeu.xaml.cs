@@ -46,6 +46,8 @@ namespace SaeProjetGitHubJEU
         private BitmapImage backgroundNuit;
         private BitmapImage arbreNuit;
         private BitmapImage castelNuitImg;
+        private BitmapImage obstacle;
+        private BitmapImage cacher;
 
 
         //Initialisation delai de changement des images
@@ -66,6 +68,10 @@ namespace SaeProjetGitHubJEU
         private double posXLune = 760;
         private double vitesseLune = 1.6;  // 1.2 px / tick × 62 = 74 px / seconde
         private int vitesseBackground = 2;
+        private Random alea = new Random();
+
+        private int compteurObstacle = 0;
+        private const int DELAI_OBSTACLE = 120;
 
 
         public UCJeu()
@@ -102,6 +108,11 @@ namespace SaeProjetGitHubJEU
             backgroundNuit = new BitmapImage(new Uri("/imagesBackGround/FOND NUIT.png", UriKind.Relative));
             arbreNuit = new BitmapImage(new Uri("/imagesBackGround/arbres.png", UriKind.Relative));
             castelNuitImg = new BitmapImage(new Uri("/Images_Castel/CastelNuit.png", UriKind.Relative));
+
+            //Image des obstacles
+            obstacle= new BitmapImage(new Uri("/imgObstables/imgObstacle.png", UriKind.Relative));
+            cacher = new BitmapImage(new Uri("/imgObstables/imgCacher.png", UriKind.Relative));
+
         }
 
         public void Jeu(object? sender, EventArgs e)
@@ -109,6 +120,7 @@ namespace SaeProjetGitHubJEU
             Annimation_Lune();
             DeplaceImage(imgbackground1, vitesseBackground);
             DeplaceImage(imgbackground2, vitesseBackground);
+            
             Win();
         }
         public void DeplaceImage(Image image, int pas)
@@ -192,6 +204,10 @@ namespace SaeProjetGitHubJEU
             castelNuit.Width = WIDTH_CASTEL;
             castelNuit.Height = HEIGHT_CASTEL;
             Canvas.SetTop(castelNuit, POSY_CASTEL);
+            
+
+
+
         }
         private void AfficheJour()
         {
@@ -207,14 +223,39 @@ namespace SaeProjetGitHubJEU
             castelNuit.Width = WIDTH_CASTEL;
             castelNuit.Height = 385;
             Canvas.SetTop(castelNuit, POSY_CASTEL);
-            Canvas.SetBottom(castelNuit, 300);
+            
+
+
 
             //Réinitialisation de la position du soleil a l'origine de postion de la lune, cela évite que la lune ce décale a chaque cycle 
             posXLune = POSX_DEPART_LUNE;
             Canvas.SetLeft(imgLune1, POSX_DEPART_LUNE);
             Canvas.SetTop(imgLune1, POSY_DEPART_LUNE);
         }
-        
+
+        private Image CreerObjetAleatoire(BitmapImage source)
+        {
+            Image img = new Image();
+            img.Source = source;
+            img.Width = 60;
+            img.Height = 60;
+
+            double x = alea.Next(50, (int)(ZoneJeu.ActualWidth - img.Width));
+            double y = alea.Next(0, 400);
+
+            Canvas.SetLeft(img, x);
+            Canvas.SetBottom(img, y);
+
+            ZoneJeu.Children.Add(img);
+
+            return img;
+        }
+        private void GenererObjetsDebutPartie()
+        {
+            CreerObjetAleatoire(obstacle);
+            CreerObjetAleatoire(cacher);
+        }
+
         //Deplacement de la lune de façon linéaire grace aux calculs d'équations des droites BC et BA.
         private void deplacementLuneLineaire()
         {
@@ -263,14 +304,14 @@ namespace SaeProjetGitHubJEU
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             Application.Current.MainWindow.KeyDown += ZoneJeu_KeyDown;
-            //    Application.Current.MainWindow.KeyUp += _KeyUp;
+            GenererObjetsDebutPartie();
         }
 
         private bool DetectionImgJoueurAvant()
         {
             bool img =false;
             for (int i = 0; i< persoAvant.Length;i++)
-            {
+            {                                               // REFAIRE
                 img = true;
             }
             return img;
