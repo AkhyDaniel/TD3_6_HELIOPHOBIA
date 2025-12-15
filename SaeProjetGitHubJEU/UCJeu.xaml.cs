@@ -135,11 +135,7 @@ namespace SaeProjetGitHubJEU
             Annimation_Lune();
             DeplaceImage(imgbackground1, vitesseBackground);
             DeplaceImage(imgbackground2, vitesseBackground);
-            if (estSoleil && !EstProtegeParlaCape())
-            {
-                GameOver();
-                return;
-            }
+            VerifCape();
             Win();
            
         }
@@ -151,11 +147,6 @@ namespace SaeProjetGitHubJEU
                 Canvas.SetLeft(image, image.ActualWidth);
 
         }
-
-       
-
-      
-       
         private  void Annimation_Lune()
         {
             //Prochaine étape ajouter une valeure de delais aléatoire 
@@ -194,8 +185,6 @@ namespace SaeProjetGitHubJEU
                         AfficheJour();
                         estSoleil = true;
                         compteurTickSoleil = 0;
-                        
-
                     }
                     compteurTickLune = 0;
                 }
@@ -357,9 +346,6 @@ namespace SaeProjetGitHubJEU
 
         private void ZoneJeu_KeyDown(object sender, KeyEventArgs e)
         {
-            
-
-
             double PositionX = Canvas.GetLeft(imgPerso1);
             double PositionY = Canvas.GetBottom(imgPerso1);
             //double taille = 1;
@@ -442,7 +428,10 @@ namespace SaeProjetGitHubJEU
                     
                   
                 }
-                if (e.Key == Key.Space && NbPouvoir == 3) { plusdecape.Play(); }
+                if (e.Key == Key.Space && NbPouvoir == 3) 
+                { 
+                    plusdecape.Play();
+                }
             }
 
 
@@ -451,9 +440,14 @@ namespace SaeProjetGitHubJEU
 
 
         }
-
-
-
+        private void VerifCape()
+        {
+            if (estSoleil && !EstProtegeParlaCape()) // Le joueur meurt si il y a le soleil et qu'il n'a pas sa cape
+            {
+                GameOver();
+                return;
+            }
+        } 
         private void resetGame()
         {
             // Réinitialise la position de la lune
@@ -475,8 +469,10 @@ namespace SaeProjetGitHubJEU
 
             // Remet les images de fond et lune
             AfficheNuit();
-        }
 
+            //Réinitialise les variables
+            NbPouvoir = 0;
+        }
         private void Win()
         {
             if (Canvas.GetBottom(imgPerso1) == 506) // 506 c'est la postion y du chatêau, ou lorsque le joueur va rentrer en collision contre il gange
@@ -493,12 +489,5 @@ namespace SaeProjetGitHubJEU
             GameOverEvent?.Invoke(); //Déclenche l'évenement et prévient la fenêtre main window que le jeu est terminé  
             resetGame();
         }
-      
-
-        private void CanvaObstacleDroit_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
-
     }
 }
