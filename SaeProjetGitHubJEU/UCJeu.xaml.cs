@@ -210,6 +210,7 @@ namespace SaeProjetGitHubJEU
             castelNuit.Width = WIDTH_CASTEL;
             castelNuit.Height = 385;
             Canvas.SetTop(castelNuit, POSY_CASTEL);
+            Canvas.SetBottom(castelNuit, 300);
 
             //Réinitialisation de la position du soleil a l'origine de postion de la lune, cela évite que la lune ce décale a chaque cycle 
             posXLune = POSX_DEPART_LUNE;
@@ -266,6 +267,16 @@ namespace SaeProjetGitHubJEU
         {
             Application.Current.MainWindow.KeyDown += ZoneJeu_KeyDown;
             //    Application.Current.MainWindow.KeyUp += _KeyUp;
+        }
+
+        private bool DetectionImgJoueurAvant()
+        {
+            bool img =false;
+            for (int i = 0; i< persoAvant.Length;i++)
+            {
+                img = true;
+            }
+            return img;
         }
 
         private void ZoneJeu_KeyDown(object sender, KeyEventArgs e)
@@ -388,7 +399,7 @@ namespace SaeProjetGitHubJEU
 
         private void Win()
         {
-            if (Canvas.GetBottom(imgPerso1) == 506)
+            if (Canvas.GetBottom(imgPerso1) == 506) // 506 c'est la postion y du chatêau, ou lorsque le joueur va rentrer en collision contre il gange
             {
                 Console.WriteLine("Vous avez gagnez !");
                 minuterie.Stop();
