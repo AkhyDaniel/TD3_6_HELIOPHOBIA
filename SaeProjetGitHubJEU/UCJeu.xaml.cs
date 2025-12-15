@@ -198,8 +198,8 @@ namespace SaeProjetGitHubJEU
             Console.Write(": Soleil !");
             //Affichage soleil + arbre + background + castel en mode jour
             imgLune1.Source = soleil;
-            imgLune1.Width = 400;
-            imgLune1.Height = 250;
+            imgLune1.Width = 220;
+            imgLune1.Height = 220;
             arbresNuit.Source = arbreJour;
             imgbackground1.Source = backgroundJour;
             imgbackground2.Source = backgroundJour;
