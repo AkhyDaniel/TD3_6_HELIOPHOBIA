@@ -155,6 +155,7 @@ namespace SaeProjetGitHubJEU
             DeplaceImage(imgbackground2, vitesseBackground);
             VerifCape();
             VerifColisionObstacle();
+            VerifColisionCacher();
             Win();
             
         }
@@ -303,17 +304,17 @@ namespace SaeProjetGitHubJEU
 
         private void CreerObjetAleatoire()
         {
-            ZoneObstacles(-118, 1430, 100, 0,2,obstacle, 120, 180);
-            ZoneObstacles(193, 1130,300,20,2, obstacle, 120, 180);// Calculer a partir des fonction affines x = (y-176)/0.64  et y = (y-1060)/-0.67
+            ZoneObstacles(-118, 1430, 100, 0,2,obstacle, 120, 180, "OBSTACLE");
+            ZoneObstacles(193, 1130,300,20,2, obstacle, 120, 180, "OBSTACLE");// Calculer a partir des fonction affines x = (y-176)/0.64  et y = (y-1060)/-0.67
                                               // ex 193 => (300-176)/0.64 = 193.75 et 1130 =>(300-1060)/-0.67 =1134.32
                                               // Valeure vonlontairement arrondit pour être sur que l'image ne déborde pas sur les bords
-            ZoneObstacles(381, 955, 420, 40,1, obstacle, 120, 180);
-            ZoneObstacles(38,1283,200,30,2,cacher,220,100);
-            ZoneObstacles(319, 1014, 380, 40, 1, cacher,220,100);
+            ZoneObstacles(381, 955, 420, 40,1, obstacle, 120, 180, "OBSTACLE");
+            ZoneObstacles(38,1283,200,30,2,cacher,220,100, "CACHE");
+            ZoneObstacles(319, 1014, 380, 40, 1, cacher,220,100, "CACHE");
         }
         //Prend une valeure aléatoire compris entre la valeure min et max de x.
         //Et ajoute et soustrait la largeure de l'image pour s'assurer que l'image ne dépasse pas du cadre
-        private void ZoneObstacles(int posXMin, int posXMax, int posY, int reductionTailleImg, int nbrDeTours, BitmapImage image, int height, double largeur)
+        private void ZoneObstacles(int posXMin, int posXMax, int posY, int reductionTailleImg, int nbrDeTours, BitmapImage image, int height, double largeur, string type)
         {
             List<double> positionsExistantes = new List<double>(); // stocke uniquement la position X des obstacles
 
@@ -355,6 +356,7 @@ namespace SaeProjetGitHubJEU
                 rect.Width = largeur;
                 rect.Height = height - reductionTailleImg;
                 rect.Fill = new ImageBrush(image);
+                rect.Tag = type;
 
                 Canvas.SetLeft(rect, xAleatoire);
                 Canvas.SetBottom(rect, posY);
@@ -364,7 +366,7 @@ namespace SaeProjetGitHubJEU
      
         private bool VerifColisionObstacle( )
         {
-
+            //Prend les coordonnées du personnages pour crée un rectangle
             double persoX = Canvas.GetLeft(imgPerso1);
             double persoY = Canvas.GetBottom(imgPerso1);
             double persoWidth = imgPerso1.ActualWidth;
@@ -383,7 +385,7 @@ namespace SaeProjetGitHubJEU
 
                     if (rectPerso.IntersectsWith(obstacleRect))
                     {
-                       
+                        Console.WriteLine("BLoqué");
                         return true;
                     }
                 }
@@ -394,6 +396,7 @@ namespace SaeProjetGitHubJEU
 
         public bool VerifColisionCacher()
         {
+            //Prend les coordonnées du personnages pour crée un rectangle
             Rectangle rect = new Rectangle();
             double persoX = Canvas.GetLeft(imgPerso1);
             double persoY = Canvas.GetBottom(imgPerso1);
@@ -401,16 +404,18 @@ namespace SaeProjetGitHubJEU
             double persoHeight = imgPerso1.ActualHeight - 45;
             Rect rectPerso = new Rect(persoX, persoY, persoWidth, persoHeight);
 
-            foreach (UIElement element in ZoneJeu.Children)
+            foreach (UIElement element in ZoneJeu.Children) // Vérif tout les éléments dans la zone de jeu 
             {
-                if (element is Rectangle rectCache)
+                if (element is Rectangle rectCache &&
+            rectCache.Tag?.ToString() == "CACHE") //Permet d'identifier si c'est l'obstacle qui permet de se cacher
                 {
                     double cacheX = Canvas.GetLeft(rectCache);
                     double cacheY = Canvas.GetBottom(rectCache);
                     double cacheHeigth = rectCache.Height;
                     double cacheWidth = rectCache.Width;
                     Rect cacheRect = new Rect(cacheX, cacheY, cacheWidth, cacheHeigth);
-                    if (rectPerso.IntersectsWith(cacheRect))
+
+                    if (rectPerso.IntersectsWith(cacheRect)) // Si il y a une collision entre le rectangle du personnage et le rectangle de l'obstacle cacher
                     {
                         Console.WriteLine("Le joueur est caché");
                         return true;
@@ -541,7 +546,10 @@ namespace SaeProjetGitHubJEU
                             {
 
                                 imgPerso1.Source = persoCape[i];
-                                if (i == 5) { NbPouvoir++; }
+                                if (i == 5)
+                                { 
+                                NbPouvoir++;
+                                }
                             }
 
 
@@ -565,7 +573,7 @@ namespace SaeProjetGitHubJEU
         }
         private void VerifCape()
         {
-            if (estSoleil && !EstProtegeParlaCape() && VerifColisionCacher()) // Le joueur meurt si il y a le soleil et qu'il n'a pas sa cape
+            if (estSoleil && !EstProtegeParlaCape() && !VerifColisionCacher()) // Le joueur meurt si il y a le soleil et qu'il n'a pas sa cape
             {
                 GameOver();
                 return;
