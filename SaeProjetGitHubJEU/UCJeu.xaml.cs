@@ -5,6 +5,7 @@ using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Media;
 using System.Runtime.ConstrainedExecution;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -276,19 +277,21 @@ namespace SaeProjetGitHubJEU
 
         private void CreerObjetAleatoire()
         {
-            ZoneObstacles(-118, 1430, 100, 0,2);
-            ZoneObstacles(193, 1130,300,20,2);// Calculer a partir des fonction affines x = (y-176)/0.64  et y = (y-1060)/-0.67
+            ZoneObstacles(-118, 1430, 100, 0,2,obstacle, 120, 180);
+            ZoneObstacles(193, 1130,300,20,2, obstacle, 120, 180);// Calculer a partir des fonction affines x = (y-176)/0.64  et y = (y-1060)/-0.67
                                               // ex 193 => (300-176)/0.64 = 193.75 et 1130 =>(300-1060)/-0.67 =1134.32
                                               // Valeure vonlontairement arrondit pour être sur que l'image ne déborde pas sur les bords
-            ZoneObstacles(381, 955, 420, 40,1);
+            ZoneObstacles(381, 955, 420, 40,1, obstacle, 120, 180);
+            ZoneObstacles(38,1283,200,30,2,cacher,220,100);
+            ZoneObstacles(319, 1014, 380, 40, 1, cacher,220,100);
         }
         //Prend une valeure aléatoire compris entre la valeure min et max de x.
         //Et ajoute et soustrait la largeure de l'image pour s'assurer que l'image ne dépasse pas du cadre
-        private void ZoneObstacles(int posXMin, int posXMax, int posY, int reductionTailleImg, int nbrDeTours)
+        private void ZoneObstacles(int posXMin, int posXMax, int posY, int reductionTailleImg, int nbrDeTours, BitmapImage image, int height, double largeur)
         {
             List<double> positionsExistantes = new List<double>(); // stocke uniquement la position X des obstacles
 
-            double largeur = 180 - reductionTailleImg;
+             largeur -= reductionTailleImg;
 
             for (int i = 0; i < nbrDeTours; i++)
             {
@@ -324,8 +327,8 @@ namespace SaeProjetGitHubJEU
 
                 Rectangle rect = new Rectangle();
                 rect.Width = largeur;
-                rect.Height = 120 - reductionTailleImg;
-                rect.Fill = new ImageBrush(obstacle);
+                rect.Height = height - reductionTailleImg;
+                rect.Fill = new ImageBrush(image);
 
                 Canvas.SetLeft(rect, xAleatoire);
                 Canvas.SetBottom(rect, posY);

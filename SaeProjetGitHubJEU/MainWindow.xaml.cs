@@ -21,7 +21,7 @@ namespace SaeProjetGitHubJEU
     {
 
         private DispatcherTimer minuterie;
-        public static int PasVampire { get; set; } = 15;
+        public static int PasVampire { get; set; } = 25;
         public static int PasLune { get; set; } = 2;
         public static string Perso { get; set; }
 
