@@ -447,7 +447,7 @@ namespace SaeProjetGitHubJEU
                 GameOver();
                 return;
             }
-        } 
+        }
         private void resetGame()
         {
             // Réinitialise la position de la lune
@@ -473,6 +473,7 @@ namespace SaeProjetGitHubJEU
             //Réinitialise les variables
             NbPouvoir = 0;
         }
+
         private void Win()
         {
             if (Canvas.GetBottom(imgPerso1) == 506) // 506 c'est la postion y du chatêau, ou lorsque le joueur va rentrer en collision contre il gange
