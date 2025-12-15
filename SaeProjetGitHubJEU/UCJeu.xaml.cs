@@ -56,6 +56,7 @@ namespace SaeProjetGitHubJEU
         private static SoundPlayer marcher;
         private static SoundPlayer cape;
         private static SoundPlayer mort;
+        private static SoundPlayer win;
 
 
 
@@ -139,6 +140,9 @@ namespace SaeProjetGitHubJEU
 
             mort = new SoundPlayer(Application.GetResourceStream(
             new Uri("/Sons/VampireMeurt.wav", UriKind.Relative)).Stream);
+
+            win = new SoundPlayer(Application.GetResourceStream(
+            new Uri("/Sons/WinSound.wav", UriKind.Relative)).Stream);
         }
 
 
@@ -486,6 +490,7 @@ namespace SaeProjetGitHubJEU
                 Console.WriteLine("Vous avez gagnez !");
                 minuterie.Stop();
                 GameWin?.Invoke();
+                win.Play();
             }
         }
         private void GameOver()
