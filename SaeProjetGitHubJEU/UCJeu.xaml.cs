@@ -318,7 +318,7 @@ namespace SaeProjetGitHubJEU
             // Deplacement de la lune sur les fonctions affines
             Canvas.SetLeft(imgLune1, posXLune);
             Canvas.SetTop(imgLune1, y);
-            Console.WriteLine($"position lune x : {posXLune} y :{y}");
+            //Console.WriteLine($"position lune x : {posXLune} y :{y}");
 
         }
         
