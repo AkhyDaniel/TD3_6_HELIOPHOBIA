@@ -13,7 +13,7 @@
                 <ImageBrush ImageSource="/imagesBut/imageButRejouer.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="butMenu" Content="Menu" HorizontalAlignment="Left" Margin="941,717,0,0" VerticalAlignment="Top" Height="62" Width="250" Click="Button_Click" RenderTransformOrigin="0.372,0.548">
+        <Button x:Name="butMenu"  HorizontalAlignment="Left" Margin="941,717,0,0" VerticalAlignment="Top" Height="62" Width="250" Click="Button_Click" RenderTransformOrigin="0.372,0.548">
             <Button.Background>
                 <ImageBrush ImageSource="/imagesBut/imageButMenu.png"/>
             </Button.Background>

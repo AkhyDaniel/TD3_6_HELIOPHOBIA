@@ -82,6 +82,7 @@ namespace SaeProjetGitHubJEU
             InitializeComponent();
             InitializeTimer();
             InitializeImages();
+           
         }
 
         private void InitializeTimer()
@@ -123,8 +124,13 @@ namespace SaeProjetGitHubJEU
             Annimation_Lune();
             DeplaceImage(imgbackground1, vitesseBackground);
             DeplaceImage(imgbackground2, vitesseBackground);
-            
+            if (estSoleil && !EstProtegeParlaCape())
+            {
+                GameOver();
+                return;
+            }
             Win();
+           
         }
         public void DeplaceImage(Image image, int pas)
         {
@@ -134,6 +140,10 @@ namespace SaeProjetGitHubJEU
                 Canvas.SetLeft(image, image.ActualWidth);
 
         }
+
+       
+
+      
        
         private  void Annimation_Lune()
         {
@@ -174,6 +184,7 @@ namespace SaeProjetGitHubJEU
                         estSoleil = true;
                         compteurTickSoleil = 0;
                         
+
                     }
                     compteurTickLune = 0;
                 }
@@ -194,6 +205,17 @@ namespace SaeProjetGitHubJEU
 
         }
 
+
+        private bool EstProtegeParlaCape()
+        {
+            for (int i = 0; i < persoCape.Length; i++)
+            {
+                if (imgPerso1.Source == persoCape[i])
+                    return true;
+            }
+            return false;
+        }
+
         private void AfficheNuit()
         {
             //Affichage soleil + arbre + background + castel en mode nuit
@@ -208,6 +230,7 @@ namespace SaeProjetGitHubJEU
             castelNuit.Height = HEIGHT_CASTEL;
             Canvas.SetTop(castelNuit, POSY_CASTEL);
             
+
 
 
 
@@ -226,7 +249,8 @@ namespace SaeProjetGitHubJEU
             castelNuit.Width = WIDTH_CASTEL;
             castelNuit.Height = 385;
             Canvas.SetTop(castelNuit, POSY_CASTEL);
-            
+          
+
 
 
 
@@ -414,6 +438,8 @@ namespace SaeProjetGitHubJEU
 
 
         }
+
+
 
         private void resetGame()
         {

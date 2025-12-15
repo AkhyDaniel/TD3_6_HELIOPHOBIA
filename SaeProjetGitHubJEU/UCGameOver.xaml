@@ -9,12 +9,12 @@
     <Grid>
         <Image Source="/imagesBackGround/imgLOSE.jpg" Stretch="Fill"/>
 
-        <Button x:Name="butRejouer" Content="Rejouer" HorizontalAlignment="Left" Margin="209,764,0,0" VerticalAlignment="Top" Height="62" Width="250" Click="butRejouer_Click">
+        <Button x:Name="butRejouer"  HorizontalAlignment="Left" Margin="209,764,0,0" VerticalAlignment="Top" Height="62" Width="250" Click="butRejouer_Click">
             <Button.Background>
                 <ImageBrush ImageSource="/imagesBut/imageButRejouer.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="butQuitter" Content="Menu" HorizontalAlignment="Left" Margin="959,764,0,0" VerticalAlignment="Top" Height="62" Width="250" Click="Button_Click">
+        <Button x:Name="butQuitter"  HorizontalAlignment="Left" Margin="959,764,0,0" VerticalAlignment="Top" Height="62" Width="250" Click="Button_Click">
             <Button.Background>
                 <ImageBrush ImageSource="/imagesBut/imageButMenu.png"/>
             </Button.Background>
