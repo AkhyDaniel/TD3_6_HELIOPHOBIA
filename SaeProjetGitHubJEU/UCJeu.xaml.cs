@@ -17,6 +17,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using System.Xml.Schema;
 
 namespace SaeProjetGitHubJEU
 {
@@ -122,8 +123,8 @@ namespace SaeProjetGitHubJEU
             castelNuitImg = new BitmapImage(new Uri("/Images_Castel/CastelNuit.png", UriKind.Relative));
 
             //Image des obstacles
-            obstacle= new BitmapImage(new Uri("/imgObstables/imgObstacle.png", UriKind.Relative));
-            cacher = new BitmapImage(new Uri("/imgObstables/imgCacher.png", UriKind.Relative));
+            obstacle = new BitmapImage(new Uri("pack://application:,,,/SaeProjetGitHubJEU;component/imgObstacles/imgObstacle.png", UriKind.Absolute));
+            cacher = new BitmapImage(new Uri("pack://application:,,,/SaeProjetGitHubJEU;component/imgObstacles/imgCacher.png", UriKind.Absolute));
 
         }
 
@@ -145,16 +146,21 @@ namespace SaeProjetGitHubJEU
             new Uri("/Sons/WinSound.wav", UriKind.Relative)).Stream);
         }
 
-
+       
         public void Jeu(object? sender, EventArgs e)
         {
             Annimation_Lune();
             DeplaceImage(imgbackground1, vitesseBackground);
             DeplaceImage(imgbackground2, vitesseBackground);
             VerifCape();
-            CreerObjetAleatoire();
+            
             Win();
            
+        }
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow.KeyDown += ZoneJeu_KeyDown;
+            CreerObjetAleatoire();
         }
         public void DeplaceImage(Image image, int pas)
         {
@@ -246,10 +252,6 @@ namespace SaeProjetGitHubJEU
             castelNuit.Width = WIDTH_CASTEL;
             castelNuit.Height = HEIGHT_CASTEL;
             Canvas.SetTop(castelNuit, POSY_CASTEL);
-            
-
-
-
 
         }
         private void AfficheJour()
@@ -266,10 +268,6 @@ namespace SaeProjetGitHubJEU
             castelNuit.Width = WIDTH_CASTEL;
             castelNuit.Height = 385;
             Canvas.SetTop(castelNuit, POSY_CASTEL);
-          
-
-
-
 
             //Réinitialisation de la position du soleil a l'origine de postion de la lune, cela évite que la lune ce décale a chaque cycle 
             posXLune = POSX_DEPART_LUNE;
@@ -279,19 +277,32 @@ namespace SaeProjetGitHubJEU
 
         private void CreerObjetAleatoire()
         {
-            Rectangle rect = new Rectangle();
-            rect.Width = 100;
-            rect.Height = 100;
+            ZoneObstacles(-118, 1430, 100, 0,2);
+            ZoneObstacles(193, 1130,300,20,2);// Calculer a partir des fonction affines x = (y-176)/0.64  et y = (y-1060)/-0.67
+                                              // ex 193 => (300-176)/0.64 = 193.75 et 1130 =>(300-1060)/-0.67 =1134.32
+                                              // Valeure vonlontairement arrondit pour être sur que l'image ne déborde pas sur les bords
+            ZoneObstacles(381, 955, 420, 40,1);
+        }
 
-            //rect.Fill = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/imgObstables/imgObstacle.png", UriKind.Relative)));
-            Canvas.SetLeft(rect,400);
-            Canvas.SetTop(rect,200);
-            ZoneJeu.Children.Add(rect);
-        }
-        private void GenererObjetsDebutPartie()
+        private void ZoneObstacles(int posXMin, int posXMax,int posY, int reductionTailleImg, int nbrDeTours)
         {
-         
+            for (int i = 0; i < nbrDeTours; i++)
+            {
+                Rectangle rect = new Rectangle();
+                rect.Width = 180- reductionTailleImg;
+                rect.Height = 120- reductionTailleImg;
+                rect.Fill = new ImageBrush(obstacle);
+
+                double xAleatoire = alea.Next(posXMin + (int)rect.Width, posXMax - (int)rect.Width);//Prend une valeure aléatoire compris entre la valeure min et max de x.
+                                                                                                    //Et ajoute et soustrait la largeure de l'image pour s'assurer que l'image ne dépasse pas du cadre
+                Canvas.SetLeft(rect, xAleatoire);
+                Canvas.SetBottom(rect, posY);
+                Console.WriteLine($"X :{xAleatoire} Y:{posY}");
+
+                ZoneJeu.Children.Add(rect);
+            }
         }
+
 
         //Deplacement de la lune de façon linéaire grace aux calculs d'équations des droites BC et BA.
         private void deplacementLuneLineaire()
@@ -302,10 +313,10 @@ namespace SaeProjetGitHubJEU
             //Deplacement de B vers A
             if (posXLune >=600)
             {
-                //Equation de droite BA
+                //Equation de droite BA avec la formule y = ax + b
                 y = 0.6875 * posXLune - 502.5; //(0.6875 = 11/16)
             }
-            //Deplacemenet de B vers C
+            //Deplacemenet de B vers C avec la formule y = ax + b
             else
             {
                 //Equation de droite BC
@@ -338,14 +349,33 @@ namespace SaeProjetGitHubJEU
                 }
         }
 
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+       
+
+        private double EquationDroiteGauche(double positionX)
         {
-            Application.Current.MainWindow.KeyDown += ZoneJeu_KeyDown;
-            GenererObjetsDebutPartie();
+            double y =0;
+            //equation de la droite de gauche de la forme y = ax + b
+            y = 0.64 * positionX + 176;
+            return y;
         }
 
-        
+        //private int ZoneDeJeux()
+        //{
+        //    int arrondit,arrondit2;
 
+        //    arrondit = (int)EquationDroiteGauche(700);
+        //    arrondit2 = (int)EquationDroiteDroite(700);
+
+        //    return arrondit2,arrondit1;
+        //}
+
+        private double EquationDroiteDroite(double positionX)
+        {
+            double y = 0;
+            //equation de la droite de droite de la forme y = ax + b
+            y = -0.67 * positionX + 1060;
+            return y;
+        }
         private void ZoneJeu_KeyDown(object sender, KeyEventArgs e)
         {
 
@@ -357,7 +387,7 @@ namespace SaeProjetGitHubJEU
             //if (PositionY > 400) { taille = 0.7; }
             Console.WriteLine("X :" + PositionX + " Y : " + PositionY);
             //Vérif si le joueur est a l'interieur des deux fonctions affines avec l'equation de la courbe gauche : y=0.64x+176 et la courbe droite y=-0.67x+1060
-            if (PositionY < 0.64 * PositionX + 176 && PositionY < 512 && PositionY < -0.67 * PositionX + 1060)
+            if (PositionY < EquationDroiteGauche(PositionX) && PositionY < 512 && PositionY < EquationDroiteDroite(PositionX))
             {
                 Console.WriteLine("Interieur");
                 if (e.Key == Key.Z || e.Key == Key.Q || e.Key == Key.S || e.Key == Key.D)
@@ -375,8 +405,9 @@ namespace SaeProjetGitHubJEU
                         Canvas.SetBottom(imgPerso1, Canvas.GetBottom(imgPerso1) + MainWindow.PasVampire);
                         for (int i = 0; i < persoAvant.Length; i++)
                             persoAvant[i] = new BitmapImage(new Uri($"/imgPerso/imgPerso{i + 1}.png", UriKind.Relative));
-                        AnimationPerso(persoAvant);                     
-                        
+                        AnimationPerso(persoAvant);
+                        marcher.Play();
+
                     }
                        
                 }
@@ -390,7 +421,8 @@ namespace SaeProjetGitHubJEU
                             persoArriere[i] = new BitmapImage(new Uri($"/imgPersoArriere/imgPersoA{i + 1}.png", UriKind.Relative));
                         
                         AnimationPerso(persoArriere);
-                        
+                        marcher.Play();
+
                     }
                       
                 }
@@ -403,7 +435,8 @@ namespace SaeProjetGitHubJEU
                         for (int i = 0; i < persoGauche.Length; i++)
                             persoGauche[i] = new BitmapImage(new Uri($"/imgPersoGauche/imgPersoG{i + 1}.png", UriKind.Relative));
                         AnimationPerso(persoGauche);
-                        
+                        marcher.Play();
+
                     }
                     
                 }
@@ -417,9 +450,8 @@ namespace SaeProjetGitHubJEU
                                 persoDroit[i] = new BitmapImage(new Uri($"/imgPersoDroit/imgPersoD{i + 1}.png", UriKind.Relative));
 
                             AnimationPerso(persoDroit);
-                            
-
-                    }
+                            marcher.Play();
+                        }
                     }
                 
                 if (e.Key == Key.Space && NbPouvoir < 3)
