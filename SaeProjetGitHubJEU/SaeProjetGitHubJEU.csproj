@@ -122,8 +122,12 @@
     <Resource Include="ImagesLune\Lune5.png" />
     <Resource Include="Images_Castel\CastelJour.png" />
     <Resource Include="Images_Castel\CastelNuit.png" />
-    <Resource Include="imgObstacles\imgCacher.png" />
-    <Resource Include="imgObstacles\imgObstacle.png" />
+    <Resource Include="imgObstacles\imgCacher.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="imgObstacles\imgObstacle.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="imgPersoArriere\imgPersoA1.png" />
     <Resource Include="imgPersoArriere\imgPersoA2.png" />
     <Resource Include="imgPersoArriere\imgPersoA3.png" />

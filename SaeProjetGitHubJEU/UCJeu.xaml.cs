@@ -143,11 +143,8 @@ namespace SaeProjetGitHubJEU
             Annimation_Lune();
             DeplaceImage(imgbackground1, vitesseBackground);
             DeplaceImage(imgbackground2, vitesseBackground);
-            if (estSoleil && !EstProtegeParlaCape())
-            {
-                GameOver();
-                return;
-            }
+            VerifCape();
+            CreerObjetAleatoire();
             Win();
            
         }
@@ -159,11 +156,6 @@ namespace SaeProjetGitHubJEU
                 Canvas.SetLeft(image, image.ActualWidth);
 
         }
-
-       
-
-      
-       
         private  void Annimation_Lune()
         {
             //Prochaine étape ajouter une valeure de delais aléatoire 
@@ -202,8 +194,6 @@ namespace SaeProjetGitHubJEU
                         AfficheJour();
                         estSoleil = true;
                         compteurTickSoleil = 0;
-                        
-
                     }
                     compteurTickLune = 0;
                 }
@@ -279,27 +269,20 @@ namespace SaeProjetGitHubJEU
             Canvas.SetTop(imgLune1, POSY_DEPART_LUNE);
         }
 
-        private Image CreerObjetAleatoire(BitmapImage source)
+        private void CreerObjetAleatoire()
         {
-            Image img = new Image();
-            img.Source = source;
-            img.Width = 60;
-            img.Height = 60;
+            Rectangle rect = new Rectangle();
+            rect.Width = 100;
+            rect.Height = 100;
 
-            double x = alea.Next(50, (int)(ZoneJeu.ActualWidth - img.Width));
-            double y = alea.Next(0, 400);
-
-            Canvas.SetLeft(img, x);
-            Canvas.SetBottom(img, y);
-
-            ZoneJeu.Children.Add(img);
-
-            return img;
+            //rect.Fill = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/imgObstables/imgObstacle.png", UriKind.Relative)));
+            Canvas.SetLeft(rect,400);
+            Canvas.SetTop(rect,200);
+            ZoneJeu.Children.Add(rect);
         }
         private void GenererObjetsDebutPartie()
         {
-            CreerObjetAleatoire(obstacle);
-            CreerObjetAleatoire(cacher);
+         
         }
 
         //Deplacement de la lune de façon linéaire grace aux calculs d'équations des droites BC et BA.
@@ -445,7 +428,10 @@ namespace SaeProjetGitHubJEU
                     
                   
                 }
-                if (e.Key == Key.Space && NbPouvoir == 3) { plusdecape.Play(); }
+                if (e.Key == Key.Space && NbPouvoir == 3) 
+                { 
+                    plusdecape.Play();
+                }
             }
 
 
@@ -454,9 +440,14 @@ namespace SaeProjetGitHubJEU
 
 
         }
-
-
-
+        private void VerifCape()
+        {
+            if (estSoleil && !EstProtegeParlaCape()) // Le joueur meurt si il y a le soleil et qu'il n'a pas sa cape
+            {
+                GameOver();
+                return;
+            }
+        } 
         private void resetGame()
         {
             // Réinitialise la position de la lune
@@ -478,8 +469,10 @@ namespace SaeProjetGitHubJEU
 
             // Remet les images de fond et lune
             AfficheNuit();
-        }
 
+            //Réinitialise les variables
+            NbPouvoir = 0;
+        }
         private void Win()
         {
             if (Canvas.GetBottom(imgPerso1) == 506) // 506 c'est la postion y du chatêau, ou lorsque le joueur va rentrer en collision contre il gange
@@ -496,12 +489,5 @@ namespace SaeProjetGitHubJEU
             GameOverEvent?.Invoke(); //Déclenche l'évenement et prévient la fenêtre main window que le jeu est terminé  
             resetGame();
         }
-      
-
-        private void CanvaObstacleDroit_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
-
     }
 }
