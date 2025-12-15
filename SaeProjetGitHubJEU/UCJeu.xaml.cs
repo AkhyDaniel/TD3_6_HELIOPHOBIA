@@ -32,13 +32,16 @@ namespace SaeProjetGitHubJEU
         private DispatcherTimer minuterie;
         private int nb = 0;
         private int nbTourLune = 0;
+        private int nbToursPersoAnim = 0;
+        private int NbPouvoir = 0 ;
 
         //Initialisation des images 
         private BitmapImage[] lune = new BitmapImage[5];
-        private BitmapImage[] persoAvant = new BitmapImage[7];
-        private BitmapImage[] persoDroit = new BitmapImage[5];
-        private BitmapImage[] persoGauche = new BitmapImage[5];
-        private BitmapImage[] persoArriere = new BitmapImage[5];
+        private BitmapImage[] persoAvant = new BitmapImage[8];
+        private BitmapImage[] persoDroit = new BitmapImage[6];
+        private BitmapImage[] persoGauche = new BitmapImage[6];
+        private BitmapImage[] persoArriere = new BitmapImage[6];
+        private BitmapImage[] persoCape = new BitmapImage[6];
         private BitmapImage soleil;
         private BitmapImage backgroundJour;
         private BitmapImage castelJour;
@@ -267,12 +270,6 @@ namespace SaeProjetGitHubJEU
 
         private void ZoneJeu_KeyDown(object sender, KeyEventArgs e)
         {
-            if(estSoleil)
-            {
-                GameOver();
-                return;
-            }
-
             
 
 
@@ -287,6 +284,14 @@ namespace SaeProjetGitHubJEU
             if (PositionY < 0.64 * PositionX + 176 && PositionY < 512 && PositionY < -0.67 * PositionX + 1060)
             {
                 Console.WriteLine("Interieur");
+                if (e.Key == Key.Z || e.Key == Key.Q || e.Key == Key.S || e.Key == Key.D)
+                {
+                    if(estSoleil)
+                    {
+                        GameOver();
+                        return;
+                    }
+                }
                 if (e.Key == Key.Z)
                 {
                     if ((Canvas.GetBottom(imgPerso1) + MainWindow.PasVampire) <= (ZoneJeu.ActualHeight - imgPerso1.ActualHeight))
@@ -336,6 +341,19 @@ namespace SaeProjetGitHubJEU
 
                         }
                     }
+                
+                if (e.Key == Key.Space && NbPouvoir < 3)
+                {
+                    for (int i = 0; i < persoCape.Length; i++)
+                        persoCape[i] = new BitmapImage(new Uri($"/imgPersoCape/imgPersoCape{i + 1}.png", UriKind.Relative));
+
+                    for (int i = 0;i < persoCape.Length; i++)
+                    {
+                        imgPerso1.Source = persoCape[i];
+                        if (i == 5) { NbPouvoir++; }
+                    }
+                  
+                }
             }
 
 
