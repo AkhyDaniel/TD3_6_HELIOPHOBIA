@@ -55,6 +55,7 @@ namespace SaeProjetGitHubJEU
         private static SoundPlayer plusdecape;
         private static SoundPlayer marcher;
         private static SoundPlayer cape;
+        private static SoundPlayer mort;
 
 
 
@@ -135,6 +136,9 @@ namespace SaeProjetGitHubJEU
 
             cape = new SoundPlayer(Application.GetResourceStream(
             new Uri("/Sons/Cape.wav", UriKind.Relative)).Stream);
+
+            mort = new SoundPlayer(Application.GetResourceStream(
+            new Uri("/Sons/VampireMeurt.wav", UriKind.Relative)).Stream);
         }
 
 
@@ -416,12 +420,13 @@ namespace SaeProjetGitHubJEU
                 
                 if (e.Key == Key.Space && NbPouvoir < 3)
                 {
+                    cape.Play();
                     for (int i = 0; i < persoCape.Length; i++)
                         persoCape[i] = new BitmapImage(new Uri($"/imgPersoCape/imgPersoCape{i + 1}.png", UriKind.Relative));
 
                     for (int i = 0;i < persoCape.Length; i++)
                     {
-                        cape.Play();
+                        
                         imgPerso1.Source = persoCape[i];
                         if (i == 5) { NbPouvoir++; }
                     }
@@ -476,7 +481,7 @@ namespace SaeProjetGitHubJEU
 
         private void Win()
         {
-            if (Canvas.GetBottom(imgPerso1) == 506) // 506 c'est la postion y du chatêau, ou lorsque le joueur va rentrer en collision contre il gange
+            if (Canvas.GetBottom(imgPerso1) > 506) // 506 c'est la postion y du chatêau, ou lorsque le joueur va rentrer en collision contre il gange
             {
                 Console.WriteLine("Vous avez gagnez !");
                 minuterie.Stop();
@@ -485,6 +490,7 @@ namespace SaeProjetGitHubJEU
         }
         private void GameOver()
         {
+            mort.Play();
             Console.WriteLine("Vous avez perdu !");
             minuterie.Stop();
             GameOverEvent?.Invoke(); //Déclenche l'évenement et prévient la fenêtre main window que le jeu est terminé  

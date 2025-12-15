@@ -93,6 +93,7 @@
     <None Remove="Sons\CapeSon.mp3" />
     <None Remove="Sons\Capeson.wav" />
     <None Remove="Sons\Marcher.wav" />
+    <None Remove="Sons\VampireMeurt.wav" />
   </ItemGroup>
 
   <ItemGroup>
@@ -169,6 +170,7 @@
     <Resource Include="Sons\Cape.wav" />
     <Resource Include="Sons\Capeson.wav" />
     <Resource Include="Sons\Marcher.wav" />
+    <Resource Include="Sons\VampireMeurt.wav" />
   </ItemGroup>
 
 </Project>
