@@ -53,6 +53,8 @@ namespace SaeProjetGitHubJEU
         private BitmapImage obstacle;
         private BitmapImage cacher;
         private static SoundPlayer plusdecape;
+        private static SoundPlayer marcher;
+        private static SoundPlayer cape;
 
 
 
@@ -127,6 +129,12 @@ namespace SaeProjetGitHubJEU
         {
             plusdecape = new SoundPlayer(Application.GetResourceStream(
             new Uri("/Sons/Capeson.wav",UriKind.Relative)).Stream);
+
+            marcher = new SoundPlayer(Application.GetResourceStream(
+            new Uri("/Sons/Marcher.wav", UriKind.Relative)).Stream);
+
+            cape = new SoundPlayer(Application.GetResourceStream(
+            new Uri("/Sons/Cape.wav", UriKind.Relative)).Stream);
         }
 
 
@@ -345,20 +353,10 @@ namespace SaeProjetGitHubJEU
             GenererObjetsDebutPartie();
         }
 
-        private bool DetectionImgJoueurAvant()
-        {
-            bool img =false;
-            for (int i = 0; i< persoAvant.Length;i++)
-            {                                               // REFAIRE
-                img = true;
-            }
-            return img;
-        }
+        
 
         private void ZoneJeu_KeyDown(object sender, KeyEventArgs e)
         {
-            
-
 
             double PositionX = Canvas.GetLeft(imgPerso1);
             double PositionY = Canvas.GetBottom(imgPerso1);
@@ -386,7 +384,8 @@ namespace SaeProjetGitHubJEU
                         Canvas.SetBottom(imgPerso1, Canvas.GetBottom(imgPerso1) + MainWindow.PasVampire);
                         for (int i = 0; i < persoAvant.Length; i++)
                             persoAvant[i] = new BitmapImage(new Uri($"/imgPerso/imgPerso{i + 1}.png", UriKind.Relative));
-                        AnimationPerso(persoAvant);
+                        AnimationPerso(persoAvant);                     
+                        
                     }
                        
                 }
@@ -400,6 +399,7 @@ namespace SaeProjetGitHubJEU
                             persoArriere[i] = new BitmapImage(new Uri($"/imgPersoArriere/imgPersoA{i + 1}.png", UriKind.Relative));
                         
                         AnimationPerso(persoArriere);
+                        
                     }
                       
                 }
@@ -412,6 +412,7 @@ namespace SaeProjetGitHubJEU
                         for (int i = 0; i < persoGauche.Length; i++)
                             persoGauche[i] = new BitmapImage(new Uri($"/imgPersoGauche/imgPersoG{i + 1}.png", UriKind.Relative));
                         AnimationPerso(persoGauche);
+                        
                     }
                     
                 }
@@ -425,8 +426,9 @@ namespace SaeProjetGitHubJEU
                                 persoDroit[i] = new BitmapImage(new Uri($"/imgPersoDroit/imgPersoD{i + 1}.png", UriKind.Relative));
 
                             AnimationPerso(persoDroit);
+                            
 
-                        }
+                    }
                     }
                 
                 if (e.Key == Key.Space && NbPouvoir < 3)
@@ -436,6 +438,7 @@ namespace SaeProjetGitHubJEU
 
                     for (int i = 0;i < persoCape.Length; i++)
                     {
+                        cape.Play();
                         imgPerso1.Source = persoCape[i];
                         if (i == 5) { NbPouvoir++; }
                     }
