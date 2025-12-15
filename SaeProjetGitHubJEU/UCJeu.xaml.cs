@@ -136,6 +136,7 @@ namespace SaeProjetGitHubJEU
             DeplaceImage(imgbackground1, vitesseBackground);
             DeplaceImage(imgbackground2, vitesseBackground);
             VerifCape();
+            CreerObjetAleatoire();
             Win();
            
         }
@@ -260,27 +261,20 @@ namespace SaeProjetGitHubJEU
             Canvas.SetTop(imgLune1, POSY_DEPART_LUNE);
         }
 
-        private Image CreerObjetAleatoire(BitmapImage source)
+        private void CreerObjetAleatoire()
         {
-            Image img = new Image();
-            img.Source = source;
-            img.Width = 60;
-            img.Height = 60;
+            Rectangle rect = new Rectangle();
+            rect.Width = 100;
+            rect.Height = 100;
 
-            double x = alea.Next(50, (int)(ZoneJeu.ActualWidth - img.Width));
-            double y = alea.Next(0, 400);
-
-            Canvas.SetLeft(img, x);
-            Canvas.SetBottom(img, y);
-
-            ZoneJeu.Children.Add(img);
-
-            return img;
+            //rect.Fill = new ImageBrush(new BitmapImage(new Uri("pack://application:,,,/imgObstables/imgObstacle.png", UriKind.Relative)));
+            Canvas.SetLeft(rect,400);
+            Canvas.SetTop(rect,200);
+            ZoneJeu.Children.Add(rect);
         }
         private void GenererObjetsDebutPartie()
         {
-            CreerObjetAleatoire(obstacle);
-            CreerObjetAleatoire(cacher);
+         
         }
 
         //Deplacement de la lune de façon linéaire grace aux calculs d'équations des droites BC et BA.
