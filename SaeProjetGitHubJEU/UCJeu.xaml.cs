@@ -37,7 +37,8 @@ namespace SaeProjetGitHubJEU
         private int nbTourLune = 0;
         private int nbToursPersoAnim = 0;
         private int NbPouvoir = 0;
-        public int CapeRest = 3;
+        private int NbCapeAuto = 3;
+        
 
         //Initialisation des images 
         private BitmapImage[] lune = new BitmapImage[5];
@@ -466,6 +467,8 @@ namespace SaeProjetGitHubJEU
 
             double PositionX = Canvas.GetLeft(imgPerso1);
             double PositionY = Canvas.GetBottom(imgPerso1);
+            double anciennePositionX = Canvas.GetLeft(imgPerso1);
+            double anciennePositionY = Canvas.GetBottom(imgPerso1);
             //double taille = 1;
             //if (PositionY > 200) { taille = 0.9; }
             //if (PositionY > 300) { taille = 0.8; }        //A QUOI SA SERT ??
@@ -568,7 +571,8 @@ namespace SaeProjetGitHubJEU
 
                     if (VerifColisionObstacle())
                     {
-                        Canvas.SetBottom(imgPerso1, Canvas.GetBottom(imgPerso1) - MainWindow.PasVampire);
+                        Canvas.SetLeft(imgPerso1, anciennePositionX);
+                        Canvas.SetBottom(imgPerso1, anciennePositionY);
                     }
 
 
@@ -640,7 +644,7 @@ namespace SaeProjetGitHubJEU
 
         private void MettreAJourAffichageCapes()
         {
-            int capesRestantes = 3 - NbPouvoir;
+            int capesRestantes = NbCapeAuto - NbPouvoir;
 
             txtNbCapes.Text = $"{capesRestantes}";
         }

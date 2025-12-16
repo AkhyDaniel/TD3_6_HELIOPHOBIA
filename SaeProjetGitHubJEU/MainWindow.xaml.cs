@@ -21,7 +21,7 @@ namespace SaeProjetGitHubJEU
     {
 
         private DispatcherTimer minuterie;
-        public static int PasVampire { get; set; } = 25;
+        public static int PasVampire { get; set; } = 5;
         public static int PasLune { get; set; } = 2;
         public static string Perso { get; set; }
 
@@ -36,6 +36,8 @@ namespace SaeProjetGitHubJEU
           UCDemarrage uc = new UCDemarrage();
             ZoneLobby.Content = uc;
             uc.butJouer.Click += ReglesJeu;
+            uc.butParametre.Click += (s, e) => AfficheParametre();
+            uc.butCheat.Click += (s, e) => AfficheCheat();
             //uc.butParametre.Click += Parametre;
         }
 
@@ -63,7 +65,19 @@ namespace SaeProjetGitHubJEU
             ZoneLobby.Content = new UCWin();
         }
 
-       
+        public void AfficheParametre()
+        {
+            Parametre parametre = new Parametre();
+            parametre.ShowDialog();
+        }
+
+        public void AfficheCheat()
+        {
+            Cheats cheats = new Cheats();
+            cheats.ShowDialog();
+        }
+
+
 
         private void cheatmenu_Click(object sender, RoutedEventArgs e)
         {

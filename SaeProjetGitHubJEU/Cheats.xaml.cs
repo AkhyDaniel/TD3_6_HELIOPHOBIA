@@ -10,31 +10,29 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace SaeProjetGitHubJEU
 {
     /// <summary>
-    /// Logique d'interaction pour UCDemarrage.xaml
+    /// Logique d'interaction pour Cheats.xaml
     /// </summary>
-    public partial class UCDemarrage : UserControl
+    public partial class Cheats : Window
     {
-        public UCDemarrage()
+        public Cheats()
         {
             InitializeComponent();
         }
 
-        private void butParametre_Click(object sender, RoutedEventArgs e)
+        private void butAnnuleC_Click(object sender, RoutedEventArgs e)
         {
-            
+            DialogResult = false;
+
         }
 
-        private void butQuitter_Click(object sender, RoutedEventArgs e)
+        private void butOkC_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown(); // quitte le jeu
+            DialogResult = true;
         }
-
-        
     }
 }

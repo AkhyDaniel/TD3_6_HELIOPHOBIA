@@ -14,15 +14,7 @@
             <Menu Height="20" 
       HorizontalAlignment="Left"
       VerticalAlignment="Top"
-      Margin="10,10,0,0">
-                <MenuItem x:Name="parametremenu" Header="_Parametre" 
-             
-              Width="68" 
-              Background="White" Click="parametremenu_Click"/>
-                <MenuItem x:Name="cheatmenu" Header="_Cheats" 
-              Height="22" 
-              Width="58" Click="cheatmenu_Click"/>
-            </Menu>
+      Margin="10,10,0,0"/>
 
 
 

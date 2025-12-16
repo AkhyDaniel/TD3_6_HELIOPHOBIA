@@ -38,8 +38,14 @@
     <None Remove="imagesBackGround\imgSol.png" />
     <None Remove="imagesBackGround\imgWin.jpg" />
     <None Remove="imagesBackGround\regles.png" />
+    <None Remove="imagesBut\butAnnuler.png" />
+    <None Remove="imagesBut\butCheat.png" />
+    <None Remove="imagesBut\butOK.png" />
+    <None Remove="imagesBut\imageButAnnuler.png" />
+    <None Remove="imagesBut\imageButCheat.png" />
     <None Remove="imagesBut\imageButJouerF.png" />
     <None Remove="imagesBut\imageButMenu.png" />
+    <None Remove="imagesBut\imageButOK.png" />
     <None Remove="imagesBut\imageButParaF.png" />
     <None Remove="imagesBut\imageButQuitterF.png" />
     <None Remove="imagesBut\imageButRejouer.png" />
@@ -114,6 +120,9 @@
     <Resource Include="imagesBackGround\imgLOSE.jpg" />
     <Resource Include="imagesBackGround\imgWin.jpg" />
     <Resource Include="imagesBackGround\regles.png" />
+    <Resource Include="imagesBut\butAnnuler.png" />
+    <Resource Include="imagesBut\butCheat.png" />
+    <Resource Include="imagesBut\butOK.png" />
     <Resource Include="imagesBut\imageButJouerF.png" />
     <Resource Include="imagesBut\imageButMenu.png" />
     <Resource Include="imagesBut\imageButParaF.png" />
