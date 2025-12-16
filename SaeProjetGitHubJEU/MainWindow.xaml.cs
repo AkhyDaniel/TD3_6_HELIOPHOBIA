@@ -62,5 +62,17 @@ namespace SaeProjetGitHubJEU
         {
             ZoneLobby.Content = new UCWin();
         }
+
+       
+
+        private void cheatmenu_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void parametremenu_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     } 
 }

@@ -6,17 +6,17 @@
         xmlns:local="clr-namespace:SaeProjetGitHubJEU"
         mc:Ignorable="d"
         Title="Parametre" Height="450" Width="800">
-    <Grid>
-        <Label x:Name="labParametre" Content="" HorizontalAlignment="Center" Margin="0,46,0,0" VerticalAlignment="Top" Height="82" Width="440">
+    <Grid RenderTransformOrigin="0.503,0.588">
+        <Label x:Name="labParametre" Content="" HorizontalAlignment="Center" Margin="0,56,0,0" VerticalAlignment="Top" Height="82" Width="440">
             <Label.Background>
                 <ImageBrush ImageSource="/imageButParaF.png"/>
             </Label.Background>
         </Label>
-        <Slider HorizontalAlignment="Center" VerticalAlignment="Center" Width="216" Height="61" ValueChanged="Slider_ValueChanged"/>
-        <Button x:Name="butOk" Content="OK" HorizontalAlignment="Left" Margin="226,344,0,0" VerticalAlignment="Top" Height="38" Width="63"/>
+        <Slider HorizontalAlignment="Center" VerticalAlignment="Top" Width="216" Height="23" ValueChanged="Slider_ValueChanged" Margin="0,242,0,0"/>
+        <Button x:Name="butOk" Content="OK" HorizontalAlignment="Left" Margin="127,349,0,0" VerticalAlignment="Top" Height="38" Width="64"/>
         <Button x:Name="butAnnuler" Content="Annuler
-                " HorizontalAlignment="Left" Margin="592,0,0,42" VerticalAlignment="Bottom" Width="86" Height="48"/>
-        <Label x:Name="labVolume" Content="Volume" HorizontalAlignment="Center" Margin="0,152,0,0" VerticalAlignment="Top" Height="26" Width="60"/>
+                " HorizontalAlignment="Left" Margin="592,0,0,42" VerticalAlignment="Bottom" Width="86" Height="48" Click="butAnnuler_Click"/>
+        <Label x:Name="labVolume" Content="Volume" HorizontalAlignment="Center" Margin="0,191,0,0" VerticalAlignment="Top" Height="26" Width="60"/>
 
     </Grid>
 </Window>

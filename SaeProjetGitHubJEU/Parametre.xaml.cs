@@ -28,5 +28,10 @@ namespace SaeProjetGitHubJEU
         {
 
         }
+
+        private void butAnnuler_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

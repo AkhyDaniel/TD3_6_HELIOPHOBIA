@@ -28,7 +28,7 @@ namespace SaeProjetGitHubJEU
     public partial class UCJeu : UserControl
     {
 
-        public event Action GameOverEvent; 
+        public event Action GameOverEvent;
         public event Action GameWin;
 
         private int nbToursPerso = 0;
@@ -36,7 +36,8 @@ namespace SaeProjetGitHubJEU
         private int nb = 0;
         private int nbTourLune = 0;
         private int nbToursPersoAnim = 0;
-        private int NbPouvoir = 0 ;
+        private int NbPouvoir = 0;
+        public int CapeRest = 3;
 
         //Initialisation des images 
         private BitmapImage[] lune = new BitmapImage[5];
@@ -82,9 +83,6 @@ namespace SaeProjetGitHubJEU
         private int vitesseBackground = 2;
         private Random alea = new Random();
 
-        private int compteurObstacle = 0;
-        private const int DELAI_OBSTACLE = 120;
-
 
         public UCJeu()
         {
@@ -92,6 +90,7 @@ namespace SaeProjetGitHubJEU
             InitializeTimer();
             InitializeImages();
             InitSon();
+            MettreAJourAffichageCapes();
         }
 
         private void InitializeTimer()
@@ -102,7 +101,7 @@ namespace SaeProjetGitHubJEU
             // associe l’appel de la méthode Jeu à la fin de la minuterie
             minuterie.Tick += Jeu;
             // lancement du timer
-            
+
             minuterie.Start();
         }
 
@@ -131,7 +130,7 @@ namespace SaeProjetGitHubJEU
         private void InitSon()
         {
             plusdecape = new SoundPlayer(Application.GetResourceStream(
-            new Uri("/Sons/Capeson.wav",UriKind.Relative)).Stream);
+            new Uri("/Sons/Capeson.wav", UriKind.Relative)).Stream);
 
             marcher = new SoundPlayer(Application.GetResourceStream(
             new Uri("/Sons/Marcher.wav", UriKind.Relative)).Stream);
@@ -146,7 +145,7 @@ namespace SaeProjetGitHubJEU
             new Uri("/Sons/WinSound.wav", UriKind.Relative)).Stream);
         }
 
-       
+
         public void Jeu(object? sender, EventArgs e)
         {
             Annimation_Lune();
@@ -156,7 +155,7 @@ namespace SaeProjetGitHubJEU
             VerifColisionObstacle();
             VerifColisionCacher();
             Win();
-            
+
         }
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
@@ -171,7 +170,7 @@ namespace SaeProjetGitHubJEU
                 Canvas.SetLeft(image, image.ActualWidth);
 
         }
-        private  void Annimation_Lune()
+        private void Annimation_Lune()
         {
             //Prochaine étape ajouter une valeure de delais aléatoire 
 
@@ -192,17 +191,19 @@ namespace SaeProjetGitHubJEU
                         //Permet d'afficher 1,2,3 aux images 1,3,5 de la lune
                         switch (nbTourLune)
                         {
-                            case 0: 
+                            case 0:
                                 Console.Write("1, ");
                                 break;
-                            case 2: Console.Write("2, ");
+                            case 2:
+                                Console.Write("2, ");
                                 break;
-                            case 4: Console.Write("3 ");
+                            case 4:
+                                Console.Write("3 ");
                                 break;
                         }
                         nbTourLune++;
                     }
-                        
+
                     // Affiche le soleil
                     else
                     {
@@ -303,13 +304,13 @@ namespace SaeProjetGitHubJEU
 
         private void CreerObjetAleatoire()
         {
-            ZoneObstacles(-118, 1430, 100, 0,2,obstacle, 120, 180, "OBSTACLE");
-            ZoneObstacles(193, 1130,300,20,2, obstacle, 120, 180, "OBSTACLE");// Calculer a partir des fonction affines x = (y-176)/0.64  et y = (y-1060)/-0.67
-                                              // ex 193 => (300-176)/0.64 = 193.75 et 1130 =>(300-1060)/-0.67 =1134.32
-                                              // Valeure vonlontairement arrondit pour être sur que l'image ne déborde pas sur les bords
-            ZoneObstacles(381, 955, 420, 40,1, obstacle, 120, 180, "OBSTACLE");
-            ZoneObstacles(38,1283,200,30,2,cacher,220,100, "CACHE");
-            ZoneObstacles(319, 1014, 380, 40, 1, cacher,220,100, "CACHE");
+            ZoneObstacles(-118, 1430, 100, 0, 2, obstacle, 120, 180, "OBSTACLE");
+            ZoneObstacles(193, 1130, 300, 20, 2, obstacle, 120, 180, "OBSTACLE");// Calculer a partir des fonction affines x = (y-176)/0.64  et y = (y-1060)/-0.67
+                                                                                 // ex 193 => (300-176)/0.64 = 193.75 et 1130 =>(300-1060)/-0.67 =1134.32
+                                                                                 // Valeure vonlontairement arrondit pour être sur que l'image ne déborde pas sur les bords
+            ZoneObstacles(381, 955, 420, 40, 1, obstacle, 120, 180, "OBSTACLE");
+            ZoneObstacles(38, 1283, 200, 30, 2, cacher, 200, 150, "CACHE");
+            ZoneObstacles(319, 1014, 380, 40, 1, cacher, 200, 150, "CACHE");
         }
         //Prend une valeure aléatoire compris entre la valeure min et max de x.
         //Et ajoute et soustrait la largeure de l'image pour s'assurer que l'image ne dépasse pas du cadre
@@ -317,7 +318,7 @@ namespace SaeProjetGitHubJEU
         {
             List<double> positionsExistantes = new List<double>(); // stocke uniquement la position X des obstacles
 
-             largeur -= reductionTailleImg;
+            largeur -= reductionTailleImg;
 
             for (int i = 0; i < nbrDeTours; i++)
             {
@@ -346,8 +347,8 @@ namespace SaeProjetGitHubJEU
                     if (essais > 50)
                         break; // pour éviter boucle infinie
 
-                } while (chevauche); 
-                                                                                                          
+                } while (chevauche);
+
 
                 positionsExistantes.Add(xAleatoire);
 
@@ -362,8 +363,8 @@ namespace SaeProjetGitHubJEU
                 ZoneJeu.Children.Add(rect);
             }
         }
-     
-        private bool VerifColisionObstacle( )
+
+        private bool VerifColisionObstacle()
         {
             //Prend les coordonnées du personnages pour crée un rectangle
             double persoX = Canvas.GetLeft(imgPerso1);
@@ -378,7 +379,7 @@ namespace SaeProjetGitHubJEU
                 {
                     double obstacleX = Canvas.GetLeft(rectObstacle);
                     double obstacleY = Canvas.GetBottom(rectObstacle);
-                    double obstacleWidth = rectObstacle.ActualWidth-40;
+                    double obstacleWidth = rectObstacle.ActualWidth - 40;
                     double obstacleHeight = rectObstacle.ActualHeight;
                     Rect obstacleRect = new Rect(obstacleX, obstacleY, obstacleWidth, obstacleHeight);
 
@@ -388,43 +389,47 @@ namespace SaeProjetGitHubJEU
                         return true;
                     }
                 }
-                
+
             }
             return false;
         }
+
 
         public bool VerifColisionCacher()
         {
             //Prend les coordonnées du personnages pour crée un rectangle
-            Rectangle rect = new Rectangle();
             double persoX = Canvas.GetLeft(imgPerso1);
-            double persoY = Canvas.GetBottom(imgPerso1);
+            double persoBottom = Canvas.GetBottom(imgPerso1);
             double persoWidth = imgPerso1.ActualWidth;
-            double persoHeight = imgPerso1.ActualHeight - 45;
-            Rect rectPerso = new Rect(persoX, persoY, persoWidth, persoHeight);
 
-            foreach (UIElement element in ZoneJeu.Children) // Vérif tout les éléments dans la zone de jeu 
+            foreach (UIElement element in ZoneJeu.Children)// Vérif tout les éléments dans la zone de jeu 
             {
-                if (element is Rectangle rectCache &&
-            rectCache.Tag?.ToString() == "CACHE") //Permet d'identifier si c'est l'obstacle qui permet de se cacher
+                if (element is Rectangle rectCache && rectCache.Tag?.ToString() == "CACHE")//Permet d'identifier si c'est l'obstacle qui permet de se cacher
                 {
                     double cacheX = Canvas.GetLeft(rectCache);
-                    double cacheY = Canvas.GetBottom(rectCache);
-                    double cacheHeigth = rectCache.Height;
+                    double cacheBottom = Canvas.GetBottom(rectCache);
                     double cacheWidth = rectCache.Width;
-                    Rect cacheRect = new Rect(cacheX, cacheY, cacheWidth, cacheHeigth);
+                    double cacheHeight = rectCache.Height;
 
-                    if (rectPerso.IntersectsWith(cacheRect)) // Si il y a une collision entre le rectangle du personnage et le rectangle de l'obstacle cacher
+                    // Vérifier si le joueur est aligné horizontalement avec la cachette
+                    bool aligneHorizontalement = persoX + persoWidth > cacheX && persoX < cacheX + cacheWidth;
+
+                    // Le joueur doit être EN DESSOUS (devant) l'obstacle pour bloquer le soleil
+                    // Bottom plus petit = plus bas à l'écran = devant l'obstacle
+                    bool estDevantObstacle = persoBottom <= cacheBottom && persoBottom >= cacheBottom - 50;
+
+                    if (aligneHorizontalement && estDevantObstacle)
                     {
-                        Console.WriteLine("Le joueur est caché");
+#if DEBUG
+                        Console.WriteLine("Le joueur est caché du soleil !");
+#endif
                         return true;
                     }
-
                 }
-
             }
             return false;
         }
+
         //Methode pour unifier toutes les annimations du personnage
         private void AnimationPerso(BitmapImage[] ImgPerso)
         {
@@ -439,11 +444,11 @@ namespace SaeProjetGitHubJEU
                 imgPerso1.Source = ImgPerso[nb];
                 nbToursPerso = 0;
 
-                }
+            }
         }
         private double EquationDroiteGauche(double positionX)
         {
-            double y =0;
+            double y = 0;
             //equation de la droite de gauche de la forme y = ax + b
             y = 0.64 * positionX + 176;
             return y;
@@ -469,107 +474,116 @@ namespace SaeProjetGitHubJEU
             //Vérif si le joueur est a l'interieur des deux fonctions affines avec l'equation de la courbe gauche : y=0.64x+176 et la courbe droite y=-0.67x+1060
             if (PositionY < EquationDroiteGauche(PositionX) && PositionY < 512 && PositionY < EquationDroiteDroite(PositionX))
             {
+
+                
+
+                if (e.Key == Key.Space && NbPouvoir < 3)
+                {
+                    cape.Play();
+                    for (int i = 0; i < persoCape.Length; i++)
+                        persoCape[i] = new BitmapImage(new Uri($"/imgPersoCape/imgPersoCape{i + 1}.png", UriKind.Relative));
+
+                    for (int i = 0; i < persoCape.Length; i++)
+                    {
+
+                        imgPerso1.Source = persoCape[i];
+                        if (i == 5)
+                        {
+                            NbPouvoir++;
+                            MettreAJourAffichageCapes();
+                        }
+                    }
+
+
+                }
+                if (e.Key == Key.Space && NbPouvoir == 3)
+                {
+                    plusdecape.Play();
+                }
                 Console.WriteLine("Interieur");
                 if (e.Key == Key.Z || e.Key == Key.Q || e.Key == Key.S || e.Key == Key.D)
                 {
-                    
-                        if (estSoleil)
-                        {
-                            GameOver();
-                            return;
-                        }
-                    
-                        if (e.Key == Key.Z)
-                        {
-                            if ((Canvas.GetBottom(imgPerso1) + MainWindow.PasVampire) <= (ZoneJeu.ActualHeight - imgPerso1.ActualHeight))
-                            {
-                                Canvas.SetBottom(imgPerso1, Canvas.GetBottom(imgPerso1) + MainWindow.PasVampire);
-                                for (int i = 0; i < persoAvant.Length; i++)
-                                    persoAvant[i] = new BitmapImage(new Uri($"/imgPerso/imgPerso{i + 1}.png", UriKind.Relative));
-                                AnimationPerso(persoAvant);
-                                marcher.Play();
 
-                            }
+                    if (estSoleil)
+                    {
+                        GameOver();
+                        return;
+                    }
+
+                    if (e.Key == Key.Z)
+                    {
+                        if ((Canvas.GetBottom(imgPerso1) + MainWindow.PasVampire) <= (ZoneJeu.ActualHeight - imgPerso1.ActualHeight))
+                        {
+                            Canvas.SetBottom(imgPerso1, Canvas.GetBottom(imgPerso1) + MainWindow.PasVampire);
+                            for (int i = 0; i < persoAvant.Length; i++)
+                                persoAvant[i] = new BitmapImage(new Uri($"/imgPerso/imgPerso{i + 1}.png", UriKind.Relative));
+                            AnimationPerso(persoAvant);
+                            marcher.Play();
 
                         }
 
-                        if (e.Key == Key.S)
+                    }
+
+                    if (e.Key == Key.S)
+                    {
+                        if ((Canvas.GetBottom(imgPerso1) + MainWindow.PasVampire) >= 35)
                         {
-                            if ((Canvas.GetBottom(imgPerso1) + MainWindow.PasVampire) >= 35)
-                            {
-                                Canvas.SetBottom(imgPerso1, Canvas.GetBottom(imgPerso1) - MainWindow.PasVampire);
-                                for (int i = 0; i < persoArriere.Length; i++)
-                                    persoArriere[i] = new BitmapImage(new Uri($"/imgPersoArriere/imgPersoA{i + 1}.png", UriKind.Relative));
+                            Canvas.SetBottom(imgPerso1, Canvas.GetBottom(imgPerso1) - MainWindow.PasVampire);
+                            for (int i = 0; i < persoArriere.Length; i++)
+                                persoArriere[i] = new BitmapImage(new Uri($"/imgPersoArriere/imgPersoA{i + 1}.png", UriKind.Relative));
 
-                                AnimationPerso(persoArriere);
-                                marcher.Play();
-
-                            }
+                            AnimationPerso(persoArriere);
+                            marcher.Play();
 
                         }
 
-                        if (e.Key == Key.Q)
-                        {
-                            if ((Canvas.GetLeft(imgPerso1) + MainWindow.PasVampire) >= 0)
-                            {
-                                Canvas.SetLeft(imgPerso1, Canvas.GetLeft(imgPerso1) - MainWindow.PasVampire);
-                                for (int i = 0; i < persoGauche.Length; i++)
-                                    persoGauche[i] = new BitmapImage(new Uri($"/imgPersoGauche/imgPersoG{i + 1}.png", UriKind.Relative));
-                                AnimationPerso(persoGauche);
-                                marcher.Play();
+                    }
 
-                            }
+                    if (e.Key == Key.Q)
+                    {
+                        if ((Canvas.GetLeft(imgPerso1) + MainWindow.PasVampire) >= 0)
+                        {
+                            Canvas.SetLeft(imgPerso1, Canvas.GetLeft(imgPerso1) - MainWindow.PasVampire);
+                            for (int i = 0; i < persoGauche.Length; i++)
+                                persoGauche[i] = new BitmapImage(new Uri($"/imgPersoGauche/imgPersoG{i + 1}.png", UriKind.Relative));
+                            AnimationPerso(persoGauche);
+                            marcher.Play();
 
                         }
 
-                        if (e.Key == Key.D)
+                    }
+
+                    if (e.Key == Key.D)
+                    {
+                        if ((Canvas.GetLeft(imgPerso1) + MainWindow.PasVampire) <= (ZoneJeu.ActualWidth - imgPerso1.ActualWidth))
                         {
-                            if ((Canvas.GetLeft(imgPerso1) + MainWindow.PasVampire) <= (ZoneJeu.ActualWidth - imgPerso1.ActualWidth))
-                            {
-                                Canvas.SetLeft(imgPerso1, Canvas.GetLeft(imgPerso1) + MainWindow.PasVampire);
-                                for (int i = 0; i < persoDroit.Length; i++)
-                                    persoDroit[i] = new BitmapImage(new Uri($"/imgPersoDroit/imgPersoD{i + 1}.png", UriKind.Relative));
+                            Canvas.SetLeft(imgPerso1, Canvas.GetLeft(imgPerso1) + MainWindow.PasVampire);
+                            for (int i = 0; i < persoDroit.Length; i++)
+                                persoDroit[i] = new BitmapImage(new Uri($"/imgPersoDroit/imgPersoD{i + 1}.png", UriKind.Relative));
 
-                                AnimationPerso(persoDroit);
-                                marcher.Play();
-                            }
+                            AnimationPerso(persoDroit);
+                            marcher.Play();
                         }
-
-                        if (e.Key == Key.Space && NbPouvoir < 3)
-                        {
-                            cape.Play();
-                            for (int i = 0; i < persoCape.Length; i++)
-                                persoCape[i] = new BitmapImage(new Uri($"/imgPersoCape/imgPersoCape{i + 1}.png", UriKind.Relative));
-
-                            for (int i = 0; i < persoCape.Length; i++)
-                            {
-
-                                imgPerso1.Source = persoCape[i];
-                                if (i == 5)
-                                { 
-                                NbPouvoir++;
-                                }
-                            }
-
-
-                        }
-                        if (e.Key == Key.Space && NbPouvoir == 3)
-                        {
-                            plusdecape.Play();
-                        }
+                    }
 
                     if (VerifColisionObstacle())
                     {
                         Canvas.SetBottom(imgPerso1, Canvas.GetBottom(imgPerso1) - MainWindow.PasVampire);
                     }
-                    
+
+
+
+
+
                 }
             }
-                   
+
             else { Console.WriteLine("Exterieur"); Canvas.SetBottom(imgPerso1, Canvas.GetBottom(imgPerso1) - MainWindow.PasVampire); }
 
 
         }
+
+
         private void VerifCape()
         {
             if (estSoleil && !EstProtegeParlaCape() && !VerifColisionCacher()) // Le joueur meurt si il y a le soleil et qu'il n'a pas sa cape
@@ -602,6 +616,7 @@ namespace SaeProjetGitHubJEU
 
             //Réinitialise les variables
             NbPouvoir = 0;
+            MettreAJourAffichageCapes();
         }
 
         private void Win()
@@ -622,5 +637,14 @@ namespace SaeProjetGitHubJEU
             GameOverEvent?.Invoke(); //Déclenche l'évenement et prévient la fenêtre main window que le jeu est terminé  
             resetGame();
         }
+
+        private void MettreAJourAffichageCapes()
+        {
+            int capesRestantes = 3 - NbPouvoir;
+
+            txtNbCapes.Text = $"{capesRestantes}";
+        }
+
+        
     }
 }

@@ -19,6 +19,8 @@
         <Image x:Name="imgLune1" Source="/imagesLune/Lune1.png" Stretch="Fill" Height="208" Canvas.Left="763" Width="216" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="18"/>
 
         <Image x:Name="imgPerso1" Height="85" Canvas.Left="714" Source="/imgPerso/imgPerso1.png" Stretch="Fill" Canvas.Bottom="30" Width="56" VerticalAlignment="Bottom" HorizontalAlignment="Left"  />
+        <Image Height="95" Canvas.Left="38" Source="/imagesBackGround/CapeRes.png" Stretch="Fill" Canvas.Top="41" Width="248" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <TextBlock x:Name="txtNbCapes" Canvas.Left="236" TextWrapping="Wrap" Canvas.Top="73" Height="29" Width="29" Background="#FF9E0000" FontWeight="Bold" FontFamily="HP Simplified" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" TextAlignment="Center"><Run/><LineBreak/><Run/></TextBlock>
 
     </Canvas>
 </UserControl>

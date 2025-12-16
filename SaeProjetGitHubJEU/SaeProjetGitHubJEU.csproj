@@ -30,6 +30,7 @@
     <None Remove="imagesBackGround\BackgroundJour.jpeg" />
     <None Remove="imagesBackGround\BackgroundNuit.png" />
     <None Remove="imagesBackGround\cadre.png" />
+    <None Remove="imagesBackGround\CapeRes.png" />
     <None Remove="imagesBackGround\FOND NUIT.png" />
     <None Remove="imagesBackGround\fond sans helio.png" />
     <None Remove="imagesBackGround\FOND_JOUR.jpg" />
@@ -106,6 +107,7 @@
     <Resource Include="imagesBackGround\arbres.png" />
     <Resource Include="imagesBackGround\arbresJour.png" />
     <Resource Include="imagesBackGround\cadre.png" />
+    <Resource Include="imagesBackGround\CapeRes.png" />
     <Resource Include="imagesBackGround\FOND NUIT.png" />
     <Resource Include="imagesBackGround\fond sans helio.png" />
     <Resource Include="imagesBackGround\FOND_JOUR.jpg" />
