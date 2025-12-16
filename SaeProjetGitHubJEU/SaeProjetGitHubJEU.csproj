@@ -6,6 +6,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>LOGO\LOGO2.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -94,6 +95,7 @@
     <None Remove="imgSol.png" />
     <None Remove="imgSoleil\Soleil.png" />
     <None Remove="LOGOF.png" />
+    <None Remove="LOGO\LOGO2.ico" />
     <None Remove="LOGO\LOGOF.png" />
     <None Remove="regle.png" />
     <None Remove="Sons\Cape.wav" />
@@ -102,6 +104,10 @@
     <None Remove="Sons\Marcher.wav" />
     <None Remove="Sons\VampireMeurt.wav" />
     <None Remove="Sons\WinSound.wav" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="LOGO\LOGO2.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -177,6 +183,7 @@
     <Resource Include="imagesBackGround\imgSol.png" />
     <Resource Include="imgSoleil\Soleil.png" />
     <Resource Include="LOGOF.png" />
+    <Resource Include="LOGO\LOGO2.ico" />
     <Resource Include="LOGO\LOGOF.png" />
     <Resource Include="regle.png" />
     <Resource Include="Sons\Cape.wav" />
