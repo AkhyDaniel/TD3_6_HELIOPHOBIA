@@ -80,6 +80,7 @@ namespace SaeProjetGitHubJEU
         private const double POSY_CASTEL = 0;
         private const double WIDTH_CASTEL = 338;
         private const double HEIGHT_CASTEL = 452;
+        private const double HAUTEUR_MAX = 512;
         private double posXLune = 760;
         private double vitesseLune = 1.6;  // 1.2 px / tick × 62 = 74 px / seconde
         private int vitesseBackground = 2;
@@ -244,14 +245,12 @@ namespace SaeProjetGitHubJEU
             //Deplacement de B vers A
             if (posXLune >= 600)
             {
-                //Equation de droite BA avec la formule y = ax + b
-                y = 0.6875 * posXLune - 502.5; //(0.6875 = 11/16)
+               y= EquationGaucheLune(posXLune);
             }
             //Deplacemenet de B vers C avec la formule y = ax + b
             else
             {
-                //Equation de droite BC
-                y = -0.55 * posXLune + 240;
+                y=EquationDroiteLune(posXLune);
             }
 
             y = Math.Round(y, 3);
@@ -261,6 +260,22 @@ namespace SaeProjetGitHubJEU
             Canvas.SetTop(imgLune1, y);
             //Console.WriteLine($"position lune x : {posXLune} y :{y}");
 
+        }
+
+        private double EquationDroiteLune(double posXLune)
+        {
+            double y = 0;
+            //Equation de droite BC
+            y = -0.55 * posXLune + 240;
+            return y;
+        }
+        private double EquationGaucheLune(double posXLune)
+        {
+            double y = 0;
+            //equation de la droite de gauche de la forme y = ax + b
+            //Equation de droite BA avec la formule y = ax + b
+            y = 0.6875 * posXLune - 502.5; //(0.6875 = 11/16)
+            return y;
         }
         private bool EstProtegeParlaCape()
         {
@@ -458,7 +473,6 @@ namespace SaeProjetGitHubJEU
             y = 0.64 * positionX + 176;
             return y;
         }
-
         private double EquationDroiteDroite(double positionX)
         {
             double y = 0;
@@ -468,22 +482,14 @@ namespace SaeProjetGitHubJEU
         }
         private void ZoneJeu_KeyDown(object sender, KeyEventArgs e)
         {
-
             double PositionX = Canvas.GetLeft(imgPerso1);
             double PositionY = Canvas.GetBottom(imgPerso1);
             double anciennePositionX = Canvas.GetLeft(imgPerso1);
             double anciennePositionY = Canvas.GetBottom(imgPerso1);
-            //double taille = 1;
-            //if (PositionY > 200) { taille = 0.9; }
-            //if (PositionY > 300) { taille = 0.8; }        //A QUOI SA SERT ??
-            //if (PositionY > 400) { taille = 0.7; }
             Console.WriteLine("X :" + PositionX + " Y : " + PositionY);
             //Vérif si le joueur est a l'interieur des deux fonctions affines avec l'equation de la courbe gauche : y=0.64x+176 et la courbe droite y=-0.67x+1060
-            if (PositionY < EquationDroiteGauche(PositionX) && PositionY < 512 && PositionY < EquationDroiteDroite(PositionX))
+            if (PositionY < EquationDroiteGauche(PositionX) && PositionY < HAUTEUR_MAX && PositionY < EquationDroiteDroite(PositionX))
             {
-
-                
-
                 if (e.Key == Key.Space && MainWindow.NbPouvoir < MainWindow.NbCapes)
                 {
                     cape.Play();
@@ -573,26 +579,16 @@ namespace SaeProjetGitHubJEU
                             marcher.Play();
                         }
                     }
-
                     if (VerifColisionObstacle())
                     {
                         Canvas.SetLeft(imgPerso1, anciennePositionX);
                         Canvas.SetBottom(imgPerso1, anciennePositionY);
                     }
-
-
-
-
-
                 }
             }
 
             else { Console.WriteLine("Exterieur"); Canvas.SetBottom(imgPerso1, Canvas.GetBottom(imgPerso1) - MainWindow.PasVampire); }
-
-
         }
-
-
         private void VerifCape()
         {
             if (estSoleil && !EstProtegeParlaCape() && !VerifColisionCacher()) // Le joueur meurt si il y a le soleil et qu'il n'a pas sa cape
@@ -628,7 +624,6 @@ namespace SaeProjetGitHubJEU
             MainWindow.NbPouvoir = 0;
             MettreAJourAffichageCapes();
         }
-
         private void Win()
         {
             if (Canvas.GetBottom(imgPerso1) > 506) // 506 c'est la postion y du chatêau, ou lorsque le joueur va rentrer en collision contre il gange
@@ -647,14 +642,11 @@ namespace SaeProjetGitHubJEU
             GameOverEvent?.Invoke(); //Déclenche l'évenement et prévient la fenêtre main window que le jeu est terminé  
             resetGame();
         }
-
         private void MettreAJourAffichageCapes()
         {
             int capesRestantes = MainWindow.NbCapes - MainWindow.NbPouvoir;
 
             txtNbCapes.Text = $"{capesRestantes}";
         }
-
-        
     }
 }
