@@ -19,6 +19,7 @@
   <ItemGroup>
     <None Remove="BackgroundJour.jpeg" />
     <None Remove="cadre.png" />
+    <None Remove="FOND NUIT.png" />
     <None Remove="fond sans helio.png" />
     <None Remove="imageButJouer.png" />
     <None Remove="imageButJouerF.png" />
@@ -112,6 +113,7 @@
 
   <ItemGroup>
     <Resource Include="cadre.png" />
+    <Resource Include="FOND NUIT.png" />
     <Resource Include="fond sans helio.png" />
     <Resource Include="imageButJouerF.png" />
     <Resource Include="imageButParaF.png" />

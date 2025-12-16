@@ -7,13 +7,16 @@
         mc:Ignorable="d"
         Title="Cheats" Height="450" Width="800">
     <Grid RenderTransformOrigin="0.498,0.387">
+        <Grid.Background>
+            <ImageBrush ImageSource="/fond sans helio.png"/>
+        </Grid.Background>
         <Slider x:Name="sliderCapes" HorizontalAlignment="Center" VerticalAlignment="Top" Width="216" Height="24"  Margin="0,314,0,0" Minimum="1" Maximum="3" Value="2" TickFrequency="1" IsSnapToTickEnabled="True" TickPlacement="BottomRight" AutoToolTipPlacement="BottomRight"/>
         <Label  HorizontalAlignment="Center" Margin="0,44,0,0" VerticalAlignment="Top" Height="88" Width="396">
             <Label.Background>
                 <ImageBrush ImageSource="/imagesBut/butCheat.png"/>
             </Label.Background>
         </Label>
-        <Label Content="Vitesse : ( 1 = Tres Lent , 2 = Normal , 3 = UltraSpeed )" HorizontalAlignment="Center" Margin="0,172,0,0" VerticalAlignment="Top" Width="298"/>
+        <Label x:Name="labVittesse" Content="Vitesse : ( 1 = Tres Lent , 2 = Normal , 3 = UltraSpeed )" HorizontalAlignment="Center" Margin="0,172,0,0" VerticalAlignment="Top" Width="519" FontFamily="Algerian" FontSize="18" Background="{x:Null}" Foreground="White"/>
         <Slider x:Name="sliderVitesse" HorizontalAlignment="Center" VerticalAlignment="Top" Width="216" Height="24"  Margin="0,217,0,0" Minimum="1" Maximum="3" Value="2" TickFrequency="1" IsSnapToTickEnabled="True" TickPlacement="BottomRight" AutoToolTipPlacement="BottomRight"/>
         <Button x:Name="butOkC" HorizontalAlignment="Left" Margin="84,345,0,0" VerticalAlignment="Top" Height="41" Width="143" Click="butOkC_Click">
             <Button.Background>
@@ -25,7 +28,7 @@
                 <ImageBrush ImageSource="/imagesBut/butAnnuler.png"/>
             </Button.Background>
         </Button>
-        <Label Content="Nombre de Capes : (1 = 0 , 2 = Normal , 3 = 999)" HorizontalAlignment="Center" Margin="0,261,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.164,1.668"/>
+        <Label Content="Nombre de Capes : (1 = 0 , 2 = Normal , 3 = 999)" HorizontalAlignment="Center" Margin="0,260,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.164,1.668" Foreground="White" FontFamily="Algerian" FontSize="18"/>
 
     </Grid>
 </Window>
