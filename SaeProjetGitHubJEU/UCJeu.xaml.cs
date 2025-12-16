@@ -321,7 +321,6 @@ namespace SaeProjetGitHubJEU
             Canvas.SetLeft(imgLune1, POSX_DEPART_LUNE);
             Canvas.SetTop(imgLune1, POSY_DEPART_LUNE);
         }
-
         private void CreerObjetAleatoire()
         {
             ZoneObstacles(-118, 1430, 100, 0, 2, obstacle, 120, 180, "OBSTACLE");
