@@ -7,14 +7,14 @@
         mc:Ignorable="d"
         Title="Cheats" Height="450" Width="800">
     <Grid RenderTransformOrigin="0.498,0.387">
-        <Slider x:Name="sliderCapes" HorizontalAlignment="Center" VerticalAlignment="Top" Width="216" Height="24" ValueChanged="Slider_ValueChanged" Margin="0,314,0,0" Minimum="1" Maximum="3" Value="2" TickFrequency="1" IsSnapToTickEnabled="True" TickPlacement="BottomRight" AutoToolTipPlacement="BottomRight"/>
+        <Slider x:Name="sliderCapes" HorizontalAlignment="Center" VerticalAlignment="Top" Width="216" Height="24"  Margin="0,314,0,0" Minimum="1" Maximum="3" Value="2" TickFrequency="1" IsSnapToTickEnabled="True" TickPlacement="BottomRight" AutoToolTipPlacement="BottomRight"/>
         <Label  HorizontalAlignment="Center" Margin="0,44,0,0" VerticalAlignment="Top" Height="88" Width="396">
             <Label.Background>
                 <ImageBrush ImageSource="/imagesBut/butCheat.png"/>
             </Label.Background>
         </Label>
         <Label Content="Vitesse : ( 1 = Tres Lent , 2 = Normal , 3 = UltraSpeed )" HorizontalAlignment="Center" Margin="0,172,0,0" VerticalAlignment="Top" Width="298"/>
-        <Slider x:Name="sliderVitesse" HorizontalAlignment="Center" VerticalAlignment="Top" Width="216" Height="24" ValueChanged="Slider_ValueChanged" Margin="0,217,0,0" Minimum="1" Maximum="3" Value="2" TickFrequency="1" IsSnapToTickEnabled="True" TickPlacement="BottomRight" AutoToolTipPlacement="BottomRight"/>
+        <Slider x:Name="sliderVitesse" HorizontalAlignment="Center" VerticalAlignment="Top" Width="216" Height="24"  Margin="0,217,0,0" Minimum="1" Maximum="3" Value="2" TickFrequency="1" IsSnapToTickEnabled="True" TickPlacement="BottomRight" AutoToolTipPlacement="BottomRight"/>
         <Button x:Name="butOkC" HorizontalAlignment="Left" Margin="84,345,0,0" VerticalAlignment="Top" Height="41" Width="143" Click="butOkC_Click">
             <Button.Background>
                 <ImageBrush ImageSource="/imagesBut/butOK.png"/>

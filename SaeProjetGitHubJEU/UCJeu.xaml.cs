@@ -36,8 +36,8 @@ namespace SaeProjetGitHubJEU
         private int nb = 0;
         private int nbTourLune = 0;
         private int nbToursPersoAnim = 0;
-        private int NbPouvoir = 0;
-        private int NbCapeAuto = 3;
+        public static int vitessepara = 2;
+        public static int capespara = 2;
         
 
         //Initialisation des images 
@@ -65,8 +65,9 @@ namespace SaeProjetGitHubJEU
 
 
         //Initialisation delai de changement des images
-        private const int DELAI_LUNE = 30; // initialement pour tester :300 ticks +-= 5 secondes (5*62 img/secondes)
-        private const int DELAI_SOLEIL = 120;
+
+        private int DELAI_LUNE = 0; // initialement pour tester :300 ticks +-= 5 secondes (5*62 img/secondes)
+        private int DELAI_SOLEIL = 0;
 
         //Initialisation des compteurs pour le delais des images
         private int compteurTickLune = 0;
@@ -83,6 +84,7 @@ namespace SaeProjetGitHubJEU
         private double vitesseLune = 1.6;  // 1.2 px / tick × 62 = 74 px / seconde
         private int vitesseBackground = 2;
         private Random alea = new Random();
+        private Random alea2 = new Random();
 
 
         public UCJeu()
@@ -174,6 +176,7 @@ namespace SaeProjetGitHubJEU
         private void Annimation_Lune()
         {
             //Prochaine étape ajouter une valeure de delais aléatoire 
+            DELAI_LUNE = alea.Next(5, 150);
 
             if (!estSoleil)
             {
@@ -219,6 +222,7 @@ namespace SaeProjetGitHubJEU
             // Re-affiche la lune avec un systèreme de delais
             else
             {
+                DELAI_SOLEIL = alea2.Next(50, 240);
                 compteurTickSoleil++;
                 if (compteurTickSoleil >= DELAI_SOLEIL)
                 {
@@ -480,7 +484,7 @@ namespace SaeProjetGitHubJEU
 
                 
 
-                if (e.Key == Key.Space && NbPouvoir < 3)
+                if (e.Key == Key.Space && MainWindow.NbPouvoir < MainWindow.NbCapes)
                 {
                     cape.Play();
                     for (int i = 0; i < persoCape.Length; i++)
@@ -492,14 +496,15 @@ namespace SaeProjetGitHubJEU
                         imgPerso1.Source = persoCape[i];
                         if (i == 5)
                         {
-                            NbPouvoir++;
+                            MainWindow.NbPouvoir++;
+                            Console.WriteLine($"Nbpouvoir : {MainWindow.NbPouvoir}");
                             MettreAJourAffichageCapes();
                         }
                     }
 
 
                 }
-                if (e.Key == Key.Space && NbPouvoir == 3)
+                if (e.Key == Key.Space && MainWindow.NbPouvoir == MainWindow.NbCapes)
                 {
                     plusdecape.Play();
                 }
@@ -614,12 +619,13 @@ namespace SaeProjetGitHubJEU
             Canvas.SetBottom(imgPerso1, 0);
             nb = 0;
             nbToursPerso = 0;
+            
 
             // Remet les images de fond et lune
             AfficheNuit();
 
             //Réinitialise les variables
-            NbPouvoir = 0;
+            MainWindow.NbPouvoir = 0;
             MettreAJourAffichageCapes();
         }
 
@@ -644,7 +650,7 @@ namespace SaeProjetGitHubJEU
 
         private void MettreAJourAffichageCapes()
         {
-            int capesRestantes = NbCapeAuto - NbPouvoir;
+            int capesRestantes = MainWindow.NbCapes - MainWindow.NbPouvoir;
 
             txtNbCapes.Text = $"{capesRestantes}";
         }
