@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="900" d:DesignWidth="1400">
     <Grid>
-        <Button Content="" x:Name="butJouer" HorizontalAlignment="Center" Margin="0,520,0,0" VerticalAlignment="Top" Height="86" Width="342">
+        <Button Content="" x:Name="butJouer" HorizontalAlignment="Center" Margin="0,624,0,0" VerticalAlignment="Top" Height="86" Width="342">
             <Button.BorderBrush>
                 <ImageBrush/>
             </Button.BorderBrush>
@@ -28,7 +28,7 @@
                 <ImageBrush ImageSource="/imageButParaF.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="butCheat" HorizontalAlignment="Center" Margin="0,735,0,0" VerticalAlignment="Top" Height="62" Width="250">
+        <Button x:Name="butCheat" HorizontalAlignment="Center" Margin="0,796,0,0" VerticalAlignment="Top" Height="62" Width="250" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="/imagesBut/butCheat.png"/>
             </Button.Background>
