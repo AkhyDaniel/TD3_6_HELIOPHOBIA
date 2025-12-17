@@ -19,10 +19,11 @@ namespace SaeProjetGitHubJEU
     /// </summary>
     public partial class MainWindow : Window
     {
+        private UCJeu jeuActuel;
 
         private DispatcherTimer minuterie;
         public static int PasVampire { get; set; } = 4;
-        public static int PasLune { get; set; } = 2;
+        public static int PasLune { get; set; } = 2;    
         public static string Perso { get; set; }
 
         public static int NbPouvoir { get; set; } = 0;
@@ -53,11 +54,17 @@ namespace SaeProjetGitHubJEU
         }
         public void Jeu(object sender, RoutedEventArgs e)
         {
-            UCJeu jeu = new UCJeu();
-            jeu.GameOverEvent += AfficherGameOver; // Si il y a l'evenement de game over alors cela passe sur UCGameOver
-            jeu.GameWin += AfficheEcranWin;        
-            ZoneLobby.Content = jeu;
+            // Nettoie l'ancienne instance si elle existe
+            if (jeuActuel != null)
+            {
+                jeuActuel.ResetKeyDownBUG();
+            }
 
+            // Crée la nouvelle instance
+            jeuActuel = new UCJeu();
+            jeuActuel.GameOverEvent += AfficherGameOver;
+            jeuActuel.GameWin += AfficheEcranWin;
+            ZoneLobby.Content = jeuActuel;
         }
         public void AfficherGameOver()
         {
@@ -92,5 +99,7 @@ namespace SaeProjetGitHubJEU
         {
 
         }
+
+
     } 
 }

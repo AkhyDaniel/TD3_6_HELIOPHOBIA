@@ -651,5 +651,21 @@ namespace SaeProjetGitHubJEU
 
             txtNbCapes.Text = $"{capesRestantes}";
         }
+
+        public void ResetKeyDownBUG()
+        {
+            // Désabonne l'événement KeyDown
+            if (Application.Current.MainWindow != null)
+            {
+                Application.Current.MainWindow.KeyDown -= ZoneJeu_KeyDown;
+            }
+
+            // Arrête le timer
+            if (minuterie != null)
+            {
+                minuterie.Stop();
+                minuterie.Tick -= Jeu;
+            }
+        }
     }
 }
