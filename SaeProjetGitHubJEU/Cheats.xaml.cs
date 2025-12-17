@@ -31,7 +31,7 @@ namespace SaeProjetGitHubJEU
             // Affiche les valeur actuelles dans les sliders au demarrage
             if (MainWindow.PasVampire == 1)
                 sliderVitesse.Value = 1;
-            else if (MainWindow.PasVampire == 4)
+            else if (MainWindow.PasVampire == 6)
                 sliderVitesse.Value = 2;
             else if (MainWindow.PasVampire == 25)
                 sliderVitesse.Value = 3;
@@ -58,7 +58,7 @@ namespace SaeProjetGitHubJEU
             }
             else if (sliderVitesse.Value == 2)
             {
-                MainWindow.PasVampire = 4;
+                MainWindow.PasVampire = 6;
             }
             else if (sliderVitesse.Value == 3)
             {

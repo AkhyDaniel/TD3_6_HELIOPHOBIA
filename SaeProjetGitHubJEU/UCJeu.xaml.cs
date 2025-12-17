@@ -309,8 +309,8 @@ namespace SaeProjetGitHubJEU
                                                                                  // ex 193 => (300-176)/0.64 = 193.75 et 1130 =>(300-1060)/-0.67 =1134.32
                                                                                  // Valeure vonlontairement arrondit pour être sur que l'image ne déborde pas sur les bords
             ZoneObstacles(381, 955, 420, 40, 1, obstacle, 120, 180, "OBSTACLE");
-            ZoneObstacles(38, 1283, 200, 30, 2, cacher, 200, 150, "CACHE");
-            ZoneObstacles(319, 1014, 380, 40, 1, cacher, 200, 150, "CACHE");
+            ZoneObstacles(38, 1283, 200, 30, 2, cacher, 150, 150, "CACHE");
+            ZoneObstacles(319, 1014, 380, 40, 1, cacher, 150, 150, "CACHE");
         }
         //Prend une valeure aléatoire compris entre la valeure min et max de x.
         //Et ajoute et soustrait la largeure de l'image pour s'assurer que l'image ne dépasse pas du cadre

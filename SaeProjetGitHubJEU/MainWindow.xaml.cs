@@ -22,7 +22,7 @@ namespace SaeProjetGitHubJEU
         private UCJeu jeuActuel;
 
         private DispatcherTimer minuterie;
-        public static int PasVampire { get; set; } = 4;
+        public static int PasVampire { get; set; } = 6;
         public static int PasLune { get; set; } = 2;    
         public static string Perso { get; set; }
 
