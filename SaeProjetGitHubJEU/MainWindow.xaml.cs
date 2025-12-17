@@ -89,7 +89,6 @@ namespace SaeProjetGitHubJEU
         }
 
 
-
         private void cheatmenu_Click(object sender, RoutedEventArgs e)
         {
 
