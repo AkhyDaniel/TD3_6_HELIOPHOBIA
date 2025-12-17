@@ -163,6 +163,7 @@ namespace SaeProjetGitHubJEU
         }
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
+            Application.Current.MainWindow.KeyDown -= ZoneJeu_KeyDown;
             Application.Current.MainWindow.KeyDown += ZoneJeu_KeyDown;
             CreerObjetAleatoire();
         }
@@ -622,6 +623,9 @@ namespace SaeProjetGitHubJEU
             //Réinitialise les variables
             MainWindow.NbPouvoir = 0;
             MettreAJourAffichageCapes();
+            persoCape = new BitmapImage[6];
+            
+
         }
         private void Win()
         {
