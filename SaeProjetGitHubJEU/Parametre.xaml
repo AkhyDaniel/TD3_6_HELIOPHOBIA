@@ -16,12 +16,12 @@
             </Label.Background>
         </Label>
         <Slider HorizontalAlignment="Center" VerticalAlignment="Top" Width="216" Height="23" ValueChanged="Slider_ValueChanged" Margin="0,242,0,0"/>
-        <Button x:Name="butOk"  HorizontalAlignment="Left" Margin="140,344,0,0" VerticalAlignment="Top" Height="43" Width="182">
+        <Button x:Name="butOk"  HorizontalAlignment="Left" Margin="101,309,0,0" VerticalAlignment="Top" Height="43" Width="182" Click="butOk_Click">
             <Button.Background>
                 <ImageBrush ImageSource="/imagesBut/butOK.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="butAnnuler"  HorizontalAlignment="Left" Margin="485,0,0,47" VerticalAlignment="Bottom" Width="196" Height="43" Click="butAnnuler_Click">
+        <Button x:Name="butAnnuler"  HorizontalAlignment="Left" Margin="506,0,0,82" VerticalAlignment="Bottom" Width="196" Height="43" Click="butAnnuler_Click">
             <Button.Background>
                 <ImageBrush ImageSource="/imagesBut/butAnnuler.png"/>
             </Button.Background>

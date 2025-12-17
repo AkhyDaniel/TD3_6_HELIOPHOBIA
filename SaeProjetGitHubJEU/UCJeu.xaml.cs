@@ -531,7 +531,7 @@ namespace SaeProjetGitHubJEU
                             for (int i = 0; i < persoAvant.Length; i++)
                                 persoAvant[i] = new BitmapImage(new Uri($"/imgPerso/imgPerso{i + 1}.png", UriKind.Relative));
                             AnimationPerso(persoAvant);
-                            marcher.Play();
+                            
 
                         }
 
@@ -546,7 +546,7 @@ namespace SaeProjetGitHubJEU
                                 persoArriere[i] = new BitmapImage(new Uri($"/imgPersoArriere/imgPersoA{i + 1}.png", UriKind.Relative));
 
                             AnimationPerso(persoArriere);
-                            marcher.Play();
+                           
 
                         }
 
@@ -560,7 +560,7 @@ namespace SaeProjetGitHubJEU
                             for (int i = 0; i < persoGauche.Length; i++)
                                 persoGauche[i] = new BitmapImage(new Uri($"/imgPersoGauche/imgPersoG{i + 1}.png", UriKind.Relative));
                             AnimationPerso(persoGauche);
-                            marcher.Play();
+                            
 
                         }
 
@@ -575,7 +575,7 @@ namespace SaeProjetGitHubJEU
                                 persoDroit[i] = new BitmapImage(new Uri($"/imgPersoDroit/imgPersoD{i + 1}.png", UriKind.Relative));
 
                             AnimationPerso(persoDroit);
-                            marcher.Play();
+                            
                         }
                     }
                     if (VerifColisionObstacle())

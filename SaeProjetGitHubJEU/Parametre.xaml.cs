@@ -31,7 +31,12 @@ namespace SaeProjetGitHubJEU
 
         private void butAnnuler_Click(object sender, RoutedEventArgs e)
         {
+            DialogResult = false;
+        }
 
+        private void butOk_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = true;
         }
     }
 }
