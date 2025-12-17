@@ -12,15 +12,16 @@
         </Grid.Background>
 
 
-        <Label x:Name="labRegleJeu" Content="Vous devez vous abriter rapidement dans le château.&#10;&#10;Attention, le soleil est votre ennemi !&#10;&#10;Lorsqu'il apparaît, il vous faudra vous protéger ou vous cacher sous peine de mourir.&#10;&#10;À l’arrivée de la nuit, vous devrez courir à toute vitesse pour atteindre le château.&#10;&#10;N'oubliez pas c'est 1,2,3 SOLEIL." VerticalAlignment="Center" Height="270" Width="1140" FontSize="24" Foreground="White" FontFamily="Arial Black" Background="{x:Null}" FontWeight="Bold" HorizontalAlignment="Left" Margin="170,0,0,0"/>
+        <Label x:Name="labRegleJeu" Content="Vous devez vous abriter rapidement dans le château.&#10;&#10;Attention, le soleil est votre ennemi !&#10;&#10;Lorsqu'il apparaît, il vous faudra vous protéger ou vous cacher sous peine de mourir.&#10;&#10;À l’arrivée de la nuit, vous devrez courir à toute vitesse pour atteindre le château.&#10;&#10;N'oubliez pas c'est 1,2,3 SOLEIL." VerticalAlignment="Center" Height="270" Width="1158" FontSize="24" Foreground="White" FontFamily="Arial Black" Background="{x:Null}" FontWeight="Bold" HorizontalAlignment="Left" Margin="170,0,0,0"/>
         <Image Margin="-49,-102,-57,-75" Source="/imagesBackGround/cadre.png" Stretch="Fill"/>
-        <Image Margin="428,58,428,550" Source="/imagesBackGround/regles.png" Stretch="Fill"/>
+        <Image Margin="428,52,428,556" Source="/imagesBackGround/regles.png" Stretch="Fill"/>
 
-        <Button x:Name="butJouerRegle" Content="" HorizontalAlignment="Left" Margin="515,690,0,0" VerticalAlignment="Top" Height="98" Width="384" Click="Button_Click" BorderBrush="{x:Null}">
+        <Button x:Name="butJouerRegle" Content="" HorizontalAlignment="Left" Margin="222,651,0,0" VerticalAlignment="Top" Height="98" Width="384" Click="Button_Click" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="/imageButJouerF.png"/>
             </Button.Background>
         </Button>
+        <Image Margin="611,573,164,151" Source="/imagesBackGround/touches.png" Stretch="Fill"/>
 
     </Grid>
 </UserControl>

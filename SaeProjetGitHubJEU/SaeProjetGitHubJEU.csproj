@@ -40,6 +40,7 @@
     <None Remove="imagesBackGround\imgSol.png" />
     <None Remove="imagesBackGround\imgWin.jpg" />
     <None Remove="imagesBackGround\regles.png" />
+    <None Remove="imagesBackGround\touches.png" />
     <None Remove="imagesBut\butAnnuler.png" />
     <None Remove="imagesBut\butCheat.png" />
     <None Remove="imagesBut\butOK.png" />
@@ -128,6 +129,7 @@
     <Resource Include="imagesBackGround\imgLOSE.jpg" />
     <Resource Include="imagesBackGround\imgWin.jpg" />
     <Resource Include="imagesBackGround\regles.png" />
+    <Resource Include="imagesBackGround\touches.png" />
     <Resource Include="imagesBut\butAnnuler.png" />
     <Resource Include="imagesBut\butCheat.png" />
     <Resource Include="imagesBut\butOK.png" />
