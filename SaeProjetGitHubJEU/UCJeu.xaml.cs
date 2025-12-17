@@ -35,10 +35,8 @@ namespace SaeProjetGitHubJEU
         private DispatcherTimer minuterie;
         private int nb = 0;
         private int nbTourLune = 0;
-        private int nbToursPersoAnim = 0;
         public static int vitessepara = 2;
         public static int capespara = 2;
-        
 
         //Initialisation des images 
         private BitmapImage[] lune = new BitmapImage[5];
@@ -61,8 +59,6 @@ namespace SaeProjetGitHubJEU
         private static SoundPlayer cape;
         private static SoundPlayer mort;
         private static SoundPlayer win;
-
-
 
         //Initialisation delai de changement des images
 
@@ -105,7 +101,6 @@ namespace SaeProjetGitHubJEU
             // associe l’appel de la méthode Jeu à la fin de la minuterie
             minuterie.Tick += Jeu;
             // lancement du timer
-
             minuterie.Start();
         }
 
@@ -128,7 +123,6 @@ namespace SaeProjetGitHubJEU
             //Image des obstacles
             obstacle = new BitmapImage(new Uri("pack://application:,,,/SaeProjetGitHubJEU;component/imgObstacles/imgObstacle.png", UriKind.Absolute));
             cacher = new BitmapImage(new Uri("pack://application:,,,/SaeProjetGitHubJEU;component/imgObstacles/imgCacher.png", UriKind.Absolute));
-
         }
 
         private void InitSon()
@@ -148,8 +142,6 @@ namespace SaeProjetGitHubJEU
             win = new SoundPlayer(Application.GetResourceStream(
             new Uri("/Sons/WinSound.wav", UriKind.Relative)).Stream);
         }
-
-
         public void Jeu(object? sender, EventArgs e)
         {
             Annimation_Lune();
@@ -179,17 +171,14 @@ namespace SaeProjetGitHubJEU
         {
             //Prochaine étape ajouter une valeure de delais aléatoire 
             DELAI_LUNE = alea.Next(5, 150);
-
             if (!estSoleil)
             {
                 //Compteur tick permet de laisser un delais avant le changement de l'image de la lune
                 // la boucle s'execute toute les 16ms ce qui fait 62 img/seconde donc avec un delais = 60 tick cela fait +-= 1 seconde
                 compteurTickLune++;
                 deplacementLuneLineaire();
-
                 if (compteurTickLune >= DELAI_LUNE)
                 {
-
                     if (nbTourLune < lune.Length)
                     {
                         imgLune1.Source = lune[nbTourLune];
@@ -209,7 +198,6 @@ namespace SaeProjetGitHubJEU
                         }
                         nbTourLune++;
                     }
-
                     // Affiche le soleil
                     else
                     {
@@ -234,14 +222,11 @@ namespace SaeProjetGitHubJEU
                     compteurTickSoleil = 0;
                 }
             }
-
         }
-
         //Deplacement de la lune de façon linéaire grace aux calculs d'équations des droites BC et BA.
         private void deplacementLuneLineaire()
         {
             posXLune -= vitesseLune;
-
             double y;
             //Deplacement de B vers A
             if (posXLune >= 600)
@@ -253,16 +238,13 @@ namespace SaeProjetGitHubJEU
             {
                 y=EquationDroiteLune(posXLune);
             }
-
             y = Math.Round(y, 3);
             posXLune = Math.Round(posXLune, 3);
             // Deplacement de la lune sur les fonctions affines
             Canvas.SetLeft(imgLune1, posXLune);
             Canvas.SetTop(imgLune1, y);
             //Console.WriteLine($"position lune x : {posXLune} y :{y}");
-
         }
-
         private double EquationDroiteLune(double posXLune)
         {
             double y = 0;
@@ -300,7 +282,6 @@ namespace SaeProjetGitHubJEU
             castelNuit.Width = WIDTH_CASTEL;
             castelNuit.Height = HEIGHT_CASTEL;
             Canvas.SetTop(castelNuit, POSY_CASTEL);
-
         }
         private void AfficheJour()
         {
@@ -316,7 +297,6 @@ namespace SaeProjetGitHubJEU
             castelNuit.Width = WIDTH_CASTEL;
             castelNuit.Height = 385;
             Canvas.SetTop(castelNuit, POSY_CASTEL);
-
             //Réinitialisation de la position du soleil a l'origine de postion de la lune, cela évite que la lune ce décale a chaque cycle 
             posXLune = POSX_DEPART_LUNE;
             Canvas.SetLeft(imgLune1, POSX_DEPART_LUNE);
@@ -337,19 +317,15 @@ namespace SaeProjetGitHubJEU
         private void ZoneObstacles(int posXMin, int posXMax, int posY, int reductionTailleImg, int nbrDeTours, BitmapImage image, int height, double largeur, string type)
         {
             List<double> positionsExistantes = new List<double>(); // stocke uniquement la position X des obstacles
-
             largeur -= reductionTailleImg;
-
             for (int i = 0; i < nbrDeTours; i++)
             {
                 double xAleatoire;
                 int essais = 0;
                 bool chevauche = true;
-
                 do
                 {
                     xAleatoire = alea.Next(posXMin, posXMax - (int)largeur);
-
                     // Vérifie chevauchement avec une boucle classique
                     chevauche = false;
                     foreach (double x in positionsExistantes)
@@ -362,14 +338,10 @@ namespace SaeProjetGitHubJEU
                             break; // sort de la boucle foreach dès qu'un chevauchement est détecté
                         }
                     }
-
                     essais++;
                     if (essais > 50)
                         break; // pour éviter boucle infinie
-
                 } while (chevauche);
-
-
                 positionsExistantes.Add(xAleatoire);
 
                 Rectangle rect = new Rectangle();
@@ -383,7 +355,6 @@ namespace SaeProjetGitHubJEU
                 ZoneJeu.Children.Add(rect);
             }
         }
-
         private bool VerifColisionObstacle()
         {
             //Prend les coordonnées du personnages pour crée un rectangle
@@ -409,12 +380,9 @@ namespace SaeProjetGitHubJEU
                         return true;
                     }
                 }
-
             }
             return false;
         }
-
-
         public bool VerifColisionCacher()
         {
             //Prend les coordonnées du personnages pour crée un rectangle
@@ -449,7 +417,6 @@ namespace SaeProjetGitHubJEU
             }
             return false;
         }
-
         //Methode pour unifier toutes les annimations du personnage
         private void AnimationPerso(BitmapImage[] ImgPerso)
         {
@@ -463,7 +430,6 @@ namespace SaeProjetGitHubJEU
                 }
                 imgPerso1.Source = ImgPerso[nb];
                 nbToursPerso = 0;
-
             }
         }
         private double EquationDroiteGauche(double positionX)
@@ -498,7 +464,6 @@ namespace SaeProjetGitHubJEU
 
                     for (int i = 0; i < persoCape.Length; i++)
                     {
-
                         imgPerso1.Source = persoCape[i];
                         if (i == 5)
                         {
@@ -507,8 +472,6 @@ namespace SaeProjetGitHubJEU
                             MettreAJourAffichageCapes();
                         }
                     }
-
-
                 }
                 if (e.Key == Key.Space && MainWindow.NbPouvoir == MainWindow.NbCapes)
                 {
@@ -517,13 +480,11 @@ namespace SaeProjetGitHubJEU
                 Console.WriteLine("Interieur");
                 if (e.Key == Key.Z || e.Key == Key.Q || e.Key == Key.S || e.Key == Key.D)
                 {
-
                     if (estSoleil)
                     {
                         GameOver();
                         return;
                     }
-
                     if (e.Key == Key.Z)
                     {
                         if ((Canvas.GetBottom(imgPerso1) + MainWindow.PasVampire) <= (ZoneJeu.ActualHeight - imgPerso1.ActualHeight))
@@ -532,12 +493,8 @@ namespace SaeProjetGitHubJEU
                             for (int i = 0; i < persoAvant.Length; i++)
                                 persoAvant[i] = new BitmapImage(new Uri($"/imgPerso/imgPerso{i + 1}.png", UriKind.Relative));
                             AnimationPerso(persoAvant);
-                            
-
                         }
-
                     }
-
                     if (e.Key == Key.S)
                     {
                         if ((Canvas.GetBottom(imgPerso1) + MainWindow.PasVampire) >= 35)
@@ -547,12 +504,8 @@ namespace SaeProjetGitHubJEU
                                 persoArriere[i] = new BitmapImage(new Uri($"/imgPersoArriere/imgPersoA{i + 1}.png", UriKind.Relative));
 
                             AnimationPerso(persoArriere);
-                           
-
                         }
-
                     }
-
                     if (e.Key == Key.Q)
                     {
                         if ((Canvas.GetLeft(imgPerso1) + MainWindow.PasVampire) >= 0)
@@ -561,12 +514,8 @@ namespace SaeProjetGitHubJEU
                             for (int i = 0; i < persoGauche.Length; i++)
                                 persoGauche[i] = new BitmapImage(new Uri($"/imgPersoGauche/imgPersoG{i + 1}.png", UriKind.Relative));
                             AnimationPerso(persoGauche);
-                            
-
                         }
-
                     }
-
                     if (e.Key == Key.D)
                     {
                         if ((Canvas.GetLeft(imgPerso1) + MainWindow.PasVampire) <= (ZoneJeu.ActualWidth - imgPerso1.ActualWidth))
@@ -574,9 +523,7 @@ namespace SaeProjetGitHubJEU
                             Canvas.SetLeft(imgPerso1, Canvas.GetLeft(imgPerso1) + MainWindow.PasVampire);
                             for (int i = 0; i < persoDroit.Length; i++)
                                 persoDroit[i] = new BitmapImage(new Uri($"/imgPersoDroit/imgPersoD{i + 1}.png", UriKind.Relative));
-
                             AnimationPerso(persoDroit);
-                            
                         }
                     }
                     if (VerifColisionObstacle())
@@ -615,17 +562,12 @@ namespace SaeProjetGitHubJEU
             Canvas.SetBottom(imgPerso1, 0);
             nb = 0;
             nbToursPerso = 0;
-            
-
             // Remet les images de fond et lune
             AfficheNuit();
-
             //Réinitialise les variables
             MainWindow.NbPouvoir = 0;
             MettreAJourAffichageCapes();
             persoCape = new BitmapImage[6];
-            
-
         }
         private void Win()
         {
@@ -648,10 +590,8 @@ namespace SaeProjetGitHubJEU
         private void MettreAJourAffichageCapes()
         {
             int capesRestantes = MainWindow.NbCapes - MainWindow.NbPouvoir;
-
             txtNbCapes.Text = $"{capesRestantes}";
         }
-
         public void ResetKeyDownBUG()
         {
             // Désabonne l'événement KeyDown
@@ -659,7 +599,6 @@ namespace SaeProjetGitHubJEU
             {
                 Application.Current.MainWindow.KeyDown -= ZoneJeu_KeyDown;
             }
-
             // Arrête le timer
             if (minuterie != null)
             {
